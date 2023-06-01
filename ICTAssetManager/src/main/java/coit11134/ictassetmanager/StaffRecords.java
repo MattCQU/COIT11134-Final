@@ -1,0 +1,142 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package coit11134.ictassetmanager;
+
+/**
+ *
+ * @author Matt
+ */
+public class StaffRecords {
+    
+    private int staffID;
+    private String name;
+    private String email;
+    private String phoneNumber;
+    private boolean archived;
+
+    public StaffRecords(int staffID, String name, String email, String phoneNumber, boolean archived) {
+        this.staffID = staffID;
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.archived = archived;
+    }
+
+    public StaffRecords() {
+    }
+    
+    
+    
+    
+    
+    /**
+     * Get the value of archived
+     *
+     * @return the value of archived
+     */
+    public boolean isArchived() {
+        return archived;
+    }
+
+    /**
+     * Set the value of archived
+     *
+     * @param archived new value of archived
+     */
+    public void setArchived(boolean archived) {
+        this.archived = archived;
+    }
+
+
+    /**
+     * Get the value of phoneNumber
+     *
+     * @return the value of phoneNumber
+     */
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    /**
+     * Set the value of phoneNumber
+     *
+     * @param phoneNumber new value of phoneNumber
+     */
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    
+    /**
+     * Get the value of email
+     *
+     * @return the value of email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Set the value of email
+     *
+     * @param email new value of email
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+
+    /**
+     * Get the value of name
+     *
+     * @return the value of name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Set the value of name
+     *
+     * @param name new value of name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    /**
+     * Get the value of staffID
+     *
+     * @return the value of staffID
+     */
+    public int getStaffID() {
+        return staffID;
+    }
+
+    /**
+     * Set the value of staffID
+     *
+     * @param staffID new value of staffID
+     */
+    public void setStaffID(int staffID) {
+        this.staffID = staffID;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("StaffRecords{");
+        sb.append("staffID=").append(staffID);
+        sb.append(", name=").append(name);
+        sb.append(", email=").append(email);
+        sb.append(", phoneNumber=").append(phoneNumber);
+        sb.append(", archived=").append(archived);
+        sb.append('}');
+        return sb.toString();
+    }
+
+    
+}
