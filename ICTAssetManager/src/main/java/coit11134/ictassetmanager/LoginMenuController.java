@@ -11,7 +11,7 @@ import javafx.scene.control.Alert;
  *
  * @author Wesley
  */
-public class MenuOptionsController implements Initializable {
+public class LoginMenuController implements Initializable {
   @FXML
   private TextField txtUsername;
   
