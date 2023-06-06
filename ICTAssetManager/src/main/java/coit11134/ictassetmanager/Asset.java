@@ -42,9 +42,6 @@ public class Asset {
     
     
     
-    
-    
-    
     /**
      * Get the value of status
      *
