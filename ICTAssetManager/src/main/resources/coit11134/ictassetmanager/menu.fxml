@@ -26,27 +26,27 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btnLoadRecords" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #3d6bba;" text="Loan Records" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+            <Button fx:id="btnLoadRecords" mnemonicParsing="false" onAction="#switchToLoanRecords" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #3d6bba;" text="Loan Records" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnAssetItems" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #3d6bba;" text="Asset Items" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Button fx:id="btnAssetItems" mnemonicParsing="false" onAction="#switchToAssets" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #3d6bba;" text="Asset Items" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnLocationInformation" mnemonicParsing="false" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #3d6bba;" text="Location Information" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Button fx:id="btnLocationInformation" mnemonicParsing="false" onAction="#switchToLocationInformationPage" prefHeight="35.0" prefWidth="190.0" style="-fx-background-color: #3d6bba;" text="Location Information" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnStaffInformation" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #3d6bba;" text="Staff Information" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Button fx:id="btnStaffInformation" mnemonicParsing="false" onAction="#switchToStaffInformationPage" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #3d6bba;" text="Staff Information" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnStaffAccount" mnemonicParsing="false" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #3d6bba;" text="Staff Account" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Button fx:id="btnStaffAccount" mnemonicParsing="false" onAction="#switchToStaffAccountPage" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: #3d6bba;" text="Staff Account" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <font>
                   <Font size="16.0" />
                </font>
