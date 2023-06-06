@@ -36,5 +36,16 @@ public class AssetInformationPageController {
 
     @FXML
     private TextField txtfieldSearch;
+    
+    @FXML
+    private void handleButtonExitAction (ActionEvent event) throws Exception  {
+        System.out.println("You have pressed the Cancel button!");
+        
+        try {
+            App.setRoot("menu");
+        } catch (IOException e){
+           System.out.println(e); 
+        }
+    }
 
 }
