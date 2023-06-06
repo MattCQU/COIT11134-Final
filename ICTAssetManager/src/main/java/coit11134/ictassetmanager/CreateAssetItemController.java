@@ -5,7 +5,7 @@
 */
 package coit11134.ictassetmanager;
 
-public class CreateAssetItem
+public class CreateAssetItemController
 {
   
 }

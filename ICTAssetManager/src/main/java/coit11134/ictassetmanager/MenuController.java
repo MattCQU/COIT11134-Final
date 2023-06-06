@@ -7,8 +7,12 @@ package coit11134.ictassetmanager;
 
     
 import java.io.IOException;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 
 public class MenuController {
 
@@ -29,6 +33,16 @@ public class MenuController {
 
     @FXML
     private Button btnStaffInformation;
+    
+     @FXML
+    void exit(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Exit? Are you sure?"); 
+        alert.showAndWait().ifPresent(response -> { 
+            if (response == ButtonType.OK) { 
+            Platform.exit(); 
+        } 
+        }); 
+    }
     
     @FXML
     private void switchToAssets() throws IOException {

@@ -51,7 +51,7 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnExt" mnemonicParsing="false" prefWidth="80.0" style="-fx-background-color: #ba3d3d;" text="EXIT" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+            <Button fx:id="btnExt" mnemonicParsing="false" onAction="#exit" prefWidth="80.0" style="-fx-background-color: #ba3d3d;" text="EXIT" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
    </center>
