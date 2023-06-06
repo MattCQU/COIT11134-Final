@@ -19,7 +19,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("menu"));  //This needs to be the login Menu will implement later
+        scene = new Scene(loadFXML("menu"),600, 400);  //This needs to be the login Menu will implement later
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
