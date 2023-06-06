@@ -22,6 +22,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("menu"),600, 400);  //This needs to be the login Menu will implement later
         stage.setResizable(false);
         stage.setScene(scene);
+        stage.setTitle("ICT Asset Manager");
         stage.show();
     }
 

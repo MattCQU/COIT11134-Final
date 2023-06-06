@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coit11134.ictassetmanager.MenuController">
+<BorderPane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coit11134.ictassetmanager.MenuController">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -51,12 +51,15 @@
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button fx:id="btnExt" mnemonicParsing="false" onAction="#exit" prefWidth="80.0" style="-fx-background-color: #ba3d3d;" text="EXIT" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+            <Button fx:id="btnExt" mnemonicParsing="false" onAction="#exit" prefWidth="80.0" style="-fx-background-color: #ba3d3d;" text="EXIT" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin></Button>
          </children>
       </GridPane>
    </center>
    <top>
-      <Label alignment="CENTER" prefHeight="86.0" prefWidth="318.0" text="IT (Information Technology) Asset Management Application" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" BorderPane.alignment="CENTER">
+      <Label alignment="CENTER" prefHeight="86.0" prefWidth="318.0" text="IT (Information Technology) Asset Management Application" textAlignment="CENTER" textFill="#630090" textOverrun="CLIP" wrapText="true" BorderPane.alignment="CENTER">
          <font>
             <Font size="22.0" />
          </font>
