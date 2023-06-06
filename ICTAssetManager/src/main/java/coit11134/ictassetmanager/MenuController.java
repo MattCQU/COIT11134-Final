@@ -5,6 +5,28 @@
 */
 package coit11134.ictassetmanager;
 
-public class MenuController {
     
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+
+public class MenuController {
+
+    @FXML
+    private Button btnAssetItems;
+
+    @FXML
+    private Button btnExt;
+
+    @FXML
+    private Button btnLoadRecords;
+
+    @FXML
+    private Button btnLocationInformation;
+
+    @FXML
+    private Button btnStaffAccount;
+
+    @FXML
+    private Button btnStaffInformation;
+
 }

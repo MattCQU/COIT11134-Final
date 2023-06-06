@@ -11,7 +11,9 @@ import javafx.scene.control.TextField;
  *
  * @author Wesley
  */
-public class Utilities {
+public class Validation {
+
+/*    
     public static ButtonType createAndShowAlert (String title, String discription, Alert.AlertType alertType)
     {
       Alert alert = new Alert (AlertType);
@@ -21,7 +23,7 @@ public class Utilities {
       
       return alert.getResult();
     }
-  
+  */
     public static boolean isEmpty(TextField textField) {
         String text = textField.getText();
         if (text.isEmpty() || text.isBlank())
