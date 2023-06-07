@@ -73,7 +73,7 @@ public class LocanRecordsController {
             if (assetID.isEmpty() || assetID.equals("")){
                 throw new Exception ("Asset ID cannot be blank");
             }
-            if (dataManager.searchAsset(assetID) == null){
+            if (dataManager.searchAssetByID(assetID) == null){
                 throw new Exception ("The entered asset ID does not exists");
             }
             
@@ -81,7 +81,7 @@ public class LocanRecordsController {
             if (staffID.isEmpty() || assetID.equals("")){
                 throw new Exception ("Staff ID cannot be blank");
             }
-            if (dataManager.searchStaff(staffID)==null){
+            if (dataManager.searchStaffByID(staffID) == null){
                 throw new Exception ("The entered staff ID does not exists");
             }
             
