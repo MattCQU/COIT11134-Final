@@ -84,11 +84,11 @@ public class Validation {
     }
   */
     
-    public double doubleValidator(String numberString) throws NumberFormatException
+    public double doubleValidator(String input) throws NumberFormatException
     {
         try
         {
-            return Double.parseDouble(numberString);
+            return Double.parseDouble(input);
         }
         catch(NumberFormatException e)
         {
@@ -119,4 +119,47 @@ public class Validation {
         return trimmedString;
     }
   
+    
+    public int intValidator(String input) throws NumberFormatException
+    {
+        try
+        {
+            return Integer.parseInt(input);
+        }
+        catch (NumberFormatException e)
+        {
+            throw new NumberFormatException("Invalid input. Please enter a valid number");
+        }
+    }
+    
+    
+    public String phoneNumberValidator(String input) throws IllegalArgumentException
+    {
+        String numbersOnly = input.replaceAll("[^0-9]","");
+        
+        if (numbersOnly.length() == 10 && numbersOnly.matches("[^0-9]+"))
+        {
+            return numbersOnly;
+        }
+        else if(numbersOnly.length() == 11 && numbersOnly.startsWith("61") && numbersOnly.substring(2).matches("[0-9]+"))
+        {
+            return "0"+ numbersOnly.substring(2);
+        }
+        else
+        {
+            throw new IllegalArgumentException("Invalid phone number format.");
+        }
+    }
+    
+    public String emailValidator(String input) throws IllegalArgumentException
+    {
+        String emailFormat = "^[A-Za-z0-9_.-]+@[A-Za-z0-9_.-]+$";
+        
+        if(input.matches(emailFormat))
+        {
+            return input;
+        }else{
+            throw new IllegalArgumentException("Invalid Email, please enter a valid Email.");
+        }
+    }
 }
