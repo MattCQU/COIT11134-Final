@@ -23,6 +23,7 @@ public class Validation {
       return alert.getResult();
     }
   */
+/*    
     public static boolean isEmpty(TextField textField) {
         String text = textField.getText();
         if (text.isEmpty() || text.isBlank())
@@ -81,4 +82,41 @@ public class Validation {
 
         return false;
     }
+  */
+    
+    public double doubleValidator(String numberString) throws NumberFormatException
+    {
+        try
+        {
+            return Double.parseDouble(numberString);
+        }
+        catch(NumberFormatException e)
+        {
+            throw new NumberFormatException("Invalid Input.\nPlease enter a valid number.");
+        }
+    }
+    
+    
+    public String stringValidator(String input ) throws IllegalArgumentException
+    {
+        if(input == null || input.isEmpty())
+        {
+            throw new IllegalArgumentException("Field is empty. Please enter valid text.");
+        }
+        
+        if(input.contains(","))
+        {
+            throw new IllegalArgumentException("Please remove commas.");
+        }
+        
+        String trimmedString = input.trim();
+        
+        if (trimmedString.isEmpty())
+        {
+            throw new IllegalArgumentException("Input contains only white space, please enter a valid input");
+        }
+        
+        return trimmedString;
+    }
+  
 }

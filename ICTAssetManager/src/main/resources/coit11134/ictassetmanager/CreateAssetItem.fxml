@@ -76,7 +76,7 @@
         </items>
       </MenuButton>
       <Button layoutX="683.0" layoutY="344.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="75.0" style="-fx-background-color: #00ffa0;" text="Create" />
-      <Button layoutX="89.0" layoutY="344.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="62.0" style="-fx-background-color: #ba3d3d;" text=" &lt; Back  " />
+      <Button layoutX="89.0" layoutY="344.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="62.0" style="-fx-background-color: #ba3d3d;" text=" &lt; Back  " textFill="WHITE" />
       <Label layoutX="286.0" layoutY="22.0" text="ICT Asset Manager" textFill="#1c00ff">
          <font>
             <Font name="Bell MT" size="28.0" />
