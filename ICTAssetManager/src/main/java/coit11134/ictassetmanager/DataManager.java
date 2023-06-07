@@ -8,8 +8,10 @@
 package coit11134.ictassetmanager;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -95,6 +97,7 @@ public class DataManager {
                 }
             }
             reader.close();
+            
         }catch(Exception e)
         {
             App.customAlert(e.getMessage());
@@ -120,11 +123,11 @@ public class DataManager {
                 String[] a = line.split(",");
                 if(a.length == 10)
                 {
-                    String assetDescription = a[0].trim();
-                    String make = a[1].trim();
-                    String model = a[2].trim();
-                    String serialNumber = a[3].trim();
-                    int assetID = Integer.parseInt(a[4].trim()); 
+                    int assetID = Integer.parseInt(a[0].trim()); 
+                    String assetDescription = a[1].trim();
+                    String make = a[2].trim();
+                    String model = a[3].trim();
+                    String serialNumber = a[4].trim();
                     LocalDate dueTestDate = LocalDate.parse(a[5].trim());
                     LocalDate warrantyEndDate = LocalDate.parse(a[6].trim());
                     LocalDate purchaseDate = LocalDate.parse(a[7].trim());
@@ -137,6 +140,8 @@ public class DataManager {
                 }
                             
             }
+            reader.close();
+            
         }catch(IOException e)
         {
             App.customAlert(e.getMessage());
@@ -162,14 +167,16 @@ public class DataManager {
                 String[] l = line.split(",");
                 if(l.length == 3)
                 {
-                    String locationName = l[0].trim();
-                    int locationID = Integer.parseInt(l[1].trim());
+                    int locationID = Integer.parseInt(l[0].trim());
+                    String locationName = l[1].trim();
                     boolean archived = Boolean.parseBoolean(l[2].trim());
                     
                     Location location = new Location(locationName, locationID, archived);
                     locationsList.add(location);
                 }
             }
+            reader.close();
+            
         }catch(Exception e)
         {
             App.customAlert(e.getMessage());
@@ -196,18 +203,21 @@ public class DataManager {
                 String[] l = line.split(",");
                 if(l.length == 6 )
                 {
-                    StaffRecords staffMember = searchStaffByID(l[0]);
-                    Asset asset = searchAssetByID(l[1]);
-                    Location location = searchLocationByID(l[2]);
-                    LocalDate loanDate = LocalDate.parse(l[3].trim());
-                    LocalDate returnDate = LocalDate.parse(l[4].trim());
-                    int loanID = Integer.parseInt(l[5].trim());
+                    int loanID = Integer.parseInt(l[0].trim());
+                    StaffRecords staffMember = searchStaffByID(l[1]);
+                    Asset asset = searchAssetByID(l[2]);
+                    Location location = searchLocationByID(l[3]);
+                    LocalDate loanDate = LocalDate.parse(l[4].trim());
+                    LocalDate returnDate = LocalDate.parse(l[5].trim());
+                    
                     
                     LoanRecord loan = new LoanRecord(staffMember,  asset,  location,  loanDate,  returnDate,  loanID);
                     loanList.add(loan);
                 }
                 
             }
+            reader.close();
+            
         }catch(Exception e)
         {
             App.customAlert(e.getMessage());
@@ -324,4 +334,173 @@ public class DataManager {
         return null;
     }
     
+    
+    
+    public void saveAssetToFile()
+    {
+        try
+        {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(assetsFileName));
+            
+            for(Asset a : assetList)
+            {
+                String assetString = a.saveString();
+                writer.write(assetString);
+                writer.newLine();
+            }
+            writer.close();
+            System.out.println("Assets saved to file.");
+            
+        }catch(IOException e)
+        {
+            App.customAlert(e.getMessage());
+        }
+    }
+    
+    public void saveLocationsToFile()
+    {
+        try
+        {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(locationsFileName));
+            
+            for(Location l : locationsList)
+            {
+                String locationString = l.saveString();
+                writer.write(locationString);
+                writer.newLine();
+            }
+            writer.close();
+            System.out.println("Locations saved to file.");
+            
+        }catch(Exception e)
+        {
+            App.customAlert(e.getMessage());
+        }
+        
+    }
+    
+    public void saveLoansToFile()
+    {
+        try
+        {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(loanRecordsFileName));
+            
+            for(LoanRecord l : loanList)
+            {
+                String loanString = l.saveString();
+                writer.write(loanString);
+                writer.newLine();
+            }
+            writer.close();
+            System.out.println("Loans saved to file.");
+            
+        }catch(Exception e)
+        {
+            App.customAlert(e.getMessage());
+        }
+        
+    }
+    
+    public void saveStaffToFile()
+    {
+        try
+        {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(staffFileName));
+            
+            for(StaffRecords s : staffList)
+            {
+                String StaffString = s.saveString();
+                writer.write(StaffString);
+                writer.newLine();
+            }
+            writer.close();
+            System.out.println("Staff saved to file.");
+            
+        }catch(Exception e)
+        {
+            App.customAlert(e.getMessage());
+        }
+        
+    }
+    
+    
+    public int getNextStaffID()
+    {
+        String line = "";
+        int highest = 0;
+        int finalID = -1;
+        
+        File file = new File(staffFileName);
+        if(!file.exists())
+        {
+            App.customAlert("Staff File Does Not Exist");
+        }
+        
+        try
+        {
+            BufferedReader reader = new BufferedReader(new FileReader(staffFileName));
+            while((line = reader.readLine()) != null)
+            {
+                String[] s = line.split(",");
+                if(s.length == 6 || s.length == 8)
+                {
+                    String currentID = s[0].trim();
+                    int numID = Integer.parseInt(currentID);
+                    
+                    if(numID > highest)
+                    {
+                        highest = numID;
+                    }
+                }
+            }
+            finalID = highest++;
+            reader.close();
+            
+        }catch(IOException e)
+        {
+            App.customAlert(e.getLocalizedMessage());
+        }
+        
+        return finalID;
+    }
+    
+    public int getNextLocationID()
+    {
+        String line = "";
+        int highest = 0;
+        int finalID = -1;
+        
+        File file = new File(locationsFileName);
+        if(!file.exists())
+        {
+            App.customAlert("Locations File Does Not Exist");
+        }
+        
+        try
+        {
+            BufferedReader reader = new BufferedReader(new FileReader(locationsFileName));
+            while((line = reader.readLine()) != null)
+            {
+                String[] l = line.split(",");
+                if(l.length == 3)
+                {
+                    String currentID = l[0].trim();
+                    int numID = Integer.parseInt(currentID);
+                    
+                    if(numID > highest)
+                    {
+                        highest = numID;
+                    }
+                }
+            }
+            finalID = highest++;
+            reader.close();
+            
+        }catch(IOException e)
+        {
+            App.customAlert(e.getLocalizedMessage());
+        }
+        
+        return finalID;
+    }
 }

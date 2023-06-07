@@ -1,5 +1,5 @@
-Olympia,1,true
-Jack,2,false
-Abigail,3,false
-Kane,4,true
-Jason,5,false
+1,Olympia,true
+2,Jack,false
+3,Abigail,false
+4,Kane,true
+5,Jason,false
