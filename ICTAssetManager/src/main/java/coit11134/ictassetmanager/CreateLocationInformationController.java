@@ -63,7 +63,7 @@ public class CreateLocationInformationController {
     
     @FXML
     private void handleAddLocationButton (ActionEvent event) throws Exception {
-        //Location location = new Location();
+        Location location = new Location();
         
         try{
             String locationID = this.txtLocationID.getText();
@@ -87,8 +87,6 @@ public class CreateLocationInformationController {
             App.customAlert(e.getMessage());
         }
     }
-    
-    
     
     @FXML
     private void handleMenuItemSelection(ActionEvent event) {

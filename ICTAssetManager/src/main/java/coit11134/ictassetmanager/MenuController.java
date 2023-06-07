@@ -51,7 +51,7 @@ public class MenuController {
     
     @FXML
     private void switchToLoanRecords() throws IOException {
-        App.setRoot("PageLoanRecord");
+        App.setRoot("CreateLoanRecord");
     }
     
     @FXML
