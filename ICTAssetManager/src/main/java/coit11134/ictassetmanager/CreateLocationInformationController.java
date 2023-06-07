@@ -45,6 +45,8 @@ public class CreateLocationInformationController {
     private void handleButtonExitAction (ActionEvent event) throws Exception  {
         System.out.println("You have pressed the Cancel button!");
         
+        clearAllField();
+        
         try {
             App.setRoot("menu");
         } catch (IOException e){
