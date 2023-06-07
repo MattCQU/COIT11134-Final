@@ -34,7 +34,7 @@ public class MenuController {
     @FXML
     private Button btnStaffInformation;
     
-     @FXML
+    @FXML
     void exit(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Exit? Are you sure?"); 
         alert.showAndWait().ifPresent(response -> { 
@@ -46,31 +46,31 @@ public class MenuController {
     
     @FXML
     private void switchToAssets() throws IOException {
-        App.setRoot("assetInformationPage");
+        App.setRoot("PageAssetInformation");
     }
     
     @FXML
     private void switchToLoanRecords() throws IOException {
-        App.setRoot("loanRecordsPage");
+        App.setRoot("PageLoanRecord");
     }
     
     @FXML
     private void switchToLocationInformationPage() throws IOException {
-        App.setRoot("locationInformationPage");
+        App.setRoot("PageLocationInformation");
     }
     
     @FXML
     private void switchToStaffInformationPage() throws IOException {
-        App.setRoot("staffInformationPage");
+        App.setRoot("PageStaffInformation");
     }
     
     @FXML
     private void switchToStaffAccountPage() throws IOException {
-        App.setRoot("staffAccountPage");
+        App.setRoot("PageAssetManager");
     }
     
     @FXML
     private void switchToLoadRecords() throws IOException {
-        App.setRoot("loanRecords");
+        App.setRoot("PageLoanRecord");
     }
 }

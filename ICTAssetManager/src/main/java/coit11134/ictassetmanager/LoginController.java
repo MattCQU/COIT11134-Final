@@ -36,6 +36,9 @@ public class LoginController implements Initializable{
     {
         dataManager = App.getDataManager();
     } 
+    
+    
+    // put login "login as AssetStaff" login password and id not required (impelent if time otherwise ignore)
 
 }
 
