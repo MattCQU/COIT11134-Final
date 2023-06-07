@@ -95,6 +95,11 @@ public class LocanRecordsController {
                 throw new Exception("Cannot Forward Date Sale");
             }
             
+            LocalDate dueDate = datePickerDueDate.getValue();
+            if(dueDate.isBefore(startDate))
+            {
+                throw new Exception("Cannot Forward Date Sale");
+            }
             
         }catch(Exception e)
         {
