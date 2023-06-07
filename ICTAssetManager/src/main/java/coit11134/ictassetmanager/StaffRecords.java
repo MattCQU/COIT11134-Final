@@ -136,5 +136,9 @@ public class StaffRecords {
         return sb.toString();
     }
 
-    
+    public String saveString()
+    {
+       return staffID + "," + name + "," + email + "," + phoneNumber + "," + archived;
+        
+    }
 }

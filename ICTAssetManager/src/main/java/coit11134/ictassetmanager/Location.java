@@ -96,7 +96,10 @@ public class Location {
 
     
 
-    
+    public String saveString()
+    {
+        return locationID + "," + locationName + "," + archived;
+    }
     
     
 }

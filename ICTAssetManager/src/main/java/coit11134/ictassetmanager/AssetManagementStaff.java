@@ -70,5 +70,14 @@ public class AssetManagementStaff extends StaffRecords{
     }
 
     
-    
+    public String saveString()
+    {
+        String modify = super.saveString();
+        StringBuilder sb = new StringBuilder(modify);
+        
+        sb.append("," + password + "," + canLogin);
+        
+        return sb.toString();
+        
+    }
 }
