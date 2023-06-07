@@ -32,17 +32,26 @@ public class StaffInformationPageController {
     private ListView<?> listViewAssets;
 
     @FXML
-    private TextField txtfieldSearch;
+    private TextField txtFieldSearch;
     
     @FXML
     private void handleButtonExitAction (ActionEvent event) throws Exception  {
         System.out.println("You have pressed the Cancel button!");
+        
+        clearAllField();
         
         try {
             App.setRoot("menu");
         } catch (IOException e){
            System.out.println(e); 
         }
+    }
+    
+    private void clearAllField()
+    {
+    
+        txtFieldSearch.clear();
+        
     }
 
 }
