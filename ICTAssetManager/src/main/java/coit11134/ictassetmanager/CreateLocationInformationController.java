@@ -39,6 +39,8 @@ public class CreateLocationInformationController {
     @FXML
     private Button btnCreate;
     
+    DataManager dataManager;
+    
     @FXML
     private void handleButtonExitAction (ActionEvent event) throws Exception  {
         System.out.println("You have pressed the Cancel button!");
