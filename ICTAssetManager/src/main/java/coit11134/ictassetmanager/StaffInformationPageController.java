@@ -23,9 +23,6 @@ public class StaffInformationPageController {
     private Button btnCreate;
 
     @FXML
-    private Button btnGenerateReport;
-
-    @FXML
     private Button btnRead;
 
     @FXML
