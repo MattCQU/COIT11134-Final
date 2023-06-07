@@ -14,7 +14,7 @@ public class LoanRecord {
     private StaffRecords staffMember;
     private Asset asset;
     private Location location;
-    private LocalDate loadDate;
+    private LocalDate loanDate;
     private LocalDate returnDate;
     private int loanID;
 
@@ -23,7 +23,7 @@ public class LoanRecord {
         this.staffMember = staffMember;
         this.asset = asset;
         this.location = location;
-        this.loadDate = loanDate;
+        this.loanDate = loanDate;
         this.returnDate = returnDate;
         this.loanID = loanID;
     }
@@ -78,11 +78,11 @@ public class LoanRecord {
     }
 
     public LocalDate getLoanDate() {
-        return loadDate;
+        return loanDate;
     }
 
-    public void setLoanDate(LocalDate loadDate) {
-        this.loadDate = loadDate;
+    public void setLoanDate(LocalDate loanDate) {
+        this.loanDate = loanDate;
     }
 
     public LocalDate getReturnDate() {
@@ -100,7 +100,7 @@ public class LoanRecord {
         sb.append("staffMember=").append(staffMember);
         sb.append(", asset=").append(asset);
         sb.append(", location=").append(location);
-        sb.append(", loadDate=").append(loadDate);
+        sb.append(", loanDate=").append(loanDate);
         sb.append(", returnDate=").append(returnDate);
         sb.append(", loanID=").append(loanID);
         sb.append('}');
@@ -108,6 +108,13 @@ public class LoanRecord {
     }
     
     
-
+    public String saveString()
+    {
+        String staffID = String.valueOf(staffMember.getStaffID());
+        String assetID = String.valueOf(asset.getAssetID());
+        String locationID = String.valueOf(location.getLocationID());
+        
+        return loanID + "," + staffID  + "," + assetID + "," + locationID + "," + loanDate + "," + returnDate;
+    }
     
 }

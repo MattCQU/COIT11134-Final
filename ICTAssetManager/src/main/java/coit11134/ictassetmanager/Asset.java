@@ -256,5 +256,11 @@ public class Asset {
     }
     
     
+    public String saveString()
+    {
+        String save = assetID + "," + assetDescription + "," + make + "," + model + "," + serialNumber + "," + dueTestDate + "," + warrantyEndDate 
+                + "," + purchaseDate + "," + purchasePrice + "," + status;
+        return save;
+    }
     
 }
