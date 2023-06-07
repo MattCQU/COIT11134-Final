@@ -137,6 +137,11 @@ public class Validation {
     {
         String numbersOnly = input.replaceAll("[^0-9]","");
         
+        if(input.contains(","))
+        {
+            throw new IllegalArgumentException("Please remove commas.");
+        }
+        
         if (numbersOnly.length() == 10 && numbersOnly.matches("[^0-9]+"))
         {
             return numbersOnly;
@@ -162,4 +167,6 @@ public class Validation {
             throw new IllegalArgumentException("Invalid Email, please enter a valid Email.");
         }
     }
+    
+    
 }

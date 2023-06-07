@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.scene.control.Alert;
 
 /**
  * JavaFX App
@@ -43,6 +44,12 @@ public class App extends Application {
     public static DataManager getDataManager()
     {
         return dataManager;
+    }
+    
+    public static void customAlert(String message)
+    {
+        Alert alert = new Alert(Alert.AlertType.ERROR, message); 
+        alert.showAndWait();
     }
 
 }

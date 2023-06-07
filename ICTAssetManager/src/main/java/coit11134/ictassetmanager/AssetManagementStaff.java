@@ -11,7 +11,7 @@ public class AssetManagementStaff extends StaffRecords{
     private String password;
     private boolean canLogin;
 
-    public AssetManagementStaff(String password, boolean canLogin, int staffID, String name, String email, String phoneNumber, boolean archived) {
+    public AssetManagementStaff (int staffID, String name, String email, String phoneNumber, boolean archived, String password, boolean canLogin) {
         super(staffID, name, email, phoneNumber, archived);
         this.password = password;
         this.canLogin = canLogin;
