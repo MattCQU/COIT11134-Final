@@ -503,4 +503,88 @@ public class DataManager {
         
         return finalID;
     }
+    
+    public int getNextLoanID()
+    {
+        String line = "";
+        int highest = 0;
+        int finalID = -1;
+        
+        File file = new File(loanRecordsFileName);
+        if(!file.exists())
+        {
+            App.customAlert("Loans File Does Not Exist");
+        }
+        
+        try
+        {
+            BufferedReader reader = new BufferedReader(new FileReader(loanRecordsFileName));
+            while((line = reader.readLine()) != null)
+            {
+                String[] l = line.split(",");
+                if(l.length == 6)
+                {
+                    String currentID = l[0].trim();
+                    int numID = Integer.parseInt(currentID);
+                    
+                    if(numID > highest)
+                    {
+                        highest = numID;
+                    }
+                }
+            }
+            finalID = highest++;
+            reader.close();
+            
+        }catch(IOException e)
+        {
+            App.customAlert(e.getLocalizedMessage());
+        }
+        
+        return finalID;
+    }
+    
+    
+    public int getNextAssetID()
+    {
+        String line = "";
+        int highest = 0;
+        int finalID = -1;
+        
+        File file = new File(assetsFileName);
+        if(!file.exists())
+        {
+            App.customAlert("Loans File Does Not Exist");
+        }
+        
+        try
+        {
+            BufferedReader reader = new BufferedReader(new FileReader(assetsFileName));
+            while((line = reader.readLine()) != null)
+            {
+                String[] a = line.split(",");
+                if(a.length == 10)
+                {
+                    String currentID = a[0].trim();
+                    int numID = Integer.parseInt(currentID);
+                    
+                    if(numID > highest)
+                    {
+                        highest = numID;
+                    }
+                }
+            }
+            finalID = highest++;
+            reader.close();
+            
+        }catch(IOException e)
+        {
+            App.customAlert(e.getLocalizedMessage());
+        }
+        
+        return finalID;
+    }
+    
+    
+    
 }
