@@ -67,7 +67,7 @@ public class CreateLocationInformationController {
         
         try{
             String locationID = this.txtLocationID.getText();
-            if (locationID.equals("") || locationID.length() != 4){
+            if (locationID.length() == 0  || !locationID.matches("\\d+")){
                 throw new Exception ("Please enter a valid location ID");
             }
             
@@ -77,8 +77,13 @@ public class CreateLocationInformationController {
             }
             
             String assetID = this.txtAssetID.getText();
-            if (assetID.length() == 0 || assetID.length() != 6){
+            if (assetID.length() == 0 || !assetID.matches("\\d+")){
                 throw new Exception ("Please enter a valid asset ID");
+            }
+            
+            String selectedOption = this.MnuStatus.getText();
+            if (selectedOption.equals("Active/Archived")) {
+                throw new Exception("Please select a valid option from the menu");
             }
             
             
