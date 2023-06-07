@@ -135,6 +135,21 @@ public class Validation {
     }
     
     
+    public boolean booleanValidator(String input)
+    {
+        try{
+            
+            boolean validator = Boolean.parseBoolean(input.trim());
+            
+            return true;
+            
+        }catch(Exception e)
+        {
+            App.customAlert(e.getMessage());
+            return false;
+        }
+    }
+    
     public String phoneNumberValidator(String input) throws IllegalArgumentException
     {
         String numbersOnly = input.replaceAll("[^0-9]","");
@@ -170,12 +185,19 @@ public class Validation {
         }
     }
  
-/*    
-    public boolean staffIDValidator(int StaffID)
+    
+    public boolean staffIDValidator(String input)
     {
         try
         {
-        
+            if(input.isEmpty() || input.matches(""))
+            {
+                App.customAlert("StaffID Empty. Please enter a valid ID");
+            }
+            if(!input.matches("[^0-9]+$"))
+            {
+                App.customAlert("");
+            }
         }
         catch(Exception e)
         {
@@ -183,6 +205,6 @@ public class Validation {
         }
     }
     
-*/    
+  
     
 }

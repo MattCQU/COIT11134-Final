@@ -41,10 +41,14 @@ public class DataManager {
     
     private void loadAllFiles()
     {
-        loadStaffFromFile();
+        readStaffFromFile();
+        readAssetFromFile();
+        readLocationFromFile();
+        readLoanRecordFromFile();
+        
     }
     
-    private void loadStaffFromFile()
+    private void readStaffFromFile()
     {
         String line = "";
         
@@ -98,7 +102,7 @@ public class DataManager {
     }
     
     
-    public void loadAssetFromFile()
+    public void readAssetFromFile()
     {
         String line = "";
         File file = new File(assetsFileName);
@@ -140,7 +144,7 @@ public class DataManager {
     }
     
     
-    public void loadLocationFromFile()
+    public void readLocationFromFile()
     {
         String line = "";
         File file = new File(locationsFileName);
@@ -174,7 +178,7 @@ public class DataManager {
     
     
     
-    public void loadLoanRecordFromFile()
+    public void readLoanRecordFromFile()
     {
         String line = "";
         File file = new File(loanRecordsFileName);
@@ -192,9 +196,9 @@ public class DataManager {
                 String[] l = line.split(",");
                 if(l.length == 6 )
                 {
-                    StaffRecords staffMember = searchStaff(l[0]);
-                    Asset asset = searchAsset(l[1]);
-                    Location location = searchLocation(l[2]);
+                    StaffRecords staffMember = searchStaffByID(l[0]);
+                    Asset asset = searchAssetByID(l[1]);
+                    Location location = searchLocationByID(l[2]);
                     LocalDate loanDate = LocalDate.parse(l[3].trim());
                     LocalDate returnDate = LocalDate.parse(l[4].trim());
                     int loanID = Integer.parseInt(l[5].trim());
@@ -211,7 +215,7 @@ public class DataManager {
     }
     
     
-    public StaffRecords searchStaff(String stringStaffID)
+    public StaffRecords searchStaffByID(String stringStaffID)
     {
         try{
         
@@ -232,7 +236,7 @@ public class DataManager {
         return null;
     }
     
-    public Asset searchAsset(String stringAssetID)
+    public Asset searchAssetByID(String stringAssetID)
     {
         try
         {
@@ -254,7 +258,7 @@ public class DataManager {
         return null;
     }
     
-    public Location searchLocation(String stringLocationID)
+    public Location searchLocationByID(String stringLocationID)
     {
         try
         {
@@ -276,7 +280,7 @@ public class DataManager {
         return null;
     }
     
-    public LoanRecord searchLoans(String stringLoanID)
+    public LoanRecord searchLoanByID(String stringLoanID)
     {
         try
         {
@@ -285,6 +289,28 @@ public class DataManager {
             for(LoanRecord loan : loanList)
             {
                 if(loan.getLoanID() == loanID)
+                {
+                    return loan;
+                }
+            }
+        }catch(Exception e)
+        {
+            
+            App.customAlert(e.getMessage());
+            return null;
+        }
+        return null;
+    }
+    
+    public LoanRecord searchLoanByAsset(String stringAssetID)
+    {
+        try
+        {
+            int AssetID = Integer.parseInt(stringAssetID.trim());
+            
+            for(LoanRecord loan : loanList)
+            {
+                if(loan.getAsset().getAssetID() == AssetID)
                 {
                     return loan;
                 }

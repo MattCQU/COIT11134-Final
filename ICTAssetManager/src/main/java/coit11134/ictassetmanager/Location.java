@@ -34,7 +34,7 @@ public class Location {
      *
      * @return the value of archived
      */
-    public boolean isArchived() {
+    public boolean getArchived() {
         return archived;
     }
 
