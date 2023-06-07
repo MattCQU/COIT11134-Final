@@ -18,12 +18,12 @@ public class LoanRecord {
     private LocalDate returnDate;
     private int loanID;
 
-    public LoanRecord(StaffRecords staffMember, Asset asset, Location location, LocalDate loadDate, LocalDate returnDate, int loanID) 
+    public LoanRecord(StaffRecords staffMember, Asset asset, Location location, LocalDate loanDate, LocalDate returnDate, int loanID) 
     {
         this.staffMember = staffMember;
         this.asset = asset;
         this.location = location;
-        this.loadDate = loadDate;
+        this.loadDate = loanDate;
         this.returnDate = returnDate;
         this.loanID = loanID;
     }
@@ -77,11 +77,11 @@ public class LoanRecord {
         this.location = location;
     }
 
-    public LocalDate getLoadDate() {
+    public LocalDate getLoanDate() {
         return loadDate;
     }
 
-    public void setLoadDate(LocalDate loadDate) {
+    public void setLoanDate(LocalDate loadDate) {
         this.loadDate = loadDate;
     }
 

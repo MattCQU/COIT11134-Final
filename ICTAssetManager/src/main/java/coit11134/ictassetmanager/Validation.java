@@ -11,6 +11,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 
 public class Validation {
+    
+    
 
 /*    
     public static ButtonType createAndShowAlert (String title, String discription, Alert.AlertType alertType)
@@ -167,6 +169,20 @@ public class Validation {
             throw new IllegalArgumentException("Invalid Email, please enter a valid Email.");
         }
     }
+ 
+/*    
+    public boolean staffIDValidator(int StaffID)
+    {
+        try
+        {
+        
+        }
+        catch(Exception e)
+        {
+            App.customAlert(e.getMessage());
+        }
+    }
     
+*/    
     
 }

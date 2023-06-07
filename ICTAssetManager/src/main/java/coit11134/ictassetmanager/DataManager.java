@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 
@@ -77,17 +78,13 @@ public class DataManager {
                 
                 if(s.length == 7)
                 {
-                    String stringStaffID = s[0].trim();
+                    int staffID = Integer.parseInt(s[0].trim());
                     String name = s[1].trim();
                     String email = s[2].trim();
                     String phoneNumber = s[3].trim();
-                    String stringArchived = s[4].trim();
+                    boolean archived = Boolean.parseBoolean(s[4].trim());
                     String password = s[5].trim();
-                    String stringCanLogin = s[6].trim();
-                    
-                    int staffID = Integer.parseInt(stringStaffID);
-                    boolean archived = Boolean.parseBoolean(stringArchived);
-                    boolean canLogin = Boolean.parseBoolean(stringCanLogin);
+                    boolean canLogin = Boolean.parseBoolean(s[6].trim());
                     
                     AssetManagementStaff staff = new AssetManagementStaff(staffID, name, email, phoneNumber,archived, password, canLogin);
                     staffList.add(staff);
@@ -100,5 +97,205 @@ public class DataManager {
         }
     }
     
+    
+    public void loadAssetFromFile()
+    {
+        String line = "";
+        File file = new File(assetsFileName);
+        
+        if(!file.exists())
+        {
+            return;
+        }
+        
+        try
+        {
+            BufferedReader reader = new BufferedReader(new FileReader(assetsFileName));
+            while((line = reader.readLine()) != null)
+            {
+                String[] a = line.split(",");
+                if(a.length == 10)
+                {
+                    String assetDescription = a[0].trim();
+                    String make = a[1].trim();
+                    String model = a[2].trim();
+                    String serialNumber = a[3].trim();
+                    int assetID = Integer.parseInt(a[4].trim()); 
+                    LocalDate dueTestDate = LocalDate.parse(a[5].trim());
+                    LocalDate warrantyEndDate = LocalDate.parse(a[6].trim());
+                    LocalDate purchaseDate = LocalDate.parse(a[7].trim());
+                    double purchasePrice = Double.parseDouble(a[8].trim());
+                    String status = a[9].trim();
+                    
+                    
+                    Asset asset = new Asset( assetDescription,  make,  model,  serialNumber,  assetID,  dueTestDate,  warrantyEndDate,  purchaseDate,  purchasePrice,  status);
+                    assetList.add(asset);
+                }
+                            
+            }
+        }catch(IOException e)
+        {
+            App.customAlert(e.getMessage());
+        }
+    }
+    
+    
+    public void loadLocationFromFile()
+    {
+        String line = "";
+        File file = new File(locationsFileName);
+        
+        if(!file.exists())
+        {
+            return;
+        }
+        
+        try
+        {
+            BufferedReader reader = new BufferedReader(new FileReader(locationsFileName));
+            while ((line = reader.readLine()) != null)
+            {
+                String[] l = line.split(",");
+                if(l.length == 3)
+                {
+                    String locationName = l[0].trim();
+                    int locationID = Integer.parseInt(l[1].trim());
+                    boolean archived = Boolean.parseBoolean(l[2].trim());
+                    
+                    Location location = new Location(locationName, locationID, archived);
+                    locationsList.add(location);
+                }
+            }
+        }catch(Exception e)
+        {
+            App.customAlert(e.getMessage());
+        }
+    }
+    
+    
+    
+    public void loadLoanRecordFromFile()
+    {
+        String line = "";
+        File file = new File(loanRecordsFileName);
+        
+        if(!file.exists())
+        {
+            return;
+        }
+        
+        try
+        {
+            BufferedReader reader = new BufferedReader(new FileReader(loanRecordsFileName));
+            while ((line = reader.readLine()) != null)
+            {
+                String[] l = line.split(",");
+                if(l.length == 6 )
+                {
+                    StaffRecords staffMember = searchStaff(l[0]);
+                    Asset asset = searchAsset(l[1]);
+                    Location location = searchLocation(l[2]);
+                    LocalDate loanDate = LocalDate.parse(l[3].trim());
+                    LocalDate returnDate = LocalDate.parse(l[4].trim());
+                    int loanID = Integer.parseInt(l[5].trim());
+                    
+                    LoanRecord loan = new LoanRecord(staffMember,  asset,  location,  loanDate,  returnDate,  loanID);
+                    loanList.add(loan);
+                }
+                
+            }
+        }catch(Exception e)
+        {
+            App.customAlert(e.getMessage());
+        }
+    }
+    
+    
+    public StaffRecords searchStaff(String stringStaffID)
+    {
+        try{
+        
+            int staffID = Integer.parseInt(stringStaffID.trim());
+            
+            for(StaffRecords staff : staffList)
+            {
+                if(staff.getStaffID() == staffID)
+                {
+                    return staff;
+                }
+            }
+        } catch(Exception e)
+        {
+            App.customAlert(e.getMessage());
+            return null;
+        }
+        return null;
+    }
+    
+    public Asset searchAsset(String stringAssetID)
+    {
+        try
+        {
+            int assetID = Integer.parseInt(stringAssetID.trim());
+            
+            for(Asset asset : assetList)
+            {
+                if(asset.getAssetID() == assetID)
+                {
+                    return asset;
+                }
+            }
+        }catch(Exception e)
+        {
+            
+            App.customAlert(e.getMessage());
+            return null;
+        }
+        return null;
+    }
+    
+    public Location searchLocation(String stringLocationID)
+    {
+        try
+        {
+            int locationID = Integer.parseInt(stringLocationID.trim());
+            
+            for(Location location : locationsList)
+            {
+                if(location.getLocationID() == locationID)
+                {
+                    return location;
+                }
+            }
+        }catch(Exception e)
+        {
+            
+            App.customAlert(e.getMessage());
+            return null;
+        }
+        return null;
+    }
+    
+    public LoanRecord searchLoans(String stringLoanID)
+    {
+        try
+        {
+            int loanID = Integer.parseInt(stringLoanID.trim());
+            
+            for(LoanRecord loan : loanList)
+            {
+                if(loan.getLoanID() == loanID)
+                {
+                    return loan;
+                }
+            }
+        }catch(Exception e)
+        {
+            
+            App.customAlert(e.getMessage());
+            return null;
+        }
+        return null;
+    }
     
 }

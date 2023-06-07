@@ -1,4 +1,4 @@
-package com.mycompany.mavenproject4;
+package coit11134.ictassetmanager;
 
 import java.io.IOException;
 import javafx.event.ActionEvent;
@@ -82,6 +82,9 @@ public class CreateLocationInformationController {
             }
             
             
+        }catch(Exception e)
+        {
+            App.customAlert(e.getMessage());
         }
     }
     

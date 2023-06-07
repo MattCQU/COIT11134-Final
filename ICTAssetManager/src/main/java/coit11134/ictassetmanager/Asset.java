@@ -22,7 +22,8 @@ public class Asset {
     private double purchasePrice;
     private String status;
 
-    public Asset(String assetDescription, String make, String model, String serialNumber, int assetID, LocalDate dueTestDate, LocalDate warrantyEndDate, LocalDate purchaseDate, double purchasePrice, String status) {
+    public Asset(String assetDescription, String make, String model, String serialNumber, int assetID, LocalDate dueTestDate, LocalDate warrantyEndDate, LocalDate purchaseDate, double purchasePrice, String status) 
+    {
         this.assetDescription = assetDescription;
         this.make = make;
         this.model = model;
