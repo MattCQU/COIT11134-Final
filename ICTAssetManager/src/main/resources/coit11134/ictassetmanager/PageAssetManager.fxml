@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coit11134.ictassetmanager.AssetInformationPageController">
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coit11134.ictassetmanager.PageAssetManagerController">
    <center>
       <GridPane prefHeight="334.0" prefWidth="654.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -50,12 +50,12 @@
             <Button fx:id="btnBack" mnemonicParsing="false" onAction="#handleButtonExitAction" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #ba3d3d;" text="&lt;&lt; Back" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <Button fx:id="btnUpdate" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #e2ad3f;" text="Update" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <Button fx:id="btnRead" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #3d6bba;" text="Read" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <Button fx:id="btnCreate" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #2c8629;" text="Create" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button fx:id="btnCreate" mnemonicParsing="false" onAction="#handleButtonCreateAction" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #2c8629;" text="Create" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
    </bottom>
    <top>
-      <Label prefHeight="70.0" prefWidth="332.0" text="IT (Information Technology) Asset Management Application" textAlignment="CENTER" textFill="#630090" wrapText="true" BorderPane.alignment="CENTER">
+      <Label prefHeight="70.0" prefWidth="220.0" text="Asset Manager Page" textAlignment="CENTER" textFill="#630090" wrapText="true" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets top="10.0" />
          </BorderPane.margin>
