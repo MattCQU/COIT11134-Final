@@ -38,7 +38,7 @@ public class DataManager {
         this.locationsList = new ArrayList<>();
         this.loanList = new ArrayList<>();
         
-        loadAllFiles();
+       // loadAllFiles();
     }
     
     private void loadAllFiles()
@@ -586,5 +586,26 @@ public class DataManager {
     }
     
     
+    public void addStaffRecord (StaffRecords staff)
+    {
+        staffList.add(staff);
+    }
     
+    public void addLocation (Location location )
+    {
+        locationsList.add(location);
+    }
+    
+    public void addAsset (Asset asset)
+    {
+        assetList.add(asset);
+    } 
+    
+    public void addLoan(LoanRecord loan)
+    {
+        loanList.add(loan);
+    }
+    
+    
+   
 }

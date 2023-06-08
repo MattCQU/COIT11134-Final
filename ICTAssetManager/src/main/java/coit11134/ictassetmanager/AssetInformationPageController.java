@@ -58,5 +58,17 @@ public class AssetInformationPageController {
         txtSearch.clear();
         
     }
+    
+    @FXML
+    private void handleReportButtonAction (ActionEvent event) throws Exception
+    {
+        try
+        {
+            App.setRoot("Report");
+        } catch (Exception e)
+        {
+            App.customAlert(e.getMessage());
+        }
+    }
 
 }
