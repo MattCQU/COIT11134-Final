@@ -35,7 +35,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="198.0" layoutY="88.0" prefHeight="25.0" prefWidth="204.0" />
+      <TextField editable="false" layoutX="198.0" layoutY="88.0" prefHeight="25.0" prefWidth="204.0" />
       <TextField layoutX="198.0" layoutY="133.0" prefHeight="25.0" prefWidth="204.0" />
       <TextField layoutX="198.0" layoutY="178.0" prefHeight="25.0" prefWidth="204.0" />
       <Button fx:id="btnBack" layoutX="36.0" layoutY="336.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #ba3d3d;" text="&lt; Back" textFill="WHITE" />
