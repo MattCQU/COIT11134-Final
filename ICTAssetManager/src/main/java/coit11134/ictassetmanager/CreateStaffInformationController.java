@@ -87,7 +87,7 @@ public class CreateStaffInformationController {
             }
             
             String staffEmail = this.txtStaffEmail.getText();
-            if (staffEmail.length() == 0 || !staffEmail.matches("\\d+")){
+            if (staffEmail.equals("")){
                 throw new Exception ("Please enter a valid staff email address");
             }
             
