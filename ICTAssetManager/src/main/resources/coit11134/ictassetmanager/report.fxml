@@ -44,7 +44,7 @@
       </GridPane>
    </center>
    <top>
-      <Label alignment="CENTER" prefHeight="70.0" prefWidth="613.0" text="Asset Items - Generate Report" textAlignment="CENTER" textFill="#630090" wrapText="true" BorderPane.alignment="CENTER">
+      <Label alignment="CENTER" prefHeight="70.0" prefWidth="613.0" text="Generate Report for Asset Items" textAlignment="CENTER" textFill="#630090" wrapText="true" BorderPane.alignment="CENTER">
          <font>
             <Font size="20.0" />
          </font>
