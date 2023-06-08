@@ -85,7 +85,7 @@ public class Staff {
      *
      * @param name new value of name
      */
-    public void setname(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -94,7 +94,7 @@ public class Staff {
      *
      * @return the value of email
      */
-    public String getemail() {
+    public String getEmail() {
         return email;
     }
     
@@ -103,7 +103,7 @@ public class Staff {
      *
      * @param email new value of email
      */
-    public void setemail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }    
 
