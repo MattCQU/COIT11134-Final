@@ -3,3 +3,5 @@
 3,Abigail,false
 4,Kane,true
 5,Jason,false
+6,Desk 12,false
+7,Desk 19,true
