@@ -14,18 +14,18 @@ public class Staff {
     
     //Variables    
     private int staffID;    
-    private String name;
-    private String email;
-    private String phoneNumber;
+    private String staffName;
+    private String staffEmail;
+    private String staffPhoneNumber;
     private boolean archived;
     
     
     
-    public Staff(int staffID, String name, String email, String phoneNumber, boolean archived) {
+    public Staff(int staffID, String staffName, String staffEmail, String staffPhoneNumber, boolean archived) {
         this.staffID = staffID;
-        this.name = name;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
+        this.staffName = staffName;
+        this.staffEmail = staffEmail;
+        this.staffPhoneNumber = staffPhoneNumber;
         this.archived = archived;
     }
     
@@ -72,58 +72,58 @@ public class Staff {
     }
 
     /**
-     * Get the value of name
+     * Get the value of staffName
      *
-     * @return the value of name
+     * @return the value of staffName
      */
-    public String getName() {
-        return name;
+    public String getStaffName() {
+        return staffName;
     }
     
     /**
-     * Set the value of name
+     * Set the value of staffName
      *
-     * @param name new value of name
+     * @param staffName new value of staffName
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setStaffName(String staffName) {
+        this.staffName = staffName;
     }
 
     /**
-     * Get the value of email
+     * Get the value of staffEmail
      *
-     * @return the value of email
+     * @return the value of staffEmail
      */
-    public String getEmail() {
-        return email;
+    public String getStaffEmail() {
+        return staffEmail;
     }
     
     /**
-     * Set the value of email
+     * Set the value of staffEmail
      *
-     * @param email new value of email
+     * @param staffEmail new value of staffEmail
      */
-    public void setEmail(String email) {
-        this.email = email;
+    public void setStaffEmail(String email) {
+        this.staffEmail = staffEmail;
     }    
 
     
     /**
-     * Get the value of phoneNumber
+     * Get the value of staffphoneNumber
      *
-     * @return the value of phoneNumber
+     * @return the value of staffphoneNumber
      */
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getStaffPhoneNumber() {
+        return staffPhoneNumber;
     }
     
     /**
-     * Set the value of phoneNumber
+     * Set the value of staffPhoneNumber
      *
-     * @param phoneNumber new value of phoneNumber
+     * @param staffPhoneNumber new value of staffPhoneNumber
      */
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setStaffPhoneNumber(String staffPhoneNumber) {
+        this.staffPhoneNumber = staffPhoneNumber;
     }    
 
     
@@ -133,9 +133,9 @@ public class Staff {
         StringBuilder sb = new StringBuilder();
         sb.append("Staff{");
         sb.append(",\nstaffID=").append(staffID);
-        sb.append(",\name=").append(name);
-        sb.append(",\nemail=").append(email);
-        sb.append(",\nphoneNumber=").append(phoneNumber);
+        sb.append(",\name=").append(staffName);
+        sb.append(",\nemail=").append(staffEmail);
+        sb.append(",\nphoneNumber=").append(staffPhoneNumber);
         sb.append(",\narchived=").append(archived);
         sb.append('}');
         return sb.toString();
@@ -145,7 +145,7 @@ public class Staff {
 
     public String saveString()
     {
-        return staffID + "," + name + "," + email + "," + phoneNumber + "," + archived;
+        return staffID + "," + staffName + "," + staffEmail + "," + staffPhoneNumber + "," + archived;
     }
     
 }

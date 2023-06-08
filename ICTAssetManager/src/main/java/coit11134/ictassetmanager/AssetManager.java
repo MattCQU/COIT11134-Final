@@ -11,8 +11,8 @@ public class AssetManager extends StaffRecords{
     private String password;
     private boolean canLogin;
 
-    public AssetManager (int staffID, String name, String email, String phoneNumber, boolean archived, String password, boolean canLogin) {
-        super(staffID, name, email, phoneNumber, archived);
+    public AssetManager (int staffID, String staffName, String staffEmail, String staffPhoneNumber, boolean archived, String password, boolean canLogin) {
+        super(staffID, staffName, staffEmail, staffPhoneNumber, archived);
         this.password = password;
         this.canLogin = canLogin;
     }
@@ -62,7 +62,7 @@ public class AssetManager extends StaffRecords{
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("AssetManagementStaff{");
+        sb.append("AssetMannager{");
         sb.append("password=").append(password);
         sb.append(", canLogin=").append(canLogin);
         sb.append('}');
@@ -70,6 +70,7 @@ public class AssetManager extends StaffRecords{
     }
 
     
+   
     public String saveString()
     {
         String modify = super.saveString();
