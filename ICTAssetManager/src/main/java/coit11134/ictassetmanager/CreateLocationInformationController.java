@@ -28,9 +28,6 @@ public class CreateLocationInformationController implements Initializable{
     private TextField txtLocationName;
     
     @FXML
-    private TextField txtAssetID;
-    
-    @FXML
     private MenuButton MnuStatus;
     
     @FXML
@@ -46,6 +43,7 @@ public class CreateLocationInformationController implements Initializable{
     private Button btnCreate;
     
     private DataManager dataManager;
+    private static Location editLocation;
     
     @FXML
     private void handleButtonExitAction (ActionEvent event) throws Exception  {
@@ -68,14 +66,28 @@ public class CreateLocationInformationController implements Initializable{
         
     }
     
+    public static void setEditLocation(Location location)
+    {
+        editLocation = location;
+    }
+    
     //Method that initializes datamanager 
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-      dataManager = App.getDataManager();
-      
-      
-      txtLocationID.setText(String.valueOf(dataManager.getNextLocationID()));
+        dataManager = App.getDataManager();
+        if(editLocation != null)
+        {
+            txtLocationID.setText(String.valueOf(editLocation.getLocationID()));
+            txtLocationName.setText(editLocation.getLocationName());
+            
+           // MnuStatus
+        }
+        
+        else
+        {
+            txtLocationID.setText(String.valueOf(dataManager.getNextLocationID()));
+        }
       
     }
     

@@ -29,7 +29,8 @@ public class PageLocationInformationController implements Initializable{
     private Button btnUpdate;
 
     @FXML
-    private ListView<?> listViewAssets;
+    private ListView<?> listViewLocations;
+    private Location[] location;
 
     @FXML
     private TextField txtfieldSearch;
@@ -40,6 +41,24 @@ public class PageLocationInformationController implements Initializable{
     void handleButtonExitAction(ActionEvent event) {
         try {
             App.setRoot("Menu");
+        } catch (Exception e){
+           App.customAlert(e.getMessage()); 
+        }
+    }
+    
+    @FXML
+    void handleButtonEditAction(ActionEvent event) {
+        Location selectedLocation = getSelectedLocation();
+        try 
+        {
+            if(selectedLocation == null)
+            {
+                App.customAlert("Please Select A Location");
+                return;
+            }
+            
+            CreateLocationInformationController.setEditLocation((Location)selectedLocation);
+            App.setRoot("CreateLocationInformation");
         } catch (Exception e){
            App.customAlert(e.getMessage()); 
         }
@@ -59,6 +78,16 @@ public class PageLocationInformationController implements Initializable{
     public void initialize(URL url, ResourceBundle rb)
     {
       dataManager = App.getDataManager();
+    }
+    
+    private Location getSelectedLocation()
+    {
+        int index = listViewLocations.getSelectionModel().getSelectedIndex();
+        
+        if(index < 0)
+            return null;
+        
+        return location[index];
     }
 
 }
