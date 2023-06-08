@@ -19,45 +19,79 @@ import javafx.scene.control.TextField;
 
 public class CreateAssetItemController
 {
-  @FXML
-  private TextField txtAssetID;
-  
-  @FXML
-  private TextField txtMake;
-  
-  @FXML
-  private TextField txtSerialNumber;
-  
-  @FXML
-  private TextField txtNextTestDueDate;
-  
-  @FXML
-  private TextField txtPurchaseDate;
-  
-  @FXML
-  private TextField txtItemType;
-  
-  @FXML
-  private TextField txtModel;
-  
-  @FXML
-  private TextField txtWarranteeEndDate;
-  
-  @FXML
-  private TextField txtPurchasePrice;
-  
-  @FXML
-  private MenuButton mnuStatus;
-  
-  @FXML
-  private MenuItem itemActive;
-  
-  @FXML
-  private MenuItem itemArchived;
-  
-  @FXML
-  private Button btnBack;
-  
-  @FXML
-  private Button btnCreate;
+    @FXML
+    private TextField txtAssetID;
+
+    @FXML
+    private TextField txtMake;
+
+    @FXML
+    private TextField txtSerialNumber;
+
+    @FXML
+    private TextField txtNextTestDueDate;
+
+    @FXML
+    private TextField txtPurchaseDate;
+
+    @FXML
+    private TextField txtItemType;
+
+    @FXML
+    private TextField txtModel;
+
+    @FXML
+    private TextField txtWarranteeEndDate;
+
+    @FXML
+    private TextField txtPurchasePrice;
+
+    @FXML
+    private MenuButton mnuStatus;
+
+    @FXML
+    private MenuItem itemActive;
+
+    @FXML
+    private MenuItem itemArchived;
+
+    @FXML
+    private Button btnBack;
+
+    @FXML
+    private Button btnCreate;
+
+    @FXML
+    private void handleMenuItemSelection(ActionEvent event) {
+        MenuItem selectedItem = (MenuItem) event.getSource();
+        String selectedText = selectedItem.getText();
+        mnuStatus.setText(selectedText);
+    }
+
+    @FXML
+    private void handleButtonExitAction(ActionEvent event) throws Exception {
+        System.out.println("You have pressed the Cancel button!");
+
+        clearAllField();
+
+        try {
+            App.setRoot("PageAssetInformation");
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+
+    private void clearAllField()
+    {
+    
+        txtAssetID.clear();
+        txtMake.clear();
+        txtSerialNumber.clear();
+        txtNextTestDueDate.clear();
+        txtPurchaseDate.clear();
+        txtItemType.clear();
+        txtModel.clear();
+        txtWarranteeEndDate.clear();
+        txtPurchasePrice.clear();
+    }
 }
