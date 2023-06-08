@@ -75,7 +75,7 @@
           <MenuItem mnemonicParsing="false" text="Action 2" />
         </items>
       </MenuButton>
-      <Label layoutX="313.0" layoutY="21.0" text="Asset Item - Update" textFill="#630090">
+      <Label layoutX="313.0" layoutY="21.0" text="Update Asset Item" textFill="#630090">
          <font>
             <Font size="20.0" />
          </font>

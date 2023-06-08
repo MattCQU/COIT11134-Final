@@ -50,7 +50,7 @@ public class StaffInformationPageController {
     @FXML
     void handleButtonCreateAction(ActionEvent event) {
         try {
-            App.setRoot("CreateLocationInformation");
+            App.setRoot("CreateStaffInformation");
         } catch (Exception e){
            App.customAlert(e.getMessage()); 
         }

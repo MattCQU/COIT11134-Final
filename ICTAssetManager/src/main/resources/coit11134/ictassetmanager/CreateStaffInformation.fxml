@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="382.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coit11134.ictassetmanager.CreateStaffInformationController">
    <children>
-      <Label layoutX="198.0" layoutY="14.0" text="Staff Information - Create" textFill="#630090">
+      <Label layoutX="198.0" layoutY="14.0" text="Create Staff Information" textFill="#630090">
          <font>
             <Font size="20.0" />
          </font>
