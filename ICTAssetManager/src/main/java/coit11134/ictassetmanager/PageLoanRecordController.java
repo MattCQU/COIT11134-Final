@@ -36,7 +36,7 @@ public class PageLoanRecordController {
     void handleButtonExitAction(ActionEvent event) {
         try {
             App.setRoot("Menu");
-        } catch (IOException e){
+        } catch (Exception e){
            App.customAlert(e.getMessage()); 
         }
     }
@@ -45,7 +45,7 @@ public class PageLoanRecordController {
     void handleCreateButton(ActionEvent event) {
         try {
             App.setRoot("CreateLoanRecord");
-        } catch (IOException e){
+        } catch (Exception e){
            App.customAlert(e.getMessage()); 
         }
     }
