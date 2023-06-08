@@ -97,5 +97,19 @@ public class CreateAssetItemController
         txtPurchasePrice.clear();
     }
     
-    
+    private void handleAddAssetItemsButton (ActionEvent Event){
+        Asset asset = new Asset();
+        /**
+        try{
+            String serialNumber = this.txtSerialNumber.getText();
+            if (serialNumber.isEmpty() || serialNumber.equals("")){
+                throw new Exception ("Serial Number cannot be blank");
+            }
+            
+            String nextTestDueDate = this.txtNextTestDueDate.getText();
+            if ()
+        }
+        */
+        
+    }
 }
