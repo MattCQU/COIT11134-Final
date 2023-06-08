@@ -65,7 +65,6 @@ public class CreateLocationInformationController implements Initializable{
     
         txtLocationID.clear();
         txtLocationName.clear();
-        txtAssetID.clear();
         
     }
     
@@ -83,7 +82,8 @@ public class CreateLocationInformationController implements Initializable{
     
     @FXML
     private void handleAddLocationButton (ActionEvent event) throws Exception {
-        Location location = new Location();
+        Location newLocation = new Location();
+        boolean isArchived = false;
         
         try{
             String locationID = this.txtLocationID.getText();
@@ -100,15 +100,30 @@ public class CreateLocationInformationController implements Initializable{
             if (selectedOption.equals("Active/Archived")) {
                 throw new Exception("Please select a valid option from the menu");
             }
+        
+            if(selectedOption.equals("Active"))
+            {
+                isArchived = false;
+            }else if(selectedOption.equals("Archived"))
+            {
+                isArchived = true;
+            }
+        
+            newLocation.setLocationID(Integer.parseInt(locationID));
+            newLocation.setLocationName(this.txtLocationName.getText().trim());
+            newLocation.setArchived(isArchived);
             
+            dataManager.addLocation(newLocation);
+            dataManager.saveLocationsToFile();
+            
+            clearAllField();
             
         }catch(Exception e)
         {
             App.customAlert(e.getMessage());
         }
         
-        
-        
+        txtLocationID.setText(String.valueOf(dataManager.getNextLocationID()));
     }
     
     @FXML
