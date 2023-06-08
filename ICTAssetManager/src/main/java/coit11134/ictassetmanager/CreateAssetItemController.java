@@ -99,19 +99,71 @@ public class CreateAssetItemController
         txtPurchasePrice.clear();
     }
     
+    @FXML
     private void handleAddAssetItemsButton (ActionEvent Event){
         Asset asset = new Asset();
-        /**
+        boolean isArchived = false;
+        
         try{
             String serialNumber = this.txtSerialNumber.getText();
             if (serialNumber.isEmpty() || serialNumber.equals("")){
                 throw new Exception ("Serial Number cannot be blank");
             }
             
-            String nextTestDueDate = this.txtNextTestDueDate.getText();
-            if ()
+            LocalDate testDueDate = datePickerNextTestDueDate.getValue();
+            if (testDueDate.isBefore(LocalDate.now())){
+                throw new Exception ("Invalid Date - Next test due date cannot be before today");
+            }
+            
+            LocalDate purchaseDate = datePickerPurchaseDate.getValue();
+            if (purchaseDate.isAfter(LocalDate.now())){
+                throw new Exception ("Invalid Date - Purchase date cannot be after today");
+            }
+            
+            String itemType = this.txtItemType.getText();
+            if (itemType.isEmpty() || itemType.equals("")){
+                throw new Exception ("Item type field cannot be blank");
+            }
+            
+            String model = this.txtModel.getText();
+            if (model.isEmpty() || model.equals("")){
+                throw new Exception ("Model field cannot be blank");
+            }
+            
+            String statusOption = this.mnuStatus.getText();
+            if (statusOption.equals("Active/Archived")) {
+                throw new Exception("Please select a valid option from the menu");
+            }
+        
+            if(statusOption.equals("Active"))
+            {
+                isArchived = false;
+            }else if(statusOption.equals("Archived"))
+            {
+                isArchived = true;
+            }
+            
+            LocalDate warranteeEndDate = datePickerWarranteeEndDate.getValue();
+            if (warranteeEndDate.isBefore(LocalDate.now())){
+                throw new Exception ("Invalid Date - Warrantee End date cannot be before today");
+            }
+            
+            double purchasePrice = Double.parseDouble(this.txtPurchasePrice.getText());
+            if(this.txtPurchasePrice.getText() == null || this.txtPurchasePrice.getText().equalsIgnoreCase(""))
+            {
+                throw new Exception("Please Enter A Number For The Sale Price.");
+            }
+            if(purchasePrice <= 0)
+            {
+                throw new Exception("Please Enter A Positive Value For Price");
+            }
+            
+        }catch(Exception e)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage() ); 
+            alert.showAndWait();
         }
-        */
+        
         
     }
 }
