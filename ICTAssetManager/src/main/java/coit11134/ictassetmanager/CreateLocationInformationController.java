@@ -1,6 +1,15 @@
+/*
+*COIT11134 Assessment 3 Part B
+*
+*Authers: Sera Jeong 12211242, Aye Chan Ko KO LWIN12206477, Matthew Meintjes S0270867
+*/
+
+
 package coit11134.ictassetmanager;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,11 +19,8 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 
-/**
- *
- * @author 12206477
- */
-public class CreateLocationInformationController {
+
+public class CreateLocationInformationController implements Initializable{
     @FXML
     private TextField txtLocationID;
     
@@ -39,7 +45,7 @@ public class CreateLocationInformationController {
     @FXML
     private Button btnCreate;
     
-    DataManager dataManager;
+    private DataManager dataManager;
     
     @FXML
     private void handleButtonExitAction (ActionEvent event) throws Exception  {
@@ -63,6 +69,18 @@ public class CreateLocationInformationController {
         
     }
     
+    //Method that initializes datamanager 
+    @Override
+    public void initialize(URL url, ResourceBundle rb)
+    {
+      dataManager = App.getDataManager();
+      
+      
+      txtLocationID.setText(String.valueOf(dataManager.getNextLocationID()));
+      
+    }
+    
+    
     @FXML
     private void handleAddLocationButton (ActionEvent event) throws Exception {
         Location location = new Location();
@@ -77,12 +95,7 @@ public class CreateLocationInformationController {
             if (locationName.equals("")){
                 throw new Exception ("Please enter a valid location name");
             }
-            
-            String assetID = this.txtAssetID.getText();
-            if (assetID.length() == 0 || !assetID.matches("\\d+")){
-                throw new Exception ("Please enter a valid asset ID");
-            }
-            
+
             String selectedOption = this.MnuStatus.getText();
             if (selectedOption.equals("Active/Archived")) {
                 throw new Exception("Please select a valid option from the menu");
@@ -93,6 +106,9 @@ public class CreateLocationInformationController {
         {
             App.customAlert(e.getMessage());
         }
+        
+        
+        
     }
     
     @FXML
