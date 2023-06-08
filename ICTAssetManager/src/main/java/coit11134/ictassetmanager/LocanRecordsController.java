@@ -51,7 +51,7 @@ public class LocanRecordsController {
         
         clearAll();
         try {
-            App.setRoot("menu");
+            App.setRoot("Menu");
         } catch (IOException e){
            System.out.println(e); 
         }

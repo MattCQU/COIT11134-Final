@@ -8,6 +8,7 @@
 package coit11134.ictassetmanager;
 
 import java.io.IOException;
+import java.util.HashSet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -37,7 +38,7 @@ public class AssetInformationPageController {
     private ListView<?> listViewAssets;
 
     @FXML
-    private TextField txtSearch;
+    private TextField txtFieldSearch;
     
     @FXML
     private void handleButtonExitAction (ActionEvent event) throws Exception  {
@@ -46,7 +47,7 @@ public class AssetInformationPageController {
         clearAllField();
         
         try {
-            App.setRoot("menu");
+            App.setRoot("Menu");
         } catch (IOException e){
            System.out.println(e); 
         }
@@ -55,7 +56,7 @@ public class AssetInformationPageController {
     private void clearAllField()
     {
     
-        txtSearch.clear();
+        txtFieldSearch.clear();
         
     }
     
@@ -66,6 +67,19 @@ public class AssetInformationPageController {
         {
             App.setRoot("Report");
         } catch (Exception e)
+        {
+            App.customAlert(e.getMessage());
+        }
+    }
+    
+    @FXML
+    private void handleCreatebutton (ActionEvent event ) throws Exception
+    {
+        try
+        {
+            App.setRoot("CreateAssetItem");
+            
+        }catch (Exception e)
         {
             App.customAlert(e.getMessage());
         }

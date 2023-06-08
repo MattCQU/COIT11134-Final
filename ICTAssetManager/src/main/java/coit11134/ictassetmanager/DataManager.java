@@ -15,8 +15,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 
 
 public class DataManager {
