@@ -21,7 +21,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         
-        dataManager = new DataManager("clients.txt", "properties.txt", "sales.txt","forth");
+        dataManager = new DataManager("staff.txt", "assets.txt", "locations.txt","loans.txt");
         
         scene = new Scene(loadFXML("Menu"),600, 400);  //This needs to be the login Menu will implement later
         stage.setResizable(false);
