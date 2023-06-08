@@ -1,7 +1,9 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+*COIT11134 Assessment 3 Part B
+*
+*Authors: Sera Jeong 12211242, Aye Chan Ko KO LWIN12206477, Matthew Meintjes S0270867
+*/
+
 package coit11134.ictassetmanager;
 
 import java.io.IOException;
@@ -55,7 +57,7 @@ public class PageLocationInformationController implements Initializable{
         {
             if(selectedLocation == null)
             {
-                App.customAlert("Please Select A Location");
+                App.customAlert("Please Select a Location");
                 return;
             }
             
