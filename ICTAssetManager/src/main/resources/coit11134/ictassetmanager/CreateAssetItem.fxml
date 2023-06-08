@@ -9,14 +9,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coit11134.ictassetmanager.CreateAssetItemController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coit11134.ictassetmanager.CreateAssetItemController">
    <children>
       <Label layoutX="29.0" layoutY="92.0" text="Asset ID">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtAssetID" layoutX="180.0" layoutY="90.0" />
+      <TextField fx:id="txtAssetID" editable="false" layoutX="180.0" layoutY="90.0" />
       <Label layoutX="31.0" layoutY="131.0" text="Make">
          <font>
             <Font size="14.0" />
@@ -67,7 +67,7 @@
          </font>
       </Label>
       <TextField fx:id="txtPurchasePrice" layoutX="562.0" layoutY="259.0" />
-      <MenuButton fx:id="mnuStatus" layoutX="563.0" layoutY="173.0" mnemonicParsing="false" onAction="#handleMenuItemSelection" text="Active/Archieved">
+      <MenuButton fx:id="mnuStatus" layoutX="563.0" layoutY="173.0" mnemonicParsing="false" onAction="#handleMenuItemSelection" text="Please Select">
         <items>
           <MenuItem fx:id="itemActive" mnemonicParsing="false" onAction="#handleMenuItemSelection" text="Active" />
           <MenuItem fx:id="itemArchived" mnemonicParsing="false" onAction="#handleMenuItemSelection" text="Archived" />
