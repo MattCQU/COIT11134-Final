@@ -8,14 +8,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<<<<<<< Updated upstream
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coit11134.ictassetmanager.CreateAssetItemController">
+=======
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="375.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+>>>>>>> Stashed changes
    <children>
       <Label layoutX="32.0" layoutY="96.0" style="COL: #1c00ff;" text="Asset ID">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="180.0" layoutY="90.0" />
+      <TextField fx:id="txtAssetID" editable="false" layoutX="180.0" layoutY="90.0" />
       <Label layoutX="32.0" layoutY="135.0" text="Make">
          <font>
             <Font size="14.0" />
@@ -69,18 +73,18 @@
       </Label>
       <TextField layoutX="586.0" layoutY="217.0" />
       <TextField layoutX="586.0" layoutY="259.0" />
-      <MenuButton layoutX="586.0" layoutY="172.0" mnemonicParsing="false" text="Active/Archieved">
+      <MenuButton layoutX="586.0" layoutY="172.0" mnemonicParsing="false" text="Active/Archived">
         <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
+          <MenuItem mnemonicParsing="false" text="Active" />
+          <MenuItem mnemonicParsing="false" text="Archived" />
         </items>
       </MenuButton>
-      <Label layoutX="318.0" layoutY="21.0" text="ICT Asset Manager" textFill="#630090">
+      <Label layoutX="318.0" layoutY="21.0" text="Asset Items - Create" textFill="#630090">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
       <Button fx:id="btnBack" layoutX="33.0" layoutY="322.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #ba3d3d;" text="&lt; Back" textFill="WHITE" />
-      <Button layoutX="700.0" layoutY="322.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #2c8629;" text="Create" textFill="WHITE" />
+      <Button fx:id="btnCreate" layoutX="700.0" layoutY="322.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #2c8629;" text="Create" textFill="WHITE" />
    </children>
 </AnchorPane>
