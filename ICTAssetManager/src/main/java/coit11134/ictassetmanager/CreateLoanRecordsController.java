@@ -51,7 +51,7 @@ public class CreateLoanRecordsController {
         
         clearAll();
         try {
-            App.setRoot("Menu");
+            App.setRoot("PageLoanRecord");
         } catch (IOException e){
            System.out.println(e); 
         }

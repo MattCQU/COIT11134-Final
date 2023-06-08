@@ -41,7 +41,7 @@ public class StaffInformationPageController {
         clearAllField();
         
         try {
-            App.setRoot("Menu");
+            App.setRoot("menu");
         } catch (IOException e){
            System.out.println(e); 
         }

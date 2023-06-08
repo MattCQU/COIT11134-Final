@@ -52,7 +52,7 @@ public class CreateLocationInformationController implements Initializable{
         clearAllField();
         
         try {
-            App.setRoot("Menu");
+            App.setRoot("PageLocationInformation");
         } catch (IOException e){
            System.out.println(e); 
         }
