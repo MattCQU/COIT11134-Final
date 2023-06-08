@@ -15,7 +15,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="180.0" layoutY="90.0" />
+      <TextField editable="false" layoutX="180.0" layoutY="90.0" />
       <Label layoutX="32.0" layoutY="135.0" text="Make">
          <font>
             <Font size="14.0" />
@@ -75,7 +75,7 @@
           <MenuItem mnemonicParsing="false" text="Action 2" />
         </items>
       </MenuButton>
-      <Label layoutX="318.0" layoutY="21.0" text="ICT Asset Manager" textFill="#630090">
+      <Label layoutX="313.0" layoutY="21.0" text="Asset Item - Update" textFill="#630090">
          <font>
             <Font size="20.0" />
          </font>

@@ -56,7 +56,7 @@
       </GridPane>
    </bottom>
    <top>
-      <Label prefHeight="70.0" prefWidth="183.0" text="Asset Items Page" textAlignment="CENTER" textFill="#630090" wrapText="true" BorderPane.alignment="CENTER">
+      <Label prefHeight="70.0" prefWidth="183.0" text="Asset Item Page" textAlignment="CENTER" textFill="#630090" wrapText="true" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets top="10.0" />
          </BorderPane.margin>
