@@ -92,7 +92,7 @@ public class DataManager {
                     String password = s[5].trim();
                     boolean canLogin = Boolean.parseBoolean(s[6].trim());
                     
-                    AssetManagementStaff staff = new AssetManagementStaff(staffID, name, email, phoneNumber,archived, password, canLogin);
+                    AssetManager staff = new AssetManager(staffID, name, email, phoneNumber,archived, password, canLogin);
                     staffList.add(staff);
                 }
             }

@@ -6,18 +6,18 @@
 
 package coit11134.ictassetmanager;
 
-public class AssetManagementStaff extends StaffRecords{
+public class AssetManager extends StaffRecords{
     
     private String password;
     private boolean canLogin;
 
-    public AssetManagementStaff (int staffID, String name, String email, String phoneNumber, boolean archived, String password, boolean canLogin) {
+    public AssetManager (int staffID, String name, String email, String phoneNumber, boolean archived, String password, boolean canLogin) {
         super(staffID, name, email, phoneNumber, archived);
         this.password = password;
         this.canLogin = canLogin;
     }
 
-    public AssetManagementStaff() {
+    public AssetManager() {
     }
     
     
