@@ -37,15 +37,11 @@ public class PageAssetManagerController {
     private TextField txtFieldSearch;
     
     @FXML
-    private void handleButtonExitAction (ActionEvent event) throws Exception  {
-        System.out.println("You have pressed the Cancel button!");
-        
-        clearAllField();
-        
+    void handleButtonExitAction(ActionEvent event) {
         try {
             App.setRoot("Menu");
-        } catch (IOException e){
-           System.out.println(e); 
+        } catch (Exception e){
+           App.customAlert(e.getMessage()); 
         }
     }
 

@@ -59,7 +59,7 @@ public class CreateAssetManagerController {
         
         
         try {
-            App.setRoot("Menu");
+            App.setRoot("PageAssetManager");
         } catch (IOException e){
            System.out.println(e); 
         }
