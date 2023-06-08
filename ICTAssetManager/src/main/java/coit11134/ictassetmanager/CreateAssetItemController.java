@@ -14,6 +14,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.DatePicker;
+import java.time.LocalDate;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 
@@ -29,10 +31,10 @@ public class CreateAssetItemController
     private TextField txtSerialNumber;
 
     @FXML
-    private TextField txtNextTestDueDate;
+    private DatePicker datePickerNextTestDueDate;
 
     @FXML
-    private TextField txtPurchaseDate;
+    private DatePicker datePickerPurchaseDate;
 
     @FXML
     private TextField txtItemType;
@@ -41,7 +43,7 @@ public class CreateAssetItemController
     private TextField txtModel;
 
     @FXML
-    private TextField txtWarranteeEndDate;
+    private DatePicker datePickerWarranteeEndDate;
 
     @FXML
     private TextField txtPurchasePrice;
@@ -89,11 +91,11 @@ public class CreateAssetItemController
         txtAssetID.clear();
         txtMake.clear();
         txtSerialNumber.clear();
-        txtNextTestDueDate.clear();
-        txtPurchaseDate.clear();
+        datePickerNextTestDueDate.setValue(null);
+        datePickerPurchaseDate.setValue(null);
         txtItemType.clear();
         txtModel.clear();
-        txtWarranteeEndDate.clear();
+        datePickerWarranteeEndDate.setValue(null);
         txtPurchasePrice.clear();
     }
     
