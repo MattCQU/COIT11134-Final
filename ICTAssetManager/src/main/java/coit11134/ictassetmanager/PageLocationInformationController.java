@@ -7,6 +7,8 @@ package coit11134.ictassetmanager;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,7 +31,7 @@ public class PageLocationInformationController implements Initializable{
     private Button btnUpdate;
 
     @FXML
-    private ListView<?> listViewLocations;
+    private ListView<String> listViewLocations;
     private Location[] location;
 
     @FXML
@@ -78,6 +80,7 @@ public class PageLocationInformationController implements Initializable{
     public void initialize(URL url, ResourceBundle rb)
     {
       dataManager = App.getDataManager();
+      displayLocations();
     }
     
     private Location getSelectedLocation()
@@ -88,6 +91,17 @@ public class PageLocationInformationController implements Initializable{
             return null;
         
         return location[index];
+    }
+    
+    private void displayLocations()
+    {
+        location = dataManager.getAllLocations();
+        ObservableList<String> elements = FXCollections.observableArrayList();
+        for(Location location : location)
+        {
+            elements.add(location.getLocationName());
+        }
+        listViewLocations.setItems(elements);
     }
 
 }

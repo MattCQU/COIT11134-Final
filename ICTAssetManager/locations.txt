@@ -4,7 +4,7 @@
 4,Kane's Desk,true
 5,Jason's Desk,false
 6,Desk 12,false
-7,Desk 19,true
+7,Ben's Desk,false
 8,Kitchen,false
 9,Main Office,false
 10,Cleaners Cupboard,false

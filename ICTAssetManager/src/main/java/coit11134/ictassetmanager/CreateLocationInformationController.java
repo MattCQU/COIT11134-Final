@@ -9,6 +9,7 @@ package coit11134.ictassetmanager;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashSet;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -76,21 +77,28 @@ public class CreateLocationInformationController implements Initializable{
     public void initialize(URL url, ResourceBundle rb)
     {
         dataManager = App.getDataManager();
+        String menuButtonOption = "";
+        
         if(editLocation != null)
         {
+            if(editLocation.getArchived() == true)
+            {
+                menuButtonOption = "Archived";
+            }else
+            {
+                menuButtonOption = "Active";
+            }
+            
             txtLocationID.setText(String.valueOf(editLocation.getLocationID()));
             txtLocationName.setText(editLocation.getLocationName());
+            MnuStatus.setText(menuButtonOption);
             
-           // MnuStatus
         }
-        
         else
         {
             txtLocationID.setText(String.valueOf(dataManager.getNextLocationID()));
         }
-      
     }
-    
     
     @FXML
     private void handleAddLocationButton (ActionEvent event) throws Exception {
@@ -120,13 +128,25 @@ public class CreateLocationInformationController implements Initializable{
             {
                 isArchived = true;
             }
-        
-            newLocation.setLocationID(Integer.parseInt(locationID));
-            newLocation.setLocationName(this.txtLocationName.getText().trim());
-            newLocation.setArchived(isArchived);
             
-            dataManager.addLocation(newLocation);
-            dataManager.saveLocationsToFile();
+            if(editLocation != null)
+            {
+                editLocation.setLocationName(locationName);
+                editLocation.setArchived(isArchived);
+                
+                dataManager.saveLocationsToFile();
+                clearAllField();
+                App.setRoot("PageLocationInformation");    
+            }
+            else
+            {
+                newLocation.setLocationID(Integer.parseInt(locationID));
+                newLocation.setLocationName(this.txtLocationName.getText().trim());
+                newLocation.setArchived(isArchived);
+            
+                dataManager.addLocation(newLocation);
+                dataManager.saveLocationsToFile();
+            }
             
             clearAllField();
             
