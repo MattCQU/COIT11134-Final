@@ -61,6 +61,8 @@ public class CreateAssetItemController
     @FXML
     private Button btnCreate;
 
+    private DataManager dataManager;
+    
     @FXML
     private void handleMenuItemSelection(ActionEvent event) {
         MenuItem selectedItem = (MenuItem) event.getSource();
@@ -94,4 +96,6 @@ public class CreateAssetItemController
         txtWarranteeEndDate.clear();
         txtPurchasePrice.clear();
     }
+    
+    
 }
