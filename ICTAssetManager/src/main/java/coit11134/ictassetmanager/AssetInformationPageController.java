@@ -73,7 +73,7 @@ public class AssetInformationPageController {
     }
     
     @FXML
-    private void handleCreatebutton (ActionEvent event ) throws Exception
+    private void handleCreateButton (ActionEvent event ) throws Exception
     {
         try
         {
