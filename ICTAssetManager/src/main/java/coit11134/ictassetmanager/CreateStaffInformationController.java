@@ -23,13 +23,13 @@ public class CreateStaffInformationController {
     private TextField txtStaffID;
     
     @FXML
-    private TextField txtStaffName;
+    private TextField txtName;
     
     @FXML
-    private TextField txtStaffEmail;
+    private TextField txtEmail;
     
     @FXML
-    private TextField txtStaffPhone;  
+    private TextField txtPhoneNumber;  
     
     @FXML
     private MenuButton MnuStatus;
@@ -65,9 +65,9 @@ public class CreateStaffInformationController {
     {
     
         txtStaffID.clear();
-        txtStaffName.clear();
-        txtStaffEmail.clear();
-        txtStaffPhone.clear();
+        txtName.clear();
+        txtEmail.clear();
+        txtPhoneNumber.clear();
         
     }
     
@@ -81,18 +81,18 @@ public class CreateStaffInformationController {
                 throw new Exception ("Please enter a valid staff ID");
             }
             
-            String staffName = this.txtStaffName.getText();
-            if (staffName.equals("")){
+            String name = this.txtName.getText();
+            if (name.equals("")){
                 throw new Exception ("Please enter a valid staff name");
             }
             
-            String staffEmail = this.txtStaffEmail.getText();
-            if (staffEmail.equals("")){
+            String email = this.txtEmail.getText();
+            if (email.equals("")){
                 throw new Exception ("Please enter a valid staff email address");
             }
             
-            String staffPhone = this.txtStaffPhone.getText();
-            if (staffPhone.equals("")){
+            String phoneNumber = this.txtPhoneNumber.getText();
+            if (phoneNumber.equals("")){
                 throw new Exception ("Please enter a valid staff phone number");
             }
             
