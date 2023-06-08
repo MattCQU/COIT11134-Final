@@ -52,7 +52,7 @@ public class PageAssetManagerController {
     @FXML
     void handleButtonCreateAction(ActionEvent event) {
         try {
-            App.setRoot("CreateLocationInformation");
+            App.setRoot("CreateAssetManager");
         } catch (Exception e){
            App.customAlert(e.getMessage()); 
         }
