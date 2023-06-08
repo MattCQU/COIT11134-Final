@@ -630,6 +630,32 @@ public class DataManager {
         }
         return overDue;
     }
+    
+    public Asset[] getAllAssets()
+    {
+        Asset[] asset = new Asset[assetList.size()];
+        asset = assetList.toArray(asset);
+        return asset;
+    }
+    
+    public StaffRecords[] getAllStaffRecords()
+    {
+        StaffRecords[] staff = new StaffRecords[staffList.size()];
+        staff = staffList.toArray(staff);
+        return staff;
+    }
 
-   
+    public Location[] getAllLocations()
+    {
+        Location[] location = new Location[locationsList.size()];
+        location = locationsList.toArray(location);
+        return location;
+    }
+    
+    public LoanRecord[] getAllLoanRecords()
+    {
+        LoanRecord[] loan = new LoanRecord[loanList.size()];
+        loan = loanList.toArray(loan);
+        return loan;
+    }
 }
