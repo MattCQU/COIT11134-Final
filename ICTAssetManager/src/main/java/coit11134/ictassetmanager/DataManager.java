@@ -453,7 +453,8 @@ public class DataManager {
                     }
                 }
             }
-            finalID = highest++;
+            highest++;
+            finalID = highest;
             reader.close();
             
         }catch(IOException e)
@@ -493,7 +494,8 @@ public class DataManager {
                     }
                 }
             }
-            finalID = highest++;
+            highest++;
+            finalID = highest;
             reader.close();
             
         }catch(IOException e)
@@ -533,7 +535,8 @@ public class DataManager {
                     }
                 }
             }
-            finalID = highest++;
+            highest++;
+            finalID = highest;
             reader.close();
             
         }catch(IOException e)
@@ -574,7 +577,8 @@ public class DataManager {
                     }
                 }
             }
-            finalID = highest++;
+            highest++;
+            finalID = highest;
             reader.close();
             
         }catch(IOException e)
