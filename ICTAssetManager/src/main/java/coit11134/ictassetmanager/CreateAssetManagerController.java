@@ -57,7 +57,6 @@ public class CreateAssetManagerController {
     private void handleButtonExitAction (ActionEvent event) throws Exception  {
         System.out.println("You have pressed the Cancel button!");
         
-        clearAllField();
         
         try {
             App.setRoot("Menu");

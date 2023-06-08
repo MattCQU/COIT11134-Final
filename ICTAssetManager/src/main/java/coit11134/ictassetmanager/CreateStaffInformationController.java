@@ -52,10 +52,9 @@ public class CreateStaffInformationController {
     private void handleButtonExitAction (ActionEvent event) throws Exception  {
         System.out.println("You have pressed the Cancel button!");
         
-        clearAllField();
         
         try {
-            App.setRoot("Menu");
+            App.setRoot("PageStaffInformation");
         } catch (IOException e){
            System.out.println(e); 
         }

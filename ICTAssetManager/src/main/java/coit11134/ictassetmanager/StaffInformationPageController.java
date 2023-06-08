@@ -35,15 +35,11 @@ public class StaffInformationPageController {
     private TextField txtFieldSearch;
     
     @FXML
-    private void handleButtonExitAction (ActionEvent event) throws Exception  {
-        System.out.println("You have pressed the Cancel button!");
-        
-        clearAllField();
-        
+    void handleButtonExitAction(ActionEvent event) {
         try {
-            App.setRoot("menu");
-        } catch (IOException e){
-           System.out.println(e); 
+            App.setRoot("Menu");
+        } catch (Exception e){
+           App.customAlert(e.getMessage()); 
         }
     }
 
