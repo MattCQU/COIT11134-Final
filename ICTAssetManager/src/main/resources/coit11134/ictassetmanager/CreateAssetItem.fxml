@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coit11134.ictassetmanager.CreateAssetItemController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coit11134.ictassetmanager.CreateAssetItemController">
    <children>
       <Label layoutX="29.0" layoutY="92.0" text="Asset ID">
          <font>
@@ -75,9 +75,9 @@
           <MenuItem fx:id="itemArchived" mnemonicParsing="false" onAction="#handleMenuItemSelection" text="Archived" />
         </items>
       </MenuButton>
-      <Button fx:id="btnCreate" layoutX="674.0" layoutY="334.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="75.0" text="Submit" />
-      <Button fx:id="btnBack" layoutX="54.0" layoutY="334.0" mnemonicParsing="false" onAction="#handleButtonExitAction" prefHeight="33.0" prefWidth="75.0" text="Back" />
-      <Label layoutX="322.0" layoutY="22.0" text="ICT Asset Manager" textFill="#1c43ff">
+      <Button fx:id="btnCreate" layoutX="674.0" layoutY="334.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="75.0" style="-fx-background-color: #2c8629;" text="Create" textFill="WHITE" />
+      <Button fx:id="btnBack" layoutX="54.0" layoutY="334.0" mnemonicParsing="false" onAction="#handleButtonExitAction" prefHeight="33.0" prefWidth="75.0" style="-fx-background-color: #ba3d3d;" text="&lt; Back" textFill="WHITE" />
+      <Label layoutX="322.0" layoutY="22.0" text="Create Asset Item" textFill="#630090">
          <font>
             <Font size="20.0" />
          </font>
