@@ -240,27 +240,33 @@ public class Asset {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Asset{");
-        sb.append("assetDescription=").append(assetDescription);
-        sb.append(", make=").append(make);
-        sb.append(", model=").append(model);
-        sb.append(", serialNumber=").append(serialNumber);
-        sb.append(", assetID=").append(assetID);
-        sb.append(", dueTestDate=").append(dueTestDate);
-        sb.append(", warrantyEndDate=").append(warrantyEndDate);
-        sb.append(", purchaseDate=").append(purchaseDate);
-        sb.append(", purchasePrice=").append(purchasePrice);
-        sb.append(", status=").append(status);
-        sb.append('}');
+        
+        sb.append("AssetID ").append(assetID);
+        sb.append(", Asset ").append(assetDescription);
+        sb.append(", Make ").append(make);
+        sb.append(", Model ").append(model);
+        sb.append(", Serial Number ").append(serialNumber);
+        sb.append(", Test Due Date ").append(dueTestDate);
+        sb.append(", Warranty End Date ").append(warrantyEndDate);
+        sb.append(", Purchase Date ").append(purchaseDate);
+        sb.append(", Price ").append(purchasePrice);
+        sb.append(", Status ").append(status);
+ 
         return sb.toString();
     }
     
     
     public String saveString()
     {
-        String save = assetID + "," + assetDescription + "," + make + "," + model + "," + serialNumber + "," + dueTestDate + "," + warrantyEndDate 
-                + "," + purchaseDate + "," + purchasePrice + "," + status;
+        String save = assetID + ", " + assetDescription + ", " + make + ", " + model + ", " + serialNumber + ", " + dueTestDate + ", " + warrantyEndDate 
+                + ", " + purchaseDate + ", " + purchasePrice + ", " + status;
         return save;
     }
+    
+    public String overDueString()
+    {
+        return assetID + ", " + dueTestDate + ", " + assetDescription + ", " + make + ", " + model + ", " + serialNumber;
+    }
+
     
 }

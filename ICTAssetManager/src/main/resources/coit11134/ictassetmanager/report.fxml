@@ -37,7 +37,7 @@
               </rowConstraints>
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Report generated for the selected date: " />
-                  <DatePicker fx:id="datePicker" onAction="#selectDate" GridPane.columnIndex="1" />
+                  <DatePicker fx:id="datePicker" onAction="#selectDate" promptText="Enter Date" GridPane.columnIndex="1" />
                </children>
             </GridPane>
          </children>

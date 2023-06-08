@@ -15,6 +15,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 
 public class DataManager {
@@ -606,10 +608,28 @@ public class DataManager {
         loanList.add(loan);
     }
     
-    
-    public void report(LocalDate date)
+  
+    public ArrayList<Asset> taggingReport(LocalDate date)
     {
-        App.customAlert(date.toString());
+        ArrayList<Asset> overDue = new ArrayList<>();
+        
+        try
+        {
+            for(Asset asset : assetList)
+            {
+                if(asset.getDueTestDate().isBefore(date))
+                {
+                    overDue.add(asset);
+                }
+            }       
+        }catch(Exception e)
+        {
+            
+            App.customAlert(e.getMessage());
+            return null;
+        }
+        return overDue;
     }
+
    
 }
