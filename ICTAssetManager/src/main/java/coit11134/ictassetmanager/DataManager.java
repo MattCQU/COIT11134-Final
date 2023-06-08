@@ -38,7 +38,7 @@ public class DataManager {
         this.locationsList = new ArrayList<>();
         this.loanList = new ArrayList<>();
         
-       // loadAllFiles();
+        loadAllFiles();
     }
     
     private void loadAllFiles()
@@ -607,5 +607,9 @@ public class DataManager {
     }
     
     
+    public void report(LocalDate date)
+    {
+        App.customAlert(date.toString());
+    }
    
 }
