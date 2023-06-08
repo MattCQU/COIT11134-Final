@@ -1,7 +1,7 @@
 /*
 *COIT11134 Assessment 3 Part B
 *
-*Authers: Sera Jeong 12211242, Aye Chan Ko KO LWIN12206477, Matthew Meintjes S0270867
+*Authors: Sera Jeong 12211242, Aye Chan Ko KO LWIN12206477, Matthew Meintjes S0270867
 */
 
 
@@ -92,7 +92,7 @@ public class DataManager {
                     String password = s[5].trim();
                     boolean canLogin = Boolean.parseBoolean(s[6].trim());
                     
-                    AssetManagementStaff staff = new AssetManagementStaff(staffID, name, email, phoneNumber,archived, password, canLogin);
+                    AssetManager staff = new AssetManager(staffID, name, email, phoneNumber,archived, password, canLogin);
                     staffList.add(staff);
                 }
             }
