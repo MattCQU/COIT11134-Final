@@ -65,7 +65,7 @@ public class PageAssetItemsController implements Initializable{
         {
             if(selectedAsset == null)
             {
-                App.customAlert("Please Select a Asset");
+                App.customAlert("Please Select an Asset");
                 return;
             }
             
