@@ -58,6 +58,7 @@ public class CreateAssetManagerController implements Initializable{
     DataManager dataManager;
     private static AssetManager editAssetManager;
     
+    //Event handler for the exit button
     @FXML
     private void handleButtonExitAction (ActionEvent event) throws Exception  {
         System.out.println("You have pressed the Cancel button!");
@@ -123,34 +124,39 @@ public class CreateAssetManagerController implements Initializable{
         
         
         
-    
+    //Event handler for the create button
     @FXML
     private void handleAddAssetManagerButton (ActionEvent event) {
         AssetManager assetManager = new AssetManager();
         boolean isArchived = false;
         
+        
         try{
+            //Validates staff ID if it is blank or not numeric 
             String staffID = this.txtStaffID.getText();
             if (staffID.length() == 0  || !staffID.matches("\\d+")){
                 throw new Exception ("Please enter a valid staff ID");
             }
             
-            
+            //Validates staff name if it is blank
             String staffName = this.txtStaffName.getText();
             if (staffName.equals("")){
                 throw new Exception ("Please enter a valid staff name");
             }
             
+            //Validates staff email if it is blank or does not contain the "@" or "."
             String staffEmail = this.txtStaffEmail.getText();
             if (staffEmail.equals("") || !staffEmail.contains("@") || !staffEmail.contains(".")){
                 throw new Exception ("Please enter a valid staff email address");
             }
             
+            //Validates password if it is blank
             String password = this.txtPassword.getText();
             if (password.equals("")){
                 throw new Exception ("Please enter a valid password");
             }
             
+            //Validates staff phone number if it is blank or not numeric 
             String staffPhoneNumber = this.txtStaffPhoneNumber.getText();
             if (staffPhoneNumber.equals("") || !staffPhoneNumber.matches("\\d+")){
                 throw new Exception ("Please enter a valid staff phone number");
@@ -160,6 +166,7 @@ public class CreateAssetManagerController implements Initializable{
                 throw new Exception("Invalid Phone number, please enter a valid 10 digit number");
             }
             
+            //Validates if the user does not select the menu item
             String selectedOption = this.MnuStatus.getText();
             if (selectedOption.equals("Active/Archived")) {
                 throw new Exception("Please select a valid option from the menu");
@@ -229,6 +236,7 @@ public class CreateAssetManagerController implements Initializable{
         txtStaffID.setText(String.valueOf(dataManager.getNextStaffID()));
     }     
     
+    //Method to display the text of the selected option on the menu button
     @FXML
     private void handleMenuItemSelection(ActionEvent event) 
     {

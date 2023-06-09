@@ -144,14 +144,14 @@ public class CreateAssetItemController implements Initializable
         else
         {
             txtAssetID.setText(String.valueOf(dataManager.getNextAssetID()));
-            pageTitle.setText("Create Asset Informaiton");
+            pageTitle.setText("Create Asset Information");
         }
     }
     
 
 
 
-    //Method for create button
+    //Event handler for the create button
     @FXML
     private void handleAddAssetItemsButton (ActionEvent Event){
         Asset newAsset = new Asset();
