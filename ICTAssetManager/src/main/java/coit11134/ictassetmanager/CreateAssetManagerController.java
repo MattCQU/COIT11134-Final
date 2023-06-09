@@ -181,7 +181,7 @@ public class CreateAssetManagerController implements Initializable{
             else
             {
                 assetManager.setStaffID(Integer.parseInt(staffID));
-                assetManager.setStaffName(this.txtName.getText().trim());
+                assetManager.setStaffName(this.txtStaffName.getText().trim());
                 assetManager.setArchived(isArchived);
             
                 dataManager.addStaffRecord(assetManager);
