@@ -173,7 +173,7 @@ public class CreateStaffInformationController implements Initializable{
                 newStaffRecord.setArchived(isArchived);
             
                 dataManager.addStaffRecord(newStaffRecord);
-                dataManager.saveLocationsToFile();
+                dataManager.saveStaffToFile();
             }
             
             clearAllField();
@@ -187,9 +187,10 @@ public class CreateStaffInformationController implements Initializable{
     }
     
     @FXML
-    private void handleMenuItemSelection(ActionEvent event) {
+    private void handleMenuItemSelection(ActionEvent event) 
+    {
         MenuItem selectedItem = (MenuItem) event.getSource();
         String selectedText = selectedItem.getText();
         MnuStatus.setText(selectedText);
-}
+    }
 }

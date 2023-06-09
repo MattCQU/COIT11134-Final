@@ -442,7 +442,7 @@ public class DataManager {
             while((line = reader.readLine()) != null)
             {
                 String[] s = line.split(",");
-                if(s.length == 6 || s.length == 8)
+                if(s.length == 5 || s.length == 7)
                 {
                     String currentID = s[0].trim();
                     int numID = Integer.parseInt(currentID);

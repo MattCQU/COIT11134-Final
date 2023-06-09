@@ -163,5 +163,5 @@ public class CreateLocationInformationController implements Initializable{
         MenuItem selectedItem = (MenuItem) event.getSource();
         String selectedText = selectedItem.getText();
         MnuStatus.setText(selectedText);
-}
+    }
 }

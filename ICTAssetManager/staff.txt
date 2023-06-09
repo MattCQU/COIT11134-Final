@@ -3,8 +3,9 @@
 3,Kelly Macias,(05) 2731 4127,libero.nec@yahoo.net,false
 4,Devin Castaneda,(05) 3261 1644,lorem.lorem@protonmail.org,true
 5,Eve Heath,(02) 2881 1057,lacinia.orci@outlook.edu,false
-6,Teegan Rice,(03) 9081 9623,dis.parturient@protonmail.org,true,Mexico,No
-7,Amos Powers,(04) 8311 1313,orci.quis.lectus@yahoo.ca,false,France,Yes
-8,Jared Morgan,(02) 6453 3707,volutpat@protonmail.net,false,New Zealand,Yes
-9,Keegan Buchanan,(07) 7512 6217,arcu.sed@icloud.net,true,Philippines,Yes
-10,Eleanor Hobbs,(05) 3867 9811,nunc.mauris@yahoo.org,true,Colombia,Yes
+6,Teegan Rice,(03) 9081 9623,dis.parturient@protonmail.org,true,Mexico,false
+7,Amos Powers,(04) 8311 1313,orci.quis.lectus@yahoo.ca,false,France,false
+8,Jared Morgan,(02) 6453 3707,volutpat@protonmail.net,false,New Zealand,false
+9,Keegan Buchanan,(07) 7512 6217,arcu.sed@icloud.net,true,Philippines,false
+10,Eleanor Hobbs,(05) 3867 9811,nunc.mauris@yahoo.org,true,Colombia,false
+11,Sami,null,012,false
