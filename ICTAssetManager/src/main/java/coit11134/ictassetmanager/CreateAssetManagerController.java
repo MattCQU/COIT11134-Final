@@ -87,13 +87,17 @@ public class CreateAssetManagerController {
                 throw new Exception ("Please enter a valid staff ID");
             }
             
+            if (dataManager.searchStaffByID(staffID) == null){
+                throw new Exception ("The entered staff ID does not exists");
+            }
+            
             String name = this.txtName.getText();
             if (name.equals("")){
                 throw new Exception ("Please enter a valid staff name");
             }
             
             String email = this.txtEmail.getText();
-            if (email.equals("")){
+            if (email.equals("") || !email.contains("@") || !email.contains(".")){
                 throw new Exception ("Please enter a valid staff email address");
             }
             
@@ -103,7 +107,7 @@ public class CreateAssetManagerController {
             }
             
             String phoneNumber = this.txtPhoneNumber.getText();
-            if (phoneNumber.equals("")){
+            if (phoneNumber.equals("") || !phoneNumber.matches("\\d+")){
                 throw new Exception ("Please enter a valid staff phone number");
             }
             
