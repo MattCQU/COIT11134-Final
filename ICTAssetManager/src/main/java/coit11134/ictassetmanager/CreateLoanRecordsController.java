@@ -119,6 +119,11 @@ public class CreateLoanRecordsController implements Initializable{
         
         try{
             String assetID = this.txtAssetID.getText();
+            String staffID = this.txtStaffID.getText();
+            LocalDate startDate = datePickerStartDate.getValue();
+            String locationID = this.txtLocationID.getText();
+            LocalDate dueDate = datePickerDueDate.getValue();
+            
             if (assetID.isEmpty() || assetID.equals("")){
                 throw new Exception ("Asset ID cannot be blank");
             }
@@ -129,8 +134,11 @@ public class CreateLoanRecordsController implements Initializable{
             {
                 throw new Exception ("The asset entered is not in service");
             }
+            if(dataManager.searchLoanByAsset(assetID).getReturnDate().isBefore(startDate) ||dataManager.searchLoanByAsset(assetID).getReturnDate().isBefore(dueDate) )
+            {
+                throw new Exception ("This asset is currently on loan.\nLoaned to "+ dataManager.searchLoanByAsset(assetID).getStaffMember().getStaffName());
+            }
             
-            String staffID = this.txtStaffID.getText();
             if (staffID.isEmpty() || assetID.equals("")){
                 throw new Exception ("Staff ID cannot be blank");
             }
@@ -138,7 +146,7 @@ public class CreateLoanRecordsController implements Initializable{
                 throw new Exception ("The entered staff ID does not exists");
             }
             
-            String locationID = this.txtLocationID.getText();
+            
             if(locationID.isEmpty() || locationID.equals(""))
             {
                 throw new Exception ("LocationID is blank, please enter a locationID");
@@ -152,17 +160,13 @@ public class CreateLoanRecordsController implements Initializable{
                 throw new Exception ("The entered location is not in service");
             }
             
-            
-            LocalDate startDate = datePickerStartDate.getValue();
             if(startDate.isAfter(LocalDate.now()))
             {
-                throw new Exception("Cannot Forward Date Sale");
+                throw new Exception("Cannot Forward Date Loan");
             }
-            
-            LocalDate dueDate = datePickerDueDate.getValue();
             if(dueDate.isBefore(startDate))
             {
-                throw new Exception("Cannot Forward Date Sale");
+                throw new Exception("Cannot Forward Date Loan");
             }
             
             if(editLoanRecord != null)
