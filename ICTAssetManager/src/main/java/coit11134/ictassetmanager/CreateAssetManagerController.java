@@ -79,6 +79,7 @@ public class CreateAssetManagerController {
     @FXML
     private void handleAddAssetManagerButton (ActionEvent event) throws Exception {
         AssetManager assetManager = new AssetManager();
+        boolean isArchived = false;
         
         try{
             String staffID = this.txtStaffID.getText();
@@ -109,6 +110,14 @@ public class CreateAssetManagerController {
             String selectedOption = this.MnuStatus.getText();
             if (selectedOption.equals("Active/Archived")) {
                 throw new Exception("Please select a valid option from the menu");
+            }
+            
+            if(selectedOption.equals("Active"))
+            {
+                isArchived = false;
+            }else if(selectedOption.equals("Archived"))
+            {
+                isArchived = true;
             }
             
             
