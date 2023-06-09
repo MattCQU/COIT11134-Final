@@ -122,7 +122,7 @@ public class CreateAssetManagerController implements Initializable{
         
     
     @FXML
-    private void handleAddAssetManagerButton (ActionEvent event) throws Exception {
+    private void handleAddAssetManagerButton (ActionEvent event) {
         AssetManager assetManager = new AssetManager();
         boolean isArchived = false;
         
