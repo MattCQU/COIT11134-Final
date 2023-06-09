@@ -91,7 +91,7 @@ public class PageLoanRecordController implements Initializable{
             }
             
             CreateLoanRecordsController.setEditLoanRecords((LoanRecord)selectedLoanRecord);
-            App.setRoot("CreateLoanRecordsInformation");
+            App.setRoot("CreateLoanRecord");
         } catch (Exception e){
            App.customAlert(e.getMessage()); 
         }

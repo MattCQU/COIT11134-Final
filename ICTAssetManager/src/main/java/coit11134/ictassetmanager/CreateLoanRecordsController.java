@@ -7,13 +7,16 @@
 package coit11134.ictassetmanager;
 
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
@@ -21,7 +24,7 @@ import javafx.scene.control.TextField;
  *
  * @author Lenovo
  */
-public class CreateLoanRecordsController {
+public class CreateLoanRecordsController implements Initializable{
     @FXML
     private TextField txtLoanReordsID;
     
@@ -32,10 +35,16 @@ public class CreateLoanRecordsController {
     private TextField txtStaffID;
     
     @FXML
+    private TextField txtLocationID;
+    
+    @FXML
     private DatePicker datePickerStartDate;
     
     @FXML
     private DatePicker datePickerDueDate;
+    
+    @FXML
+    private Label pageTitle;
     
     @FXML
     private Button btnBack;
@@ -45,6 +54,7 @@ public class CreateLoanRecordsController {
     
     private DataManager dataManager;
     private static LoanRecord editLoanRecord;
+    
     
     @FXML
     private void handleButtonExitAction (ActionEvent event) throws Exception  {
@@ -58,13 +68,44 @@ public class CreateLoanRecordsController {
         }
     }
     
+    public static void setEditLoan(LoanRecord loan)
+    {
+        editLoanRecord = loan;
+    }
+    
     private void clearAll()
     {
         txtLoanReordsID.clear();
         txtAssetID.clear();
         txtStaffID.clear();
+        txtLocationID.clear();
         datePickerStartDate.setValue(null);
         datePickerDueDate.setValue(null);
+    }
+    
+    //Method that initializes datamanager 
+    @Override
+    public void initialize(URL url, ResourceBundle rb)
+    {
+        dataManager = App.getDataManager();
+        String menuButtonOption = "";
+        
+        if(editLoanRecord != null)
+        {
+            txtLoanReordsID.setText(String.valueOf(editLoanRecord.getLoanID()));
+            txtAssetID.setText(String.valueOf(editLoanRecord.getAsset().getAssetID()));    
+            txtStaffID.setText(String.valueOf(editLoanRecord.getStaffMember().getStaffID()));
+            txtLocationID.setText(String.valueOf(editLoanRecord.getLocation().getLocationID()));
+            datePickerStartDate.setValue(editLoanRecord.getLoanDate());
+            datePickerDueDate.setValue(editLoanRecord.getReturnDate());
+            
+            pageTitle.setText("Edit Loan Record");
+        }
+        else
+        {
+            txtLoanReordsID.setText(String.valueOf(dataManager.getNextLoanID()));
+            pageTitle.setText("Create Loan Record");
+        }
     }
     
     public static void setEditLoanRecords(LoanRecord loanRecords)
@@ -74,7 +115,7 @@ public class CreateLoanRecordsController {
     
     @FXML
     private void handleAddLoanRecordsButton(ActionEvent Event){
-        LoanRecord loanRecord = new LoanRecord();
+        LoanRecord newLoanRecord = new LoanRecord();
         
         try{
             String assetID = this.txtAssetID.getText();
@@ -83,6 +124,10 @@ public class CreateLoanRecordsController {
             }
             if (dataManager.searchAssetByID(assetID) == null){
                 throw new Exception ("The entered asset ID does not exists");
+            }
+            if (dataManager.searchAssetByID(assetID).getArchived() == true)
+            {
+                throw new Exception ("The asset entered is not in service");
             }
             
             String staffID = this.txtStaffID.getText();
@@ -93,9 +138,20 @@ public class CreateLoanRecordsController {
                 throw new Exception ("The entered staff ID does not exists");
             }
             
-            if (assetID.equals(staffID)){
-                throw new Exception ("Asset ID and staff ID cannot be the same");
+            String locationID = this.txtLocationID.getText();
+            if(locationID.isEmpty() || locationID.equals(""))
+            {
+                throw new Exception ("LocationID is blank, please enter a locationID");
             }
+            if(dataManager.searchLocationByID(locationID) == null)
+            {
+                throw new Exception ("The entered locationID does not exist.");
+            }
+            if(dataManager.searchLocationByID(locationID).getArchived() == true)
+            {
+                throw new Exception ("The entered location is not in service");
+            }
+            
             
             LocalDate startDate = datePickerStartDate.getValue();
             if(startDate.isAfter(LocalDate.now()))
@@ -109,13 +165,40 @@ public class CreateLoanRecordsController {
                 throw new Exception("Cannot Forward Date Sale");
             }
             
+            if(editLoanRecord != null)
+            {
+                editLoanRecord.setAsset(dataManager.searchAssetByID(assetID));
+                editLoanRecord.setStaffMember(dataManager.searchStaffByID(staffID));
+                editLoanRecord.setLocation(dataManager.searchLocationByID(locationID));
+                editLoanRecord.setLoanDate(startDate);
+                editLoanRecord.setReturnDate(dueDate);
+                
+                dataManager.saveLoansToFile();
+                handleButtonExitAction(null);
+            }
+            else
+            {
+                newLoanRecord.setLoanID(Integer.parseInt(txtLoanReordsID.getText()));
+                newLoanRecord.setAsset(dataManager.searchAssetByID(assetID));
+                newLoanRecord.setStaffMember(dataManager.searchStaffByID(staffID));
+                newLoanRecord.setLocation(dataManager.searchLocationByID(locationID));
+                newLoanRecord.setLoanDate(startDate);
+                newLoanRecord.setReturnDate(dueDate);
+                
+                dataManager.addLoan(newLoanRecord);
+                dataManager.saveLoansToFile();
+            }
             
-            
+            clearAll();
         }catch(Exception e)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage() ); 
             alert.showAndWait();
         }
+        
+        txtLoanReordsID.setText(String.valueOf(dataManager.getNextLoanID()));
     
     }
+    
+    
 }

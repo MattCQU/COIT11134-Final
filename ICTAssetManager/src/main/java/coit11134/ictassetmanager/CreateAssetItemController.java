@@ -70,9 +70,6 @@ public class CreateAssetItemController implements Initializable
 
     private DataManager dataManager;
     private static Asset editAsset;
-    //private LocalDate dueTestDate;
-    //private LocalDate warrantyEndDate;
-    //private LocalDate purchaseDate;
     
 
 
@@ -256,10 +253,7 @@ public class CreateAssetItemController implements Initializable
                 dataManager.saveAssetToFile();
             }
             
-            clearAllField();
-                 
-
-            
+            clearAllField();  
         }catch(Exception e)
         {
             App.customAlert(e.getMessage());
