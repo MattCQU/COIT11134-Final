@@ -23,7 +23,7 @@ public class App extends Application {
         
         dataManager = new DataManager("staff.txt", "assets.txt", "locations.txt","loans.txt");
         
-        scene = new Scene(loadFXML("Menu"),600, 400);  
+        scene = new Scene(loadFXML("Login"),600, 400);  
         stage.setResizable(false);
         stage.setScene(scene);
         stage.setTitle("ICT Asset Manager");

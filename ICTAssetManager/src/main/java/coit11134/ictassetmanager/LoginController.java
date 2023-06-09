@@ -16,30 +16,28 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
-public class LoginController {
+public class LoginController implements Initializable {
 
     @FXML
     private Button btnSignIn;
 
-    @FXML
-    private Text lblSignIn;
-
-    @FXML
-    private TextField txtFieldPassword;
-
-    @FXML
-    private TextField txtFieldUsername;
     
     private DataManager dataManager;
     
   
     
-    
-   private void handleButtonLogInAction (ActionEvent event) throws Exception  {
+    @FXML
+    private void handleButtonLogInAction (ActionEvent event) throws Exception  {
+           
             App.setRoot("Menu");
     }
    
-   
+    //Method that initializes datamanager 
+    @Override
+    public void initialize(URL url, ResourceBundle rb)
+    {
+         App.getDataManager();
+    }
 
 }
 
