@@ -77,7 +77,7 @@ public class CreateAssetItemController
         
         
         try {
-            App.setRoot("PageStaffInformation");
+            App.setRoot("PageAssetInformation");
         } catch (IOException e){
            System.out.println(e); 
         }

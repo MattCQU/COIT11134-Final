@@ -70,7 +70,7 @@ public class PageAssetItemsController implements Initializable{
             }
             
             CreateAssetItemController.setEditAsset((Asset)selectedAsset);
-            App.setRoot("CreateAssetInformation");
+            App.setRoot("CreateAssetItem");
         } catch (Exception e){
            App.customAlert(e.getMessage()); 
         }
@@ -96,7 +96,7 @@ public class PageAssetItemsController implements Initializable{
     {
         try
         {
-            App.setRoot("CreateAssetInformation");
+            App.setRoot("CreateAssetItem");
             
         }catch (Exception e)
         {
@@ -130,7 +130,7 @@ public class PageAssetItemsController implements Initializable{
             ObservableList<String> elements = FXCollections.observableArrayList();
             for(Asset asset : asset)
             {
-                elements.add(asset.getSerialNumber());
+                elements.add(asset.getAssetID() +",  " + asset.getItemType());
             }
             listViewAssets.setItems(elements);
        }catch(Exception e)
