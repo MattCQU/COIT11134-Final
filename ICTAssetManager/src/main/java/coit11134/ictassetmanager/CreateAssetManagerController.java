@@ -52,6 +52,7 @@ public class CreateAssetManagerController {
     private Button btnCreate;
     
     DataManager dataManager;
+    private static AssetManager editAssetManager;
     
     @FXML
     private void handleButtonExitAction (ActionEvent event) throws Exception  {
@@ -124,6 +125,22 @@ public class CreateAssetManagerController {
                 isArchived = true;
             }
             
+            if(editAssetManager != null)
+            {
+                editAssetManager.setArchived(isArchived);
+                
+                dataManager.saveStaffToFile();
+                handleButtonExitAction(null);   
+            }
+            else
+            {
+                assetManager.setStaffID(Integer.parseInt(staffID));
+                assetManager.setStaffName(this.txtName.getText().trim());
+                assetManager.setArchived(isArchived);
+            
+                dataManager.addStaffRecord(assetManager);
+                dataManager.saveStaffToFile();
+            }
             
         }catch(Exception e)
         {
