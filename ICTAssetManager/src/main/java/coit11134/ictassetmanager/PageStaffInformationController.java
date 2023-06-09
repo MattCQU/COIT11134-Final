@@ -102,13 +102,19 @@ public class PageStaffInformationController implements Initializable{
     
     private void displayStaffRecords()
     {
-        staffRecords = dataManager.getAllStaffRecords();
-        ObservableList<String> elements = FXCollections.observableArrayList();
-        for(StaffRecords staffRecord : staffRecords)
-        {
-            elements.add(staffRecord.getStaffName());
-        }
-        listViewStaffRecords.setItems(elements);
+       try{ 
+           staffRecords = dataManager.getAllStaffRecords();
+       
+            ObservableList<String> elements = FXCollections.observableArrayList();
+            for(StaffRecords staffRecord : staffRecords)
+            {
+                elements.add(staffRecord.getStaffName());
+            }
+            listViewStaffRecords.setItems(elements);
+       }catch(Exception e)
+       {
+           App.customAlert(e.getMessage());
+       }
     }
 
 }
