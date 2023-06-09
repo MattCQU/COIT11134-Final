@@ -55,7 +55,7 @@ public class CreateLoanRecordsController implements Initializable{
     private DataManager dataManager;
     private static LoanRecord editLoanRecord;
     
-    
+    //Event handler for the exit button
     @FXML
     private void handleButtonExitAction (ActionEvent event) throws Exception  {
         System.out.println("You have pressed the Cancel button!");
@@ -113,6 +113,7 @@ public class CreateLoanRecordsController implements Initializable{
         editLoanRecord = loanRecords;
     }
     
+    //Event handler for the create button
     @FXML
     private void handleAddLoanRecordsButton(ActionEvent Event){
         LoanRecord newLoanRecord = new LoanRecord();
@@ -126,30 +127,38 @@ public class CreateLoanRecordsController implements Initializable{
             LocalDate returnDateOfSearchAsset = LocalDate.now();
             LocalDate loanDateOfSearchAsset = LocalDate.now();
             
+            //Validates if asset ID is blank
             if (assetID.isEmpty() || assetID.equals("")){
                 throw new Exception ("Asset ID cannot be blank");
             }
+            
+            //Validates if the invalid asset ID is entered
             if (dataManager.searchAssetByID(assetID) == null){
                 throw new Exception ("The entered asset ID does not exists");
             }
+            
             if (dataManager.searchAssetByID(assetID).getArchived() == true)
             {
                 throw new Exception ("The asset entered is not in service");
             }
            
-            
+            //Validates if staff ID is blank
             if (staffID.isEmpty() || assetID.equals("")){
                 throw new Exception ("Staff ID cannot be blank");
             }
+            
+            //Validates if the entered staff ID is invalid
             if (dataManager.searchStaffByID(staffID) == null){
                 throw new Exception ("The entered staff ID does not exists");
             }
             
-            
+            //Validates if location ID is blank
             if(locationID.isEmpty() || locationID.equals(""))
             {
                 throw new Exception ("LocationID is blank, please enter a locationID");
             }
+            
+            //Validates if the entered location ID is invalid
             if(dataManager.searchLocationByID(locationID) == null)
             {
                 throw new Exception ("The entered locationID does not exist.");
@@ -158,18 +167,26 @@ public class CreateLoanRecordsController implements Initializable{
             {
                 throw new Exception ("The entered location is not in service");
             }
+            
+            //Validates if the start date is not selected
             if(startDate == null)
             {
                 throw new Exception ("Loan Start Date Cannot Be Empty, Select a Date.");
             }
+            
+            //Validates if start date is after the present day
             if(startDate.isAfter(LocalDate.now()))
             {
                 throw new Exception("Cannot Forward Date Loan");
             }
+            
+            //Validates if due date is not selected
             if(dueDate == null)
             {
                 throw new Exception ("Return Date Cannot Be Empty, Select a Date.");
             }
+            
+            //Validates if due date is before start date
             if(dueDate.isBefore(startDate))
             {
                 throw new Exception("Cannot retrun item before item loaned.");
@@ -191,6 +208,7 @@ public class CreateLoanRecordsController implements Initializable{
             
             if(editLoanRecord != null)
             {
+                //Update loan record
                 editLoanRecord.setAsset(dataManager.searchAssetByID(assetID));
                 editLoanRecord.setStaffMember(dataManager.searchStaffByID(staffID));
                 editLoanRecord.setLocation(dataManager.searchLocationByID(locationID));
@@ -202,6 +220,7 @@ public class CreateLoanRecordsController implements Initializable{
             }
             else
             {
+                //create new asset
                 newLoanRecord.setLoanID(Integer.parseInt(txtLoanReordsID.getText()));
                 newLoanRecord.setAsset(dataManager.searchAssetByID(assetID));
                 newLoanRecord.setStaffMember(dataManager.searchStaffByID(staffID));
