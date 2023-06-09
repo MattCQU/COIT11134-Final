@@ -193,6 +193,8 @@ public class CreateLoanRecordsController implements Initializable{
                 throw new Exception("Cannot retrun item before item loaned.");
             }
             
+            
+            //Method meant to compare if the selected assest item is currently on loan
             /*
             returnDateOfSearchAsset = dataManager.searchLoanByAsset(assetID).getReturnDate();  
             loanDateOfSearchAsset = dataManager.searchLoanByAsset(assetID).getReturnDate();

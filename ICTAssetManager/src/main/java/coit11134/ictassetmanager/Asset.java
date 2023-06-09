@@ -23,7 +23,7 @@ public class Asset {
     private boolean archived;
     
     
-    //Asset paraeterised Constructor
+    //Asset parameterised Constructor
     public Asset(String itemType, String make, String model, String serialNumber, int assetID, LocalDate dueTestDate, LocalDate warrantyEndDate, LocalDate purchaseDate, double purchasePrice, boolean archived) 
     {
         this.itemType = itemType;
@@ -38,7 +38,7 @@ public class Asset {
         this.archived = archived;
     }
     
-    //Aesst 
+    //Aesst Constructor
     public Asset() 
     {
         
@@ -257,7 +257,7 @@ public class Asset {
         return sb.toString();
     }
     
-    
+    //String format for file saving.
     public String saveString()
     {
         String save = assetID + ", " + itemType + ", " + make + ", " + model + ", " + serialNumber + ", " + dueTestDate + ", " + warrantyEndDate 
@@ -265,6 +265,8 @@ public class Asset {
         return save;
     }
     
+    
+    // String used for displaying overdue test and tag assets
     public String overDueString()
     {
         return assetID + ", " + dueTestDate + ", " + itemType + ", " + make + ", " + model + ", " + serialNumber;

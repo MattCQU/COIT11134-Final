@@ -10,13 +10,14 @@ public class AssetManager extends StaffRecords{
     
     private String password;
     private boolean canLogin;
-
+    
+    //AssetManger parameterised Constructor
     public AssetManager (int staffID, String staffName, String staffEmail, String staffPhoneNumber, boolean archived, String password, boolean canLogin) {
         super(staffID, staffName, staffEmail, staffPhoneNumber, archived);
         this.password = password;
         this.canLogin = canLogin;
     }
-
+    //AesstManger Constructor
     public AssetManager() {
     }
     
