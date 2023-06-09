@@ -124,7 +124,7 @@ public class DataManager {
                 if(a.length == 10)
                 {
                     int assetID = Integer.parseInt(a[0].trim()); 
-                    String assetDescription = a[1].trim();
+                    String itemType = a[1].trim();
                     String make = a[2].trim();
                     String model = a[3].trim();
                     String serialNumber = a[4].trim();
@@ -132,10 +132,11 @@ public class DataManager {
                     LocalDate warrantyEndDate = LocalDate.parse(a[6].trim());
                     LocalDate purchaseDate = LocalDate.parse(a[7].trim());
                     double purchasePrice = Double.parseDouble(a[8].trim());
-                    String status = a[9].trim();
+                    boolean archived = Boolean.parseBoolean(a[9].trim());
+
                     
                     
-                    Asset asset = new Asset( assetDescription,  make,  model,  serialNumber,  assetID,  dueTestDate,  warrantyEndDate,  purchaseDate,  purchasePrice,  status);
+                    Asset asset = new Asset( itemType,  make,  model,  serialNumber,  assetID,  dueTestDate,  warrantyEndDate,  purchaseDate,  purchasePrice,  archived);
                     assetList.add(asset);
                 }
                             

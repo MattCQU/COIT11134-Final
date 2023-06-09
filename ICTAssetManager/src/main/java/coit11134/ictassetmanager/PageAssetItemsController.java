@@ -1,22 +1,26 @@
 /*
 *COIT11134 Assessment 3 Part B
 *
-*Authers: Sera Jeong 12211242, Aye Chan Ko KO LWIN12206477, Matthew Meintjes S0270867
+*Authors: Sera Jeong 12211242, Aye Chan Ko KO LWIN12206477, Matthew Meintjes S0270867
 */
 
 
 package coit11134.ictassetmanager;
 
 import java.io.IOException;
-import java.util.HashSet;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 
-public class PageAssetItemsController {
+public class PageAssetItemsController implements Initializable{
     
 
     @FXML
@@ -35,30 +39,45 @@ public class PageAssetItemsController {
     private Button btnUpdate;
 
     @FXML
-    private ListView<?> listViewAssets;
+    private ListView<String> listViewAssets;
+    private Asset[] asset;
 
     @FXML
     private TextField txtFieldSearch;
     
+    private DataManager dataManager;
+
+    
     @FXML
-    private void handleButtonExitAction (ActionEvent event) throws Exception  {
-        System.out.println("You have pressed the Cancel button!");
-        
-        clearAllField();
-        
+    void handleButtonExitAction(ActionEvent event) {
         try {
             App.setRoot("Menu");
-        } catch (IOException e){
-           System.out.println(e); 
+        } catch (Exception e){
+           App.customAlert(e.getMessage()); 
         }
     }
     
-    private void clearAllField()
-    {
-    
-        txtFieldSearch.clear();
-        
+
+    @FXML
+    void handleButtonEditAction(ActionEvent event) {
+        Asset selectedAsset = getSelectedAsset();
+        try 
+        {
+            if(selectedAsset == null)
+            {
+                App.customAlert("Please Select a Asset");
+                return;
+            }
+            
+            CreateAssetItemController.setEditAsset((Asset)selectedAsset);
+            App.setRoot("CreateAssetInformation");
+        } catch (Exception e){
+           App.customAlert(e.getMessage()); 
+        }
     }
+            
+
+    
     
     @FXML
     private void handleReportButtonAction (ActionEvent event) throws Exception
@@ -77,12 +96,47 @@ public class PageAssetItemsController {
     {
         try
         {
-            App.setRoot("CreateAssetItem");
+            App.setRoot("CreateAssetInformation");
             
         }catch (Exception e)
         {
             App.customAlert(e.getMessage());
         }
+    }
+
+    //Method that initializes datamanager 
+    @Override
+    public void initialize(URL url, ResourceBundle rb)
+    {
+      dataManager = App.getDataManager();
+      displayAsset();
+    }
+    
+    private Asset getSelectedAsset()
+    {
+        int index = listViewAssets.getSelectionModel().getSelectedIndex();
+        
+        if(index < 0)
+            return null;
+        
+        return asset[index];
+    }
+    
+    private void displayAsset()
+    {
+       try{ 
+           asset = dataManager.getAllAssets();
+       
+            ObservableList<String> elements = FXCollections.observableArrayList();
+            for(Asset asset : asset)
+            {
+                elements.add(asset.getSerialNumber());
+            }
+            listViewAssets.setItems(elements);
+       }catch(Exception e)
+       {
+           App.customAlert(e.getMessage());
+       }
     }
 
 }

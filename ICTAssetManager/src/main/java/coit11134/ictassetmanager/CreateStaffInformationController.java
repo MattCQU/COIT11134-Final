@@ -164,9 +164,8 @@ public class CreateStaffInformationController implements Initializable{
                 editStaffRecord.setStaffPhoneNumber(staffPhoneNumber);
                 editStaffRecord.setArchived(isArchived);
                 
-                dataManager.saveLocationsToFile();
-                clearAllField();
-                App.setRoot("PageStaffInformation");    
+                dataManager.saveStaffToFile();
+                handleButtonExitAction(null);   
             }
             else
             {

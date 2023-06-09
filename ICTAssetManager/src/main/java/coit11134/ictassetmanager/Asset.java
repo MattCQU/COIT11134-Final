@@ -11,7 +11,7 @@ import java.time.LocalDate;
 
 public class Asset {
     
-    private String assetDescription;
+    private String itemType;
     private String make;
     private String model;
     private String serialNumber;
@@ -20,11 +20,11 @@ public class Asset {
     private LocalDate warrantyEndDate;
     private LocalDate purchaseDate;
     private double purchasePrice;
-    private String status;
+    private boolean archived;
 
-    public Asset(String assetDescription, String make, String model, String serialNumber, int assetID, LocalDate dueTestDate, LocalDate warrantyEndDate, LocalDate purchaseDate, double purchasePrice, String status) 
+    public Asset(String itemType, String make, String model, String serialNumber, int assetID, LocalDate dueTestDate, LocalDate warrantyEndDate, LocalDate purchaseDate, double purchasePrice, boolean archived) 
     {
-        this.assetDescription = assetDescription;
+        this.itemType = itemType;
         this.make = make;
         this.model = model;
         this.serialNumber = serialNumber;
@@ -33,7 +33,7 @@ public class Asset {
         this.warrantyEndDate = warrantyEndDate;
         this.purchaseDate = purchaseDate;
         this.purchasePrice = purchasePrice;
-        this.status = status;
+        this.archived = archived;
     }
 
     public Asset() 
@@ -44,23 +44,22 @@ public class Asset {
     
     
     /**
-     * Get the value of status
+     * Get the value of archived
      *
-     * @return the value of status
+     * @return the value of archived
      */
-    public String getStatus() {
-        return status;
+    public boolean getArchived() {
+        return archived;
     }
 
     /**
-     * Set the value of status
+     * Set the value of archived
      *
-     * @param status new value of status
+     * @param archived new value of archived
      */
-    public void setStatus(String status) {
-        this.status = status;
+    public void setArchived(boolean archived) {
+        this.archived = archived;
     }
-
 
     /**
      * Get the value of purchasePrice
@@ -220,37 +219,37 @@ public class Asset {
     
     
     /**
-     * Get the value of assetDescription
+     * Get the value of itemType
      *
-     * @return the value of assetDescription
+     * @return the value of itemType
      */
-    public String getAssetDescription() {
-        return assetDescription;
+    public String getItemType() {
+        return itemType;
     }
 
     /**
-     * Set the value of assetDescription
+     * Set the value of itemType
      *
-     * @param assetDescription new value of assetDescription
+     * @param itemType new value of itemType
      */
-    public void setAssetDescription(String assetDescription) {
-        this.assetDescription = assetDescription;
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         
-        sb.append("AssetID ").append(assetID);
-        sb.append(", Asset ").append(assetDescription);
-        sb.append(", Make ").append(make);
-        sb.append(", Model ").append(model);
-        sb.append(", Serial Number ").append(serialNumber);
-        sb.append(", Test Due Date ").append(dueTestDate);
-        sb.append(", Warranty End Date ").append(warrantyEndDate);
-        sb.append(", Purchase Date ").append(purchaseDate);
-        sb.append(", Price ").append(purchasePrice);
-        sb.append(", Status ").append(status);
+        sb.append("AssetID=").append(assetID);
+        sb.append(", Asset=").append(itemType);
+        sb.append(", Make=").append(make);
+        sb.append(", Model=").append(model);
+        sb.append(", Serial Number=").append(serialNumber);
+        sb.append(", Test Due Date=").append(dueTestDate);
+        sb.append(", Warranty End Date=").append(warrantyEndDate);
+        sb.append(", Purchase Date=").append(purchaseDate);
+        sb.append(", Price=").append(purchasePrice);
+        sb.append(", Archived=").append(archived);
  
         return sb.toString();
     }
@@ -258,14 +257,14 @@ public class Asset {
     
     public String saveString()
     {
-        String save = assetID + ", " + assetDescription + ", " + make + ", " + model + ", " + serialNumber + ", " + dueTestDate + ", " + warrantyEndDate 
-                + ", " + purchaseDate + ", " + purchasePrice + ", " + status;
+        String save = assetID + ", " + itemType + ", " + make + ", " + model + ", " + serialNumber + ", " + dueTestDate + ", " + warrantyEndDate 
+                + ", " + purchaseDate + ", " + purchasePrice + ", " + archived;
         return save;
     }
     
     public String overDueString()
     {
-        return assetID + ", " + dueTestDate + ", " + assetDescription + ", " + make + ", " + model + ", " + serialNumber;
+        return assetID + ", " + dueTestDate + ", " + itemType + ", " + make + ", " + model + ", " + serialNumber;
     }
 
     
