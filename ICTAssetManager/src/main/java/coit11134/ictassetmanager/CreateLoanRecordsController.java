@@ -143,8 +143,8 @@ public class CreateLoanRecordsController implements Initializable{
                 throw new Exception ("The asset entered is not in service");
             }
            
-            //Validates if staff ID is blank
-            if (staffID.isEmpty() || assetID.equals("")){
+            //Validates if staffID is blank
+            if (staffID.isEmpty() || staffID.equals("")){
                 throw new Exception ("Staff ID cannot be blank");
             }
             
