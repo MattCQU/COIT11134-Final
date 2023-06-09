@@ -123,7 +123,8 @@ public class CreateLoanRecordsController implements Initializable{
             LocalDate startDate = datePickerStartDate.getValue();
             String locationID = this.txtLocationID.getText();
             LocalDate dueDate = datePickerDueDate.getValue();
-            LocalDate returnDateOfSearchAsset;
+            LocalDate returnDateOfSearchAsset = LocalDate.now();
+            LocalDate loanDateOfSearchAsset = LocalDate.now();
             
             if (assetID.isEmpty() || assetID.equals("")){
                 throw new Exception ("Asset ID cannot be blank");
@@ -171,15 +172,22 @@ public class CreateLoanRecordsController implements Initializable{
             }
             if(dueDate.isBefore(startDate))
             {
-                throw new Exception("Cannot Forward Date Loan");
+                throw new Exception("Cannot retrun item before item loaned.");
             }
             
-            //returnDateOfSearchAsset = dataManager.searchLoanByAsset(assetID).getReturnDate().isBefore(dueDate;  
-            if(dataManager.searchLoanByAsset(assetID).getReturnDate().isBefore(startDate) ||dataManager.searchLoanByAsset(assetID).getReturnDate().isBefore(dueDate) )
+            /*
+            returnDateOfSearchAsset = dataManager.searchLoanByAsset(assetID).getReturnDate();  
+            loanDateOfSearchAsset = dataManager.searchLoanByAsset(assetID).getReturnDate();
+                
+            if(returnDateOfSearchAsset != null && loanDateOfSearchAsset != null)
             {
-                throw new Exception ("This asset is currently on loan.\nLoaned to "+ dataManager.searchLoanByAsset(assetID).getStaffMember().getStaffName());
-            }
             
+                if(loanDateOfSearchAsset.isBefore(startDate) || returnDateOfSearchAsset.isBefore(dueDate) )
+                {
+                    throw new Exception ("This asset is currently on loan.\nLoaned to "+ dataManager.searchLoanByAsset(assetID).getStaffMember().getStaffName());
+                }
+            }
+            */
             
             if(editLoanRecord != null)
             {
@@ -208,8 +216,7 @@ public class CreateLoanRecordsController implements Initializable{
             clearAll();
         }catch(Exception e)
         {
-            Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage() ); 
-            alert.showAndWait();
+            App.customAlert(e.getMessage());
         }
         
         txtLoanReordsID.setText(String.valueOf(dataManager.getNextLoanID()));

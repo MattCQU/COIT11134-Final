@@ -50,6 +50,10 @@ public class ReportController implements Initializable {
       dataManager = App.getDataManager();
     }
     
+    
+    /*Method which uses inputed date to search assets that are overdue for testing on that date
+    * then returns the resutls to the List view, creates a file on the desktop and saves list to file
+    */
     @FXML
     private void selectDate(ActionEvent event) throws IOException {
    
@@ -103,6 +107,7 @@ public class ReportController implements Initializable {
                             writer.close();
                             Alert notice = new Alert(Alert.AlertType.INFORMATION);
                             notice.setContentText("File savesd to Desktop: " + fileName);
+                            notice.showAndWait();
                         }
                         else
                         {
