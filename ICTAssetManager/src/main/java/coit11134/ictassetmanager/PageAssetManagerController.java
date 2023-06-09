@@ -108,6 +108,7 @@ public class PageAssetManagerController implements Initializable{
     private void displayAssetManager()
     {
        try{ 
+           //Retrieve all assetManagers from the data manager
            assetManager = dataManager.getAllAssetManagers();
        
             ObservableList<String> elements = FXCollections.observableArrayList();
@@ -118,7 +119,7 @@ public class PageAssetManagerController implements Initializable{
             listViewAssetManagers.setItems(elements);
        }catch(Exception e)
        {
-           App.customAlert(e.getMessage());
+           App.customAlert(e.getMessage()); //Error message
        }
     }
 

@@ -56,6 +56,7 @@ public class CreateStaffInformationController implements Initializable{
     DataManager dataManager;
     private static StaffRecords editStaffRecord;
     
+    //Event handler for the exit button
     @FXML
     private void handleButtonExitAction (ActionEvent event) throws Exception  {
         System.out.println("You have pressed the Cancel button!");
@@ -118,29 +119,32 @@ public class CreateStaffInformationController implements Initializable{
     
     
     
-    
+    //Event handler for the create button
     @FXML
     private void handleAddStaffButton (ActionEvent event) throws Exception {
         
         boolean isArchived = false;
         
         try{
+            //Validates if staff ID is blank or not numeric
             String staffID = this.txtStaffID.getText().trim();
             if (staffID.length() == 0  || !staffID.matches("\\d+")){
                 throw new Exception ("Please enter a valid staff ID");
             }
             
+            //Validates if staff name is blank
             String staffName = this.txtStaffName.getText().trim();
             if (staffName.equals("")){
                 throw new Exception ("Please enter a valid staff name");
             }
             
-
+            //Validates if the email is blank or does not contain the "@" symbol or "."
             String staffEmail = this.txtStaffEmail.getText();
             if (staffEmail.equals("") || !staffEmail.contains("@") || !staffEmail.contains(".")){
                 throw new Exception ("Please enter a valid staff email address. \n It will require letter(s) or number(s), '@' symbol and '.' symbol");
             }
             
+            //Validates if staff phone number is blank
             String staffPhoneNumber = this.txtStaffPhoneNumber.getText().trim();
             if (staffPhoneNumber.equals("")){
                 throw new Exception ("Please enter a valid staff phone number");
@@ -151,6 +155,7 @@ public class CreateStaffInformationController implements Initializable{
                 throw new Exception("Invalid Phone number, please enter a valid 10 digit number");
             }
             
+            //Validates if the user does not select the menu item
             String selectedOption = this.MnuStatus.getText();
             if (selectedOption.equals("Active/Archived")) {
                 throw new Exception("Please select a valid option from the menu");
@@ -166,6 +171,7 @@ public class CreateStaffInformationController implements Initializable{
             
             if(editStaffRecord != null)
             {
+                //Update staff record
                 editStaffRecord.setStaffName(staffName);
                 editStaffRecord.setStaffEmail(staffEmail);
                 editStaffRecord.setStaffPhoneNumber(staffPhoneNumber);
@@ -179,6 +185,7 @@ public class CreateStaffInformationController implements Initializable{
             }
             else
             {
+                //Create new staff record
                 StaffRecords newStaffRecord = new StaffRecords();
                 
                 newStaffRecord.setStaffID(Integer.parseInt(staffID));
@@ -201,6 +208,7 @@ public class CreateStaffInformationController implements Initializable{
         txtStaffID.setText(String.valueOf(dataManager.getNextStaffID()));
     }
     
+    //Method to display the text of the selected option on the menu button
     @FXML
     private void handleMenuItemSelection(ActionEvent event) 
     {
