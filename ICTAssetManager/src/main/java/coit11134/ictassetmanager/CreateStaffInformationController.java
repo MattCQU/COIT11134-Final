@@ -135,9 +135,10 @@ public class CreateStaffInformationController implements Initializable{
                 throw new Exception ("Please enter a valid staff name");
             }
             
-            String staffEmail = this.txtStaffEmail.getText().trim();
-            if (staffEmail.equals("")){
-                throw new Exception ("Please enter a valid staff email address");
+
+            String staffEmail = this.txtStaffEmail.getText();
+            if (staffEmail.equals("") || !staffEmail.contains("@") || !staffEmail.contains(".")){
+                throw new Exception ("Please enter a valid staff email address. \n It will require letter(s) or number(s), '@' symbol and '.' symbol");
             }
             
             String staffPhoneNumber = this.txtStaffPhoneNumber.getText().trim();
