@@ -10,17 +10,17 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coit11134.ictassetmanager.CreateLocationInformationController">
    <children>
-      <Label alignment="CENTER" layoutX="163.0" layoutY="47.0" prefHeight="30.0" prefWidth="275.0" text="Create Location Information" textFill="#630090">
+      <Label fx:id="pageTitle" alignment="CENTER" layoutX="163.0" layoutY="47.0" prefHeight="30.0" prefWidth="275.0" text="Create Location Information" textFill="#630090">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="34.0" layoutY="169.0" text="Location Name">
+      <Label layoutX="34.0" layoutY="124.0" text="Location ID">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="34.0" layoutY="124.0" text="Location ID">
+      <Label layoutX="34.0" layoutY="169.0" text="Location Name">
          <font>
             <Font size="14.0" />
          </font>
@@ -32,13 +32,13 @@
       </Label>
       <TextField fx:id="txtLocationID" editable="false" layoutX="196.0" layoutY="121.0" prefHeight="25.0" prefWidth="204.0" />
       <TextField fx:id="txtLocationName" layoutX="196.0" layoutY="163.0" prefHeight="25.0" prefWidth="204.0" />
-      <Button fx:id="btnBack" layoutX="34.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleButtonExitAction" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #ba3d3d;" text="&lt; Back" textFill="WHITE" />
-      <Button fx:id="btnCreate" layoutX="496.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleAddLocationButton" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #2c8629;" text="Create" textFill="WHITE" />
       <MenuButton fx:id="MnuStatus" layoutX="196.0" layoutY="208.0" mnemonicParsing="false" onAction="#handleMenuItemSelection" prefHeight="25.0" prefWidth="204.0" text="Please Select">
         <items>
           <MenuItem fx:id="itemActive" mnemonicParsing="false" onAction="#handleMenuItemSelection" text="Active" />
           <MenuItem fx:id="itemArchived" mnemonicParsing="false" onAction="#handleMenuItemSelection" text="Archived" />
         </items>
       </MenuButton>
+      <Button fx:id="btnCreate" layoutX="496.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleAddLocationButton" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #2c8629;" text="Create" textFill="WHITE" />
+      <Button fx:id="btnBack" layoutX="34.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleButtonExitAction" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #ba3d3d;" text="&lt; Back" textFill="WHITE" />
    </children>
 </AnchorPane>

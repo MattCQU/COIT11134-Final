@@ -86,7 +86,7 @@ public class Validation {
     }
   */
     
-    public double doubleValidator(String input) throws NumberFormatException
+    public static double doubleValidator(String input) throws NumberFormatException
     {
         try
         {
@@ -99,7 +99,7 @@ public class Validation {
     }
     
     
-    public String stringValidator(String input ) throws IllegalArgumentException
+    public static String stringValidator(String input ) throws IllegalArgumentException
     {
         if(input == null || input.isEmpty())
         {
@@ -122,7 +122,7 @@ public class Validation {
     }
   
     
-    public int intValidator(String input) throws NumberFormatException
+    public static int intValidator(String input) throws NumberFormatException
     {
         try
         {
@@ -135,7 +135,7 @@ public class Validation {
     }
     
     
-    public boolean booleanValidator(String input)
+    public static boolean booleanValidator(String input)
     {
         try{
             
@@ -150,7 +150,7 @@ public class Validation {
         }
     }
     
-    public String phoneNumberValidator(String input) throws IllegalArgumentException
+    public static boolean phoneNumberValidator(String input) throws IllegalArgumentException
     {
         String numbersOnly = input.replaceAll("[^0-9]","");
         
@@ -161,19 +161,21 @@ public class Validation {
         
         if (numbersOnly.length() == 10 && numbersOnly.matches("[^0-9]+"))
         {
-            return numbersOnly;
+            return true;
+            
         }
         else if(numbersOnly.length() == 11 && numbersOnly.startsWith("61") && numbersOnly.substring(2).matches("[0-9]+"))
         {
-            return "0"+ numbersOnly.substring(2);
+            return true;
         }
         else
         {
-            throw new IllegalArgumentException("Invalid phone number format.");
+            return false;
         }
+        
     }
     
-    public String emailValidator(String input) throws IllegalArgumentException
+    public static String emailValidator(String input) throws IllegalArgumentException
     {
         String emailFormat = "^[A-Za-z0-9_.-]+@[A-Za-z0-9_.-]+$";
         

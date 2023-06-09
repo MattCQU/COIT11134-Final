@@ -139,6 +139,10 @@ public class CreateStaffInformationController implements Initializable{
             if (staffPhoneNumber.equals("")){
                 throw new Exception ("Please enter a valid staff phone number");
             }
+            if(!Validation.phoneNumberValidator(staffPhoneNumber))
+            {
+                App.customAlert("Invalid Phone number, please enter a valid 10 digit number");
+            }
             
             String selectedOption = this.MnuStatus.getText();
             if (selectedOption.equals("Active/Archived")) {

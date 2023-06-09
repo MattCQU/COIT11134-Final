@@ -3,7 +3,7 @@
 3,Abigail's Desk,false
 4,Kane's Desk,true
 5,Jason's Desk,false
-6,Billy's Desk,false
+6,Desk 19,false
 7,Ben's Desk,false
 8,Kitchen,false
 9,Main Office,false

@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
@@ -43,6 +44,9 @@ public class CreateLocationInformationController implements Initializable{
     @FXML
     private Button btnCreate;
     
+    @FXML
+    private Label pageTitle;
+    
     private DataManager dataManager;
     private static Location editLocation;
     
@@ -51,6 +55,7 @@ public class CreateLocationInformationController implements Initializable{
         System.out.println("You have pressed the Cancel button!");
         
         clearAllField();
+        editLocation = null;
         
         try {
             App.setRoot("PageLocationInformation");
@@ -93,10 +98,13 @@ public class CreateLocationInformationController implements Initializable{
             txtLocationName.setText(editLocation.getLocationName());
             MnuStatus.setText(menuButtonOption);
             
+            pageTitle.setText("Edit Location Information");
+            
         }
         else
         {
             txtLocationID.setText(String.valueOf(dataManager.getNextLocationID()));
+            pageTitle.setText("Create Location Information");
         }
     }
     
@@ -135,8 +143,7 @@ public class CreateLocationInformationController implements Initializable{
                 editLocation.setArchived(isArchived);
                 
                 dataManager.saveLocationsToFile();
-                clearAllField();
-                App.setRoot("PageLocationInformation");    
+                handleButtonExitAction(null);   
             }
             else
             {
