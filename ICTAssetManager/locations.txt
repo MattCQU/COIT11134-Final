@@ -1,5 +1,5 @@
 1,Olympia's Desk,true
-2,Jack's Desk,false
+2,Jack's Desk,true
 3,Abigail's Desk,false
 4,Kane's Desk,true
 5,Jason's Desk,false
@@ -9,3 +9,4 @@
 9,Main Office,false
 10,Cleaners Cupboard,false
 11,Reception,false
+12,Benard's Classroom,true

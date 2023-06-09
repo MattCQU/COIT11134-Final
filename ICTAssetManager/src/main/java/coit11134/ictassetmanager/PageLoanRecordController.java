@@ -31,6 +31,7 @@ public class PageLoanRecordController {
     @FXML
     private ListView<?> listViewAssets;
     LoanRecord loanRecord = new LoanRecord();
+    LoanRecord [] loanRecords;
 
     @FXML
     private TextField txtfieldSearch;
@@ -50,6 +51,35 @@ public class PageLoanRecordController {
     void handleCreateButton(ActionEvent event) {
         try {
             App.setRoot("CreateLoanRecord");
+        } catch (Exception e){
+           App.customAlert(e.getMessage()); 
+        }
+    }
+    
+    private LoanRecord getSelectedLoanRecord()
+    {
+        int index = listViewAssets.getSelectionModel().getSelectedIndex();
+        
+        if(index < 0)
+            return null;
+        
+        return loanRecords[index];
+    }
+    
+    @FXML
+    void handleButtonEditAction(ActionEvent event) {
+        
+        LoanRecord selectedLoanRecord = getSelectedLoanRecord();
+        try 
+        {
+            if(loanRecord == null)
+            {
+                App.customAlert("Please Select a loan record");
+                return;
+            }
+            
+            CreateLoanRecordsController.setEditLoanRecords((LoanRecord)loanRecord);
+            App.setRoot("CreateLoanRecordsInformation");
         } catch (Exception e){
            App.customAlert(e.getMessage()); 
         }
