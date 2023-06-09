@@ -8,6 +8,10 @@ package coit11134.ictassetmanager;
 
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -31,7 +35,7 @@ public class PageLoanRecordController {
     @FXML
     private ListView<?> listViewAssets;
     LoanRecord loanRecord = new LoanRecord();
-    LoanRecord [] loanRecords;
+    LoanRecord [] loanRecordList;
 
     @FXML
     private TextField txtfieldSearch;
@@ -63,7 +67,7 @@ public class PageLoanRecordController {
         if(index < 0)
             return null;
         
-        return loanRecords[index];
+        return loanRecordList[index];
     }
     
     @FXML
@@ -72,7 +76,7 @@ public class PageLoanRecordController {
         LoanRecord selectedLoanRecord = getSelectedLoanRecord();
         try 
         {
-            if(loanRecord == null)
+            if(selectedLoanRecord == null)
             {
                 App.customAlert("Please Select a loan record");
                 return;
@@ -83,6 +87,12 @@ public class PageLoanRecordController {
         } catch (Exception e){
            App.customAlert(e.getMessage()); 
         }
+    }
+    
+    private void displayLoanRecords()
+    {
+        loanRecordList = dataManager.getAllLoanRecords();
+        ObservableList<String> elements = FXCollections.observableArrayList();
     }
 
 }
