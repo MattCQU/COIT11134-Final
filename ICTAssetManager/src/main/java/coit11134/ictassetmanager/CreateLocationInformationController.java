@@ -50,6 +50,7 @@ public class CreateLocationInformationController implements Initializable{
     private DataManager dataManager;
     private static Location editLocation;
     
+    //Event handler for the exit button
     @FXML
     private void handleButtonExitAction (ActionEvent event) throws Exception  {
         System.out.println("You have pressed the Cancel button!");
@@ -108,22 +109,26 @@ public class CreateLocationInformationController implements Initializable{
         }
     }
     
+    //Event handler for the create button
     @FXML
     private void handleAddLocationButton (ActionEvent event) throws Exception {
         Location newLocation = new Location();
         boolean isArchived = false;
         
         try{
+            //Validates if the location ID is blank or is not numeric
             String locationID = this.txtLocationID.getText();
             if (locationID.length() == 0  || !locationID.matches("\\d+")){
                 throw new Exception ("Please enter a valid location ID");
             }
             
+            //Validates if location name is blank
             String locationName = this.txtLocationName.getText();
             if (locationName.equals("")){
                 throw new Exception ("Please enter a valid location name");
             }
-
+            
+            //Validates if the user does not select the menu item
             String selectedOption = this.MnuStatus.getText();
             if (selectedOption.equals("Active/Archived")) {
                 throw new Exception("Please select a valid option from the menu");
@@ -139,6 +144,7 @@ public class CreateLocationInformationController implements Initializable{
             
             if(editLocation != null)
             {
+                //Update location
                 editLocation.setLocationName(locationName);
                 editLocation.setArchived(isArchived);
                 
@@ -147,6 +153,7 @@ public class CreateLocationInformationController implements Initializable{
             }
             else
             {
+                //create new location
                 newLocation.setLocationID(Integer.parseInt(locationID));
                 newLocation.setLocationName(this.txtLocationName.getText().trim());
                 newLocation.setArchived(isArchived);
@@ -165,6 +172,7 @@ public class CreateLocationInformationController implements Initializable{
         txtLocationID.setText(String.valueOf(dataManager.getNextLocationID()));
     }
     
+    //Method to display the text of the selected option on the menu button
     @FXML
     private void handleMenuItemSelection(ActionEvent event) {
         MenuItem selectedItem = (MenuItem) event.getSource();
