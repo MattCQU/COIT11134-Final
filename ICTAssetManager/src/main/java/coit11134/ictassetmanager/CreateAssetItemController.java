@@ -72,7 +72,7 @@ public class CreateAssetItemController implements Initializable
     private static Asset editAsset;
     
 
-
+    //Event handler for the exit button
     @FXML
     private void handleButtonExitAction (ActionEvent event) throws Exception  {
         System.out.println("You have pressed the Cancel button!");
@@ -84,7 +84,7 @@ public class CreateAssetItemController implements Initializable
            System.out.println(e); 
         }
     }
-
+    
     private void clearAllField()
     {
     
@@ -150,53 +150,62 @@ public class CreateAssetItemController implements Initializable
 
 
 
-    
+    //Method for create button
     @FXML
     private void handleAddAssetItemsButton (ActionEvent Event){
         Asset newAsset = new Asset();
         boolean isArchived = false;
         
         try{
+            //Validates asset ID if it is blank or not numeric 
             String assetID = this.txtAssetID.getText();
             if (assetID.length() == 0  || !assetID.matches("\\d+")){
                 throw new Exception ("Please enter a valid asset ID");
             }            
             
+            //Validates serial number if it is blank
             String serialNumber = this.txtSerialNumber.getText();
             if (serialNumber.isEmpty() || serialNumber.equals("")){
                 throw new Exception ("Serial Number cannot be blank");
             }
             
+            //Validate next test due date if it is before local date
             LocalDate testDueDate = datePickerDueTestDate.getValue();
             if (testDueDate.isBefore(LocalDate.now())){
                 throw new Exception ("Invalid Date - Next test due date cannot be before today");
             }
             
+            //Validates purchase date if it is after local date
             LocalDate purchaseDate = datePickerPurchaseDate.getValue();
             if (purchaseDate.isAfter(LocalDate.now())){
                 throw new Exception ("Invalid Date - Purchase date cannot be after today");
             }
-
+            
+            //Validates warranty end date if it is before local date
             LocalDate warrantyEndDate = datePickerWarrantyEndDate.getValue();
             if (warrantyEndDate.isBefore(LocalDate.now())){
                 throw new Exception ("Invalid Date - Warranty date cannot be before today");
             }
             
+            //Validates item type if it is blank
             String itemType = this.txtItemType.getText();
             if (itemType.isEmpty() || itemType.equals("")){
                 throw new Exception ("Item type field cannot be blank");
             }
             
+            //Validates make if it is blank
             String make = this.txtMake.getText();
             if (make.isEmpty() || make.equals("")){
                 throw new Exception ("Make field cannot be blank");
             }            
             
+            //Validates model if it is blank
             String model = this.txtModel.getText();
             if (model.isEmpty() || model.equals("")){
                 throw new Exception ("Model field cannot be blank");
             }
-                       
+            
+            //Validates purchase price if it is negative or blank
             double purchasePrice = Double.parseDouble(this.txtPurchasePrice.getText());
             if(this.txtPurchasePrice.getText() == null || this.txtPurchasePrice.getText().equalsIgnoreCase(""))
             {
@@ -208,6 +217,8 @@ public class CreateAssetItemController implements Initializable
             }
             
             String selectedOption = this.MnuStatus.getText();
+            
+            //Validates if the user does not select the menu item
             if (selectedOption.equals("Active/Archived")) {
                 throw new Exception("Please select a valid option from the menu");
             }
@@ -223,6 +234,7 @@ public class CreateAssetItemController implements Initializable
 
             if(editAsset != null)
             {
+                //Update existing asset
                 editAsset.setMake(make);
                 editAsset.setSerialNumber(serialNumber);
                 editAsset.setDueTestDate(testDueDate);
@@ -238,6 +250,7 @@ public class CreateAssetItemController implements Initializable
             }
             else
             {
+                //create new asset
                 newAsset.setAssetID(Integer.parseInt(assetID));
                 newAsset.setMake(this.txtMake.getText().trim());
                 newAsset.setSerialNumber(this.txtSerialNumber.getText().trim());
@@ -262,6 +275,7 @@ public class CreateAssetItemController implements Initializable
         txtAssetID.setText(String.valueOf(dataManager.getNextAssetID()));
     }
     
+    //Method to display the text of the selected option on the menu button
     @FXML
     private void handleMenuItemSelection(ActionEvent event) 
     {
