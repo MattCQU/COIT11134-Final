@@ -7,12 +7,16 @@
 package coit11134.ictassetmanager;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-
 
 
 public class PageAssetManagerController {
@@ -31,10 +35,14 @@ public class PageAssetManagerController {
     private Button btnUpdate;
 
     @FXML
-    private ListView<?> listViewAssets;
+    private ListView<String> listViewAssetManagers;
+    private AssetManager[] assetManager;
 
     @FXML
     private TextField txtFieldSearch;
+    
+    private DataManager dataManager;
+    
     
     @FXML
     void handleButtonExitAction(ActionEvent event) {
@@ -46,6 +54,26 @@ public class PageAssetManagerController {
     }
 
     @FXML
+    void handleButtonEditAction(ActionEvent event) {
+        AssetManager selectedAssetManager = getSelectedAssetManager();
+        try 
+        {
+            if(selectedAssetManager == null)
+            {
+                App.customAlert("Please Select an Asset Manager");
+                return;
+            }
+            
+            CreateAssetManagerController.setEditAssetManager((AssetManager)selectedAssetManager);
+            App.setRoot("CreateAssetManager");
+        } catch (Exception e){
+           App.customAlert(e.getMessage()); 
+        }
+    }
+            
+    
+    
+    @FXML
     void handleButtonCreateAction(ActionEvent event) {
         try {
             App.setRoot("CreateAssetManager");
@@ -54,11 +82,39 @@ public class PageAssetManagerController {
         }
     }
     
-    private void clearAllField()
-    {
     
-        txtFieldSearch.clear();
+    //Method that initializes datamanager 
+    public void initialize(URL url, ResourceBundle rb)
+    {
+      dataManager = App.getDataManager();
+      displayAssetManager();
+    }
+    
+    private AssetManager getSelectedAssetManager()
+    {
+        int index = listViewAssetManagers.getSelectionModel().getSelectedIndex();
         
+        if(index < 0)
+            return null;
+        
+        return assetManager[index];
+    }
+    
+    private void displayAssetManager()
+    {
+       try{ 
+           assetManager = (AssetManager[]) dataManager.getAllStaffRecords();
+       
+            ObservableList<String> elements = FXCollections.observableArrayList();
+            for(AssetManager assetManager : assetManager)
+            {
+                elements.add(assetManager.getStaffName());
+            }
+            listViewAssetManagers.setItems(elements);
+       }catch(Exception e)
+       {
+           App.customAlert(e.getMessage());
+       }
     }
 
 }
