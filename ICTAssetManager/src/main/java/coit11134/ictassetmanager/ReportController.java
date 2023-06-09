@@ -1,6 +1,9 @@
 package coit11134.ictassetmanager;
 
 import coit11134.ictassetmanager.App;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -51,6 +54,8 @@ public class ReportController implements Initializable {
     private void selectDate(ActionEvent event) throws IOException {
    
         reportDate = datePicker.getValue();
+        String desktopPath = System.getProperty("user.home")+ "/Desktop";
+        String fileName = "Overdue Test & Tag Report - " + reportDate.toString() +".txt";
         
         try{
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -75,6 +80,39 @@ public class ReportController implements Initializable {
                         elements.add(asset);
                     }
                     listViewReport.setItems(elements);
+                    
+                    File desktopFile = new File(desktopPath, fileName);
+                    
+                    try
+                    {
+                        boolean created = desktopFile.createNewFile();
+                        
+                        if (created)
+                        {
+                            
+                            BufferedWriter writer = new BufferedWriter( new FileWriter(desktopFile));
+                            
+                            writer.write(fileName + "\n");
+                            
+                            for(Asset asset : overDueAssets)
+                            {
+                                String assetString = asset.saveString();
+                                writer.write(assetString);
+                                writer.newLine();
+                            }
+                            writer.close();
+                            Alert notice = new Alert(Alert.AlertType.INFORMATION);
+                            notice.setContentText("File savesd to Desktop: " + fileName);
+                        }
+                        else
+                        {
+                            App.customAlert("File already exists.");
+                        }
+                    }catch(IOException e)
+                    {
+                        App.customAlert(e.getMessage());
+                    }
+                    
                 } else {
                     // User clicked Cancel 
                     System.out.println("Cancelled.");
