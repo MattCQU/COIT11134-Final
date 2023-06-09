@@ -81,7 +81,8 @@ public class CreateAssetManagerController implements Initializable{
         
     }
     
-        public static void setEditAssetManager(AssetManager staff) {
+    public static void setEditAssetManager(AssetManager staff) 
+    {
         editAssetManager = staff;
     }   
     
@@ -132,9 +133,6 @@ public class CreateAssetManagerController implements Initializable{
                 throw new Exception ("Please enter a valid staff ID");
             }
             
-            if (dataManager.searchStaffByID(staffID) == null){
-                throw new Exception ("The entered staff ID does not exists");
-            }
             
             String staffName = this.txtStaffName.getText();
             if (staffName.equals("")){
@@ -154,6 +152,10 @@ public class CreateAssetManagerController implements Initializable{
             String staffPhoneNumber = this.txtStaffPhoneNumber.getText();
             if (staffPhoneNumber.equals("") || !staffPhoneNumber.matches("\\d+")){
                 throw new Exception ("Please enter a valid staff phone number");
+            }
+            if(!Validation.phoneNumberValidator(staffPhoneNumber.trim()))
+            {
+                throw new Exception("Invalid Phone number, please enter a valid 10 digit number");
             }
             
             String selectedOption = this.MnuStatus.getText();

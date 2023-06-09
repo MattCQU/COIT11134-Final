@@ -123,6 +123,7 @@ public class CreateLoanRecordsController implements Initializable{
             LocalDate startDate = datePickerStartDate.getValue();
             String locationID = this.txtLocationID.getText();
             LocalDate dueDate = datePickerDueDate.getValue();
+            LocalDate returnDateOfSearchAsset;
             
             if (assetID.isEmpty() || assetID.equals("")){
                 throw new Exception ("Asset ID cannot be blank");
@@ -134,10 +135,7 @@ public class CreateLoanRecordsController implements Initializable{
             {
                 throw new Exception ("The asset entered is not in service");
             }
-            if(dataManager.searchLoanByAsset(assetID).getReturnDate().isBefore(startDate) ||dataManager.searchLoanByAsset(assetID).getReturnDate().isBefore(dueDate) )
-            {
-                throw new Exception ("This asset is currently on loan.\nLoaned to "+ dataManager.searchLoanByAsset(assetID).getStaffMember().getStaffName());
-            }
+           
             
             if (staffID.isEmpty() || assetID.equals("")){
                 throw new Exception ("Staff ID cannot be blank");
@@ -159,15 +157,29 @@ public class CreateLoanRecordsController implements Initializable{
             {
                 throw new Exception ("The entered location is not in service");
             }
-            
+            if(startDate == null)
+            {
+                throw new Exception ("Loan Start Date Cannot Be Empty, Select a Date.");
+            }
             if(startDate.isAfter(LocalDate.now()))
             {
                 throw new Exception("Cannot Forward Date Loan");
+            }
+            if(dueDate == null)
+            {
+                throw new Exception ("Return Date Cannot Be Empty, Select a Date.");
             }
             if(dueDate.isBefore(startDate))
             {
                 throw new Exception("Cannot Forward Date Loan");
             }
+            
+            //returnDateOfSearchAsset = dataManager.searchLoanByAsset(assetID).getReturnDate().isBefore(dueDate;  
+            if(dataManager.searchLoanByAsset(assetID).getReturnDate().isBefore(startDate) ||dataManager.searchLoanByAsset(assetID).getReturnDate().isBefore(dueDate) )
+            {
+                throw new Exception ("This asset is currently on loan.\nLoaned to "+ dataManager.searchLoanByAsset(assetID).getStaffMember().getStaffName());
+            }
+            
             
             if(editLoanRecord != null)
             {

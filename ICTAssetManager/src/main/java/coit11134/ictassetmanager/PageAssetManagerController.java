@@ -19,7 +19,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 
-public class PageAssetManagerController {
+public class PageAssetManagerController implements Initializable{
     
     
     @FXML
@@ -84,10 +84,11 @@ public class PageAssetManagerController {
     
     
     //Method that initializes datamanager 
+    @Override
     public void initialize(URL url, ResourceBundle rb)
     {
       dataManager = App.getDataManager();
-      displayAssetManager();
+      //displayAssetManager();
     }
     
     private AssetManager getSelectedAssetManager()
@@ -99,11 +100,12 @@ public class PageAssetManagerController {
         
         return assetManager[index];
     }
-    
+ 
+    /*
     private void displayAssetManager()
     {
        try{ 
-           assetManager = (AssetManager[]) dataManager.getAllStaffRecords();
+           assetManager = dataManager.getAllStaffRecords();
        
             ObservableList<String> elements = FXCollections.observableArrayList();
             for(AssetManager assetManager : assetManager)
@@ -116,5 +118,6 @@ public class PageAssetManagerController {
            App.customAlert(e.getMessage());
        }
     }
+*/
 
 }

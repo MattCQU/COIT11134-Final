@@ -647,7 +647,7 @@ public class DataManager {
         staff = staffList.toArray(staff);
         return staff;
     }
-
+    
     public Location[] getAllLocations()
     {
         Location[] location = new Location[locationsList.size()];
