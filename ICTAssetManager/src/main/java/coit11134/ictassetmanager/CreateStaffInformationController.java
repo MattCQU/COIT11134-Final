@@ -86,7 +86,7 @@ public class CreateStaffInformationController implements Initializable{
     }   
     
     //Method that initializes datamanager 
-    //@Override
+    @Override
     public void initialize(URL url, ResourceBundle rb)
     {
         dataManager = App.getDataManager();

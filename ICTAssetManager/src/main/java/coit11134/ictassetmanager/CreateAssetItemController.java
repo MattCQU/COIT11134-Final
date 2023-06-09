@@ -70,9 +70,9 @@ public class CreateAssetItemController implements Initializable
 
     private DataManager dataManager;
     private static Asset editAsset;
-    private LocalDate dueTestDate;
-    private LocalDate warrantyEndDate;
-    private LocalDate purchaseDate;
+    //private LocalDate dueTestDate;
+    //private LocalDate warrantyEndDate;
+    //private LocalDate purchaseDate;
     
 
 
@@ -109,7 +109,7 @@ public class CreateAssetItemController implements Initializable
 
 
     //Method that initializes datamanager 
-    //@Override
+    @Override
     public void initialize(URL url, ResourceBundle rb)
     {
         dataManager = App.getDataManager();
@@ -125,14 +125,18 @@ public class CreateAssetItemController implements Initializable
                 menuButtonOption = "Active";
             }
             
+            LocalDate pDate = editAsset.getPurchaseDate();
+            LocalDate tDate = editAsset.getDueTestDate();
+            LocalDate wDate = editAsset.getWarrantyEndDate();
+            
             txtAssetID.setText(String.valueOf(editAsset.getAssetID()));
             txtMake.setText(editAsset.getMake());
             txtSerialNumber.setText(editAsset.getSerialNumber());
-            datePickerDueTestDate.setValue(editAsset.getDueTestDate());
-            datePickerPurchaseDate.setValue(editAsset.getPurchaseDate());         
+            datePickerDueTestDate.setValue(tDate);
+            datePickerPurchaseDate.setValue(pDate);         
             txtItemType.setText(String.valueOf(editAsset.getItemType()));
             txtModel.setText(editAsset.getModel());
-            datePickerWarrantyEndDate.setValue(editAsset.getWarrantyEndDate());
+            datePickerWarrantyEndDate.setValue(wDate);
             txtPurchasePrice.setText(String.valueOf(editAsset.getPurchasePrice()));    
             MnuStatus.setText(menuButtonOption);
             
@@ -224,7 +228,7 @@ public class CreateAssetItemController implements Initializable
             {
                 editAsset.setMake(make);
                 editAsset.setSerialNumber(serialNumber);
-                editAsset.setDueTestDate(dueTestDate);
+                editAsset.setDueTestDate(testDueDate);
                 editAsset.setPurchaseDate(purchaseDate);
                 editAsset.setItemType(itemType);
                 editAsset.setModel(model);

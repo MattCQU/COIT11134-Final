@@ -70,8 +70,9 @@ public class PageAssetItemsController implements Initializable{
             }
             
             CreateAssetItemController.setEditAsset((Asset)selectedAsset);
+            
             App.setRoot("CreateAssetItem");
-        } catch (Exception e){
+        } catch (IOException e){
            App.customAlert(e.getMessage()); 
         }
     }
