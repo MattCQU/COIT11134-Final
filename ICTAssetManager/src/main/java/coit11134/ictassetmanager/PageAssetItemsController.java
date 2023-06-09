@@ -132,7 +132,6 @@ public class PageAssetItemsController implements Initializable{
            //Retrieve all assets from the data manager
            asset = dataManager.getAllAssets();
        
-            //Create an ObservableList to store the asset information
             ObservableList<String> elements = FXCollections.observableArrayList();
             
             for(Asset asset : asset)

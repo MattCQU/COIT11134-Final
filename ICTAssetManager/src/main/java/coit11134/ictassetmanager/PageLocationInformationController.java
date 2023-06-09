@@ -42,6 +42,7 @@ public class PageLocationInformationController implements Initializable{
     
     private DataManager dataManager;
 
+    //Event handler for the exit button
     @FXML
     void handleButtonExitAction(ActionEvent event) {
         try {
@@ -51,6 +52,7 @@ public class PageLocationInformationController implements Initializable{
         }
     }
     
+    //Event handler for the update button
     @FXML
     void handleButtonEditAction(ActionEvent event) {
         Location selectedLocation = getSelectedLocation();
@@ -69,6 +71,7 @@ public class PageLocationInformationController implements Initializable{
         }
     }
     
+    //Event handler for the create button
     @FXML
     void handleButtonCreateAction(ActionEvent event) {
         try {
@@ -96,8 +99,10 @@ public class PageLocationInformationController implements Initializable{
         return location[index];
     }
     
+    //Method that displays the list of locations in a ListView
     private void displayLocations()
     {
+        //Retrieve all locations from the data manager
         location = dataManager.getAllLocations();
         ObservableList<String> elements = FXCollections.observableArrayList();
         for(Location location : location)
