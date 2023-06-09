@@ -25,7 +25,7 @@ public class DataManager {
     private ArrayList<Location> locationsList;
     private ArrayList<LoanRecord> loanList;
     
-    
+    //DataManager Constructor 
     public DataManager(String staffFileName, String assetsFileName, String locationsFileName, String loanRecordsFileName)
     {
         this.staffFileName = staffFileName;
@@ -41,6 +41,7 @@ public class DataManager {
         loadAllFiles();
     }
     
+    //Method to load all required files
     private void loadAllFiles()
     {
         readStaffFromFile();
@@ -50,6 +51,7 @@ public class DataManager {
         
     }
     
+    //Method to read staff from file, build the boject and add it to the staff ArrayList
     private void readStaffFromFile()
     {
         String line = "";
@@ -104,7 +106,7 @@ public class DataManager {
         }
     }
     
-    
+    //Method to read Assets from file, build the object then add to the assets arrayList
     public void readAssetFromFile()
     {
         String line = "";
@@ -149,7 +151,7 @@ public class DataManager {
         }
     }
     
-    
+    //Method to read Locations from file, build the object then add to the Locations arrayList
     public void readLocationFromFile()
     {
         String line = "";
@@ -185,7 +187,7 @@ public class DataManager {
     }
     
     
-    
+    //Method to read Loans from file, build the object then add to the Loans arrayList
     public void readLoanRecordFromFile()
     {
         String line = "";
@@ -225,7 +227,7 @@ public class DataManager {
         }
     }
     
-    
+    //Method to use a sting ID to search the Staff ArrayList for the correct staffmember and returns the staff object
     public StaffRecords searchStaffByID(String stringStaffID)
     {
         try{
@@ -247,6 +249,8 @@ public class DataManager {
         return null;
     }
     
+    
+    //Method to use a string ID to search the Assets ArrayList for the correct asset and returns the asset object
     public Asset searchAssetByID(String stringAssetID)
     {
         try
@@ -269,6 +273,8 @@ public class DataManager {
         return null;
     }
     
+    
+    //Method to use a string ID to search the Locations ArrayList for the correct location and returns the Location object
     public Location searchLocationByID(String stringLocationID)
     {
         try
@@ -291,6 +297,8 @@ public class DataManager {
         return null;
     }
     
+    
+   //Method to use a sting ID to search the Loan ArrayList for the correct Loan and returns the Loan object 
     public LoanRecord searchLoanByID(String stringLoanID)
     {
         try
@@ -313,6 +321,7 @@ public class DataManager {
         return null;
     }
     
+    //Method to use a sting ID to search the Loan ArrayList for the correct Asset and returns the Loan object
     public LoanRecord searchLoanByAsset(String stringAssetID)
     {
         try
@@ -336,7 +345,7 @@ public class DataManager {
     }
     
     
-    
+    //Method that uses the Asset saveString to save the Asset arraylist to file
     public void saveAssetToFile()
     {
         try
@@ -358,6 +367,7 @@ public class DataManager {
         }
     }
     
+    //Method that uses the Location saveString to save the Location arraylist to file
     public void saveLocationsToFile()
     {
         try
@@ -380,6 +390,8 @@ public class DataManager {
         
     }
     
+    
+    //Method that uses the Loans saveString to save the Loan arraylist to file
     public void saveLoansToFile()
     {
         try
@@ -402,6 +414,8 @@ public class DataManager {
         
     }
     
+    
+    //Method that uses the Staff saveString to save the Staff arraylist to file
     public void saveStaffToFile()
     {
         try
@@ -424,7 +438,7 @@ public class DataManager {
         
     }
     
-    
+    //method that finds the largest ID number in the Staff File and returns the next int
     public int getNextStaffID()
     {
         String line = "";
@@ -466,6 +480,7 @@ public class DataManager {
         return finalID;
     }
     
+    //method that finds the largest ID number in the Locations File and returns the next int
     public int getNextLocationID()
     {
         String line = "";
@@ -507,6 +522,8 @@ public class DataManager {
         return finalID;
     }
     
+    
+    //method that finds the largest ID number in the Loan File and returns the next int
     public int getNextLoanID()
     {
         String line = "";
@@ -548,7 +565,7 @@ public class DataManager {
         return finalID;
     }
     
-    
+    //method that finds the largest ID number in the Assets File and returns the next int
     public int getNextAssetID()
     {
         String line = "";
@@ -590,28 +607,32 @@ public class DataManager {
         return finalID;
     }
     
-    
+    //Adds the StaffRecords to the staffList ArrayList
     public void addStaffRecord (StaffRecords staff)
     {
         staffList.add(staff);
     }
     
+    //Adds the Location to the locationsList ArrayList
     public void addLocation (Location location )
     {
         locationsList.add(location);
     }
     
+    //Adds the Asset to the AssetList ArrayList
     public void addAsset (Asset asset)
     {
         assetList.add(asset);
     } 
     
+    //Adds the Loan to the loanList ArrayList
     public void addLoan(LoanRecord loan)
     {
         loanList.add(loan);
     }
     
-  
+    
+    //Method that searches through the assetList for assets whos test and tag due date is before the date entered.
     public ArrayList<Asset> taggingReport(LocalDate date)
     {
         ArrayList<Asset> overDue = new ArrayList<>();
@@ -634,6 +655,8 @@ public class DataManager {
         return overDue;
     }
     
+    
+    //method the returns a list of AssetManagers from the stafflist
     public AssetManager[] getAllAssetManagers()
     {
         ArrayList<AssetManager> managerList = new ArrayList<AssetManager>();
@@ -652,6 +675,7 @@ public class DataManager {
         return managers;
     }
     
+    //method returns all assets as an array
     public Asset[] getAllAssets()
     {
         Asset[] asset = new Asset[assetList.size()];
@@ -659,6 +683,7 @@ public class DataManager {
         return asset;
     }
     
+    //method that returns all staff as an array
     public StaffRecords[] getAllStaffRecords()
     {
         StaffRecords[] staff = new StaffRecords[staffList.size()];
@@ -666,6 +691,7 @@ public class DataManager {
         return staff;
     }
     
+    //method that returns all locations as an array
     public Location[] getAllLocations()
     {
         Location[] location = new Location[locationsList.size()];
@@ -673,6 +699,7 @@ public class DataManager {
         return location;
     }
     
+    //method that returns all loans as an array
     public LoanRecord[] getAllLoanRecords()
     {
         LoanRecord[] loan = new LoanRecord[loanList.size()];
