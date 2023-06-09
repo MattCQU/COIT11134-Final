@@ -10,3 +10,4 @@
 10,Cleaners Cupboard,false
 11,Reception,false
 12,Benard's Classroom,true
+13,CEO Office,false

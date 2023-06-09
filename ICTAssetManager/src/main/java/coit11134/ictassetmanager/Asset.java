@@ -21,7 +21,9 @@ public class Asset {
     private LocalDate purchaseDate;
     private double purchasePrice;
     private boolean archived;
-
+    
+    
+    //Asset paraeterised Constructor
     public Asset(String itemType, String make, String model, String serialNumber, int assetID, LocalDate dueTestDate, LocalDate warrantyEndDate, LocalDate purchaseDate, double purchasePrice, boolean archived) 
     {
         this.itemType = itemType;
@@ -35,7 +37,8 @@ public class Asset {
         this.purchasePrice = purchasePrice;
         this.archived = archived;
     }
-
+    
+    //Aesst 
     public Asset() 
     {
         
