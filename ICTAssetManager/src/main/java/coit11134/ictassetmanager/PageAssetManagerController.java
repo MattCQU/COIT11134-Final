@@ -108,7 +108,7 @@ public class PageAssetManagerController implements Initializable{
     private void displayAssetManager()
     {
        try{ 
-           //Retrieve all asset managers from the data manager
+           //Retrieve all assetManagers from the data manager
            assetManager = dataManager.getAllAssetManagers();
        
             ObservableList<String> elements = FXCollections.observableArrayList();

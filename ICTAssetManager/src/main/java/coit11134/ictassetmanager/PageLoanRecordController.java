@@ -42,7 +42,8 @@ public class PageLoanRecordController implements Initializable{
     private TextField txtfieldSearch;
     
     private DataManager dataManager;
-
+    
+    //Event handler for the exit button
     @FXML
     void handleButtonExitAction(ActionEvent event) {
         try {
@@ -58,7 +59,8 @@ public class PageLoanRecordController implements Initializable{
       dataManager = App.getDataManager();
       displayLoanRecords();
     }
-
+    
+    //Event handler for the create button
     @FXML
     void handleCreateButton(ActionEvent event) {
         try {
@@ -78,6 +80,7 @@ public class PageLoanRecordController implements Initializable{
         return loanRecord[index];
     }
     
+    //Event handler for the update button
     @FXML
     void handleButtonEditAction(ActionEvent event) {
         
@@ -97,9 +100,11 @@ public class PageLoanRecordController implements Initializable{
         }
     }
     
+    //Method to display List of LoanRecords to listview
     private void displayLoanRecords()
     {
         try{ 
+           //Retrieve all loanRecords from the data manager
            loanRecord = dataManager.getAllLoanRecords();
        
             ObservableList<String> elements = FXCollections.observableArrayList();
@@ -110,7 +115,7 @@ public class PageLoanRecordController implements Initializable{
             listViewLoans.setItems(elements);
        }catch(Exception e)
        {
-           App.customAlert(e.getMessage());
+           App.customAlert(e.getMessage()); //Error Message
        }
     }
 
