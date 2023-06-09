@@ -14,78 +14,8 @@ public class Validation {
     
     
 
-/*    
-    public static ButtonType createAndShowAlert (String title, String discription, Alert.AlertType alertType)
-    {
-      Alert alert = new Alert (AlertType);
-      alert.setTitle(title);
-      alert.setContentText (discription);
-      alert.showAndWait();
-      
-      return alert.getResult();
-    }
-  */
-/*    
-    public static boolean isEmpty(TextField textField) {
-        String text = textField.getText();
-        if (text.isEmpty() || text.isBlank())
-            return true;
 
-        return false;
-    }
-  
-    public static boolean isEmptyOrNotNumeric(TextField textField) {
-        String text = textField.getText();
-        if (!isNumeric(text) || isEmpty(textField))
-            return true;
-
-        return false;
-    }
-  
-    public static boolean isNotInRange(TextField textField, int min, int max) {
-        if (isEmptyOrNotNumeric(textField))
-            return true;
-
-        //Get int, and check it's range
-        int num = Integer.parseInt(textField.getText());
-        if (num > max)
-            return true;
-
-        if (num < min)
-            return true;
-
-        return false;
-    }
-  
-  public static boolean isNegative(TextField textField, int min) {
-        if (isEmpty(textField))
-            return true;
-
-        int num = Integer.parseInt(textField.getText());
-        if (num < min)
-            return true;
-
-        return false;
-    }
-  
-   public static boolean isNumeric(String param) {
-        for (int i = 0; i < param.length(); i++) {
-            if (!Character.isDigit(param.charAt(i)))
-                return false;
-        }
-
-        return true;
-    }
-  
-  public static boolean hasComma(TextField textField) {
-        String text = textField.getText();
-        if (text.contains(","))
-            return true;
-
-        return false;
-    }
-  */
-    
+    //method that validates input as a double
     public static double doubleValidator(String input) throws NumberFormatException
     {
         try
@@ -98,7 +28,7 @@ public class Validation {
         }
     }
     
-    
+    //checks input is a valid string
     public static String stringValidator(String input ) throws IllegalArgumentException
     {
         if(input == null || input.isEmpty())
@@ -121,7 +51,7 @@ public class Validation {
         return trimmedString;
     }
   
-    
+    //checks input is a valid int
     public static int intValidator(String input) throws NumberFormatException
     {
         try
@@ -134,7 +64,7 @@ public class Validation {
         }
     }
     
-    
+    //validaiton method to check input is a boolean
     public static boolean booleanValidator(String input)
     {
         try{
@@ -150,6 +80,7 @@ public class Validation {
         }
     }
     
+    //validaiton method to check phone number format
     public static boolean phoneNumberValidator(String input) throws IllegalArgumentException
     {
         String strPattern = "^[0-9]{10}$";
@@ -172,7 +103,7 @@ public class Validation {
         
     }
     
-    // validation method to en
+    // validation method to check email format
     public static boolean emailValidator(String input) throws IllegalArgumentException
     {
         String emailFormat = "^[A-Za-z0-9_.-]+@[A-Za-z0-9_.-]+$";
