@@ -40,6 +40,7 @@ public class PageAssetItemsController implements Initializable{
 
     @FXML
     private ListView<String> listViewAssets;
+    
     private Asset[] asset;
 
     @FXML

@@ -14,11 +14,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-public class PageLoanRecordController {
+public class PageLoanRecordController implements Initializable{
 
     @FXML
     private Button btnBack;
@@ -33,9 +34,9 @@ public class PageLoanRecordController {
     private Button btnUpdate;
 
     @FXML
-    private ListView<?> listViewAssets;
-    LoanRecord loanRecord = new LoanRecord();
-    LoanRecord [] loanRecordList;
+    private ListView<String> listViewLoans;
+    
+    private LoanRecord[] loanRecord;
 
     @FXML
     private TextField txtfieldSearch;
@@ -51,6 +52,7 @@ public class PageLoanRecordController {
         }
     }
     
+    @Override
     public void initialize(URL url, ResourceBundle rb)
     {
       dataManager = App.getDataManager();
@@ -68,12 +70,12 @@ public class PageLoanRecordController {
     
     private LoanRecord getSelectedLoanRecord()
     {
-        int index = listViewAssets.getSelectionModel().getSelectedIndex();
+        int index = listViewLoans.getSelectionModel().getSelectedIndex();
         
         if(index < 0)
             return null;
         
-        return loanRecordList[index];
+        return loanRecord[index];
     }
     
     @FXML
@@ -88,7 +90,7 @@ public class PageLoanRecordController {
                 return;
             }
             
-            CreateLoanRecordsController.setEditLoanRecords((LoanRecord)loanRecord);
+            CreateLoanRecordsController.setEditLoanRecords((LoanRecord)selectedLoanRecord);
             App.setRoot("CreateLoanRecordsInformation");
         } catch (Exception e){
            App.customAlert(e.getMessage()); 
@@ -98,14 +100,14 @@ public class PageLoanRecordController {
     private void displayLoanRecords()
     {
         try{ 
-           loanRecordList = dataManager.getAllLoanRecords();
+           loanRecord = dataManager.getAllLoanRecords();
        
             ObservableList<String> elements = FXCollections.observableArrayList();
-            for(LoanRecord loan : loanRecordList)
+            for(LoanRecord loan : loanRecord)
             {
-                elements.add(loan.getLoanID() +",  " + loan.getAsset() + ", " + loan.getStaffMember());
+                elements.add(loan.getLoanID() +",  " + loan.getAsset().getItemType() + ", " + loan.getStaffMember().getStaffName());
             }
-            
+            listViewLoans.setItems(elements);
        }catch(Exception e)
        {
            App.customAlert(e.getMessage());
