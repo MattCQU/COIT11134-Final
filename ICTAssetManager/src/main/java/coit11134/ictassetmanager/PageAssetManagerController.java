@@ -21,7 +21,7 @@ import javafx.scene.control.TextField;
 
 public class PageAssetManagerController implements Initializable{
     
-    
+    //controller 
     @FXML
     private Button btnBack;
 
@@ -43,7 +43,7 @@ public class PageAssetManagerController implements Initializable{
     
     private DataManager dataManager;
     
-    
+    //mehtod to handle back button, swaps to create menu
     @FXML
     void handleButtonExitAction(ActionEvent event) {
         try {
@@ -52,7 +52,8 @@ public class PageAssetManagerController implements Initializable{
            App.customAlert(e.getMessage()); 
         }
     }
-
+    
+    //mehtod to handle edit button, swaps to edit scene
     @FXML
     void handleButtonEditAction(ActionEvent event) {
         AssetManager selectedAssetManager = getSelectedAssetManager();
@@ -72,7 +73,7 @@ public class PageAssetManagerController implements Initializable{
     }
             
     
-    // 
+    // mehtod to handle creat button, swaps to create scene 
     @FXML
     void handleButtonCreateAction(ActionEvent event) {
         try {

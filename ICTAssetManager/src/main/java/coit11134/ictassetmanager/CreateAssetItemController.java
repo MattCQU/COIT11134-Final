@@ -150,7 +150,7 @@ public class CreateAssetItemController implements Initializable
 
 
 
-    //Method for create button
+    //Event handler for the create button
     @FXML
     private void handleAddAssetItemsButton (ActionEvent Event){
         Asset newAsset = new Asset();
