@@ -48,7 +48,7 @@ public class PageAssetItemsController implements Initializable{
     
     private DataManager dataManager;
 
-    
+    //Event handler for the exit button
     @FXML
     void handleButtonExitAction(ActionEvent event) {
         try {
@@ -58,7 +58,7 @@ public class PageAssetItemsController implements Initializable{
         }
     }
     
-
+//Event handler for the update button
     @FXML
     void handleButtonEditAction(ActionEvent event) {
         Asset selectedAsset = getSelectedAsset();
@@ -80,7 +80,7 @@ public class PageAssetItemsController implements Initializable{
             
 
     
-    
+    //Event handler for the generate report button
     @FXML
     private void handleReportButtonAction (ActionEvent event) throws Exception
     {
@@ -93,6 +93,7 @@ public class PageAssetItemsController implements Initializable{
         }
     }
     
+    //Event handler for the create button
     @FXML
     private void handleCreateButton (ActionEvent event ) throws Exception
     {
@@ -124,20 +125,26 @@ public class PageAssetItemsController implements Initializable{
         return asset[index];
     }
     
+    //Method that displays the list of assets in a ListView
     private void displayAsset()
     {
        try{ 
+           //Retrieve all assets from the data manager
            asset = dataManager.getAllAssets();
        
+            //Create an ObservableList to store the asset information
             ObservableList<String> elements = FXCollections.observableArrayList();
+            
+            //Iterate over each asset and add its ID and item type to the list
             for(Asset asset : asset)
             {
                 elements.add(asset.getAssetID() +",  " + asset.getItemType());
             }
+            // Set the items of the ListView to the populated list of asset information
             listViewAssets.setItems(elements);
        }catch(Exception e)
        {
-           App.customAlert(e.getMessage());
+           App.customAlert(e.getMessage()); //Error message
        }
     }
 
