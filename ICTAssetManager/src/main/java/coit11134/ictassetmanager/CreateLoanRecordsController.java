@@ -44,6 +44,7 @@ public class CreateLoanRecordsController {
     private Button btnCreate;
     
     private DataManager dataManager;
+    private static LoanRecord editLoanRecord;
     
     @FXML
     private void handleButtonExitAction (ActionEvent event) throws Exception  {
@@ -64,6 +65,11 @@ public class CreateLoanRecordsController {
         txtStaffID.clear();
         datePickerStartDate.setValue(null);
         datePickerDueDate.setValue(null);
+    }
+    
+    public static void setEditLoanRecords(LoanRecord loanRecords)
+    {
+        editLoanRecord = loanRecords;
     }
     
     @FXML
@@ -102,6 +108,8 @@ public class CreateLoanRecordsController {
             {
                 throw new Exception("Cannot Forward Date Sale");
             }
+            
+            
             
         }catch(Exception e)
         {
