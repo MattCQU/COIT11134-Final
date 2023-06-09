@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
@@ -51,13 +52,17 @@ public class CreateStaffInformationController implements Initializable{
     @FXML
     private Button btnCreate;
     
+    @FXML
+    private Label pageTitle;
+    
     DataManager dataManager;
     private static StaffRecords editStaffRecord;
     
     @FXML
     private void handleButtonExitAction (ActionEvent event) throws Exception  {
         System.out.println("You have pressed the Cancel button!");
-        
+        clearAllField();
+        editStaffRecord = null;
         
         try {
             App.setRoot("PageStaffInformation");
@@ -103,10 +108,12 @@ public class CreateStaffInformationController implements Initializable{
             txtStaffPhoneNumber.setText(editStaffRecord.getStaffPhoneNumber());
             MnuStatus.setText(menuButtonOption);
             
+            pageTitle.setText("Edit Staff Information");
         }
         else
         {
             txtStaffID.setText(String.valueOf(dataManager.getNextStaffID()));
+            pageTitle.setText("Create Staff Information");
         }
     }
     
@@ -116,32 +123,33 @@ public class CreateStaffInformationController implements Initializable{
     
     @FXML
     private void handleAddStaffButton (ActionEvent event) throws Exception {
-        StaffRecords newStaffRecord = new StaffRecords();
+        
         boolean isArchived = false;
         
         try{
-            String staffID = this.txtStaffID.getText();
+            String staffID = this.txtStaffID.getText().trim();
             if (staffID.length() == 0  || !staffID.matches("\\d+")){
                 throw new Exception ("Please enter a valid staff ID");
             }
             
-            String staffName = this.txtStaffName.getText();
+            String staffName = this.txtStaffName.getText().trim();
             if (staffName.equals("")){
                 throw new Exception ("Please enter a valid staff name");
             }
             
-            String staffEmail = this.txtStaffEmail.getText();
+            String staffEmail = this.txtStaffEmail.getText().trim();
             if (staffEmail.equals("")){
                 throw new Exception ("Please enter a valid staff email address");
             }
             
-            String staffPhoneNumber = this.txtStaffPhoneNumber.getText();
+            String staffPhoneNumber = this.txtStaffPhoneNumber.getText().trim();
             if (staffPhoneNumber.equals("")){
                 throw new Exception ("Please enter a valid staff phone number");
             }
-            if(!Validation.phoneNumberValidator(staffPhoneNumber))
+            
+            if(!Validation.phoneNumberValidator(staffPhoneNumber.trim()))
             {
-                App.customAlert("Invalid Phone number, please enter a valid 10 digit number");
+                throw new Exception("Invalid Phone number, please enter a valid 10 digit number");
             }
             
             String selectedOption = this.MnuStatus.getText();
@@ -164,15 +172,17 @@ public class CreateStaffInformationController implements Initializable{
                 editStaffRecord.setStaffPhoneNumber(staffPhoneNumber);
                 editStaffRecord.setArchived(isArchived);
                 
-                dataManager.saveLocationsToFile();
-                clearAllField();
-                App.setRoot("PageStaffInformation");    
+                dataManager.saveStaffToFile();
+                
+                handleButtonExitAction(null);    
             }
             else
             {
+                StaffRecords newStaffRecord = new StaffRecords();
+                
                 newStaffRecord.setStaffID(Integer.parseInt(staffID));
                 newStaffRecord.setStaffName(this.txtStaffName.getText().trim());
-                newStaffRecord.setStaffEmail(this.txtStaffEmail.getText().trim());
+                newStaffRecord.setStaffEmail(staffEmail);
                 newStaffRecord.setStaffPhoneNumber(this.txtStaffPhoneNumber.getText().trim());
                 newStaffRecord.setArchived(isArchived);
             

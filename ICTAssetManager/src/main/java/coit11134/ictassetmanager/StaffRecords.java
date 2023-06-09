@@ -96,7 +96,7 @@ public class StaffRecords {
      *
      * @param staffEmail new value of staffEmail
      */
-    public void setStaffEmail(String email) {
+    public void setStaffEmail(String staffEmail) {
         this.staffEmail = staffEmail;
     }    
 

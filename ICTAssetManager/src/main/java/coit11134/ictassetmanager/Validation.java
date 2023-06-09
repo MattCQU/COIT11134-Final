@@ -152,22 +152,19 @@ public class Validation {
     
     public static boolean phoneNumberValidator(String input) throws IllegalArgumentException
     {
-        String numbersOnly = input.replaceAll("[^0-9]","");
-        
+        String strPattern = "^[0-9]{10}$";
+         
         if(input.contains(","))
         {
             throw new IllegalArgumentException("Please remove commas.");
         }
         
-        if (numbersOnly.length() == 10 && numbersOnly.matches("[^0-9]+"))
+        if (input.matches(strPattern))
         {
             return true;
             
         }
-        else if(numbersOnly.length() == 11 && numbersOnly.startsWith("61") && numbersOnly.substring(2).matches("[0-9]+"))
-        {
-            return true;
-        }
+        
         else
         {
             return false;
@@ -175,13 +172,13 @@ public class Validation {
         
     }
     
-    public static String emailValidator(String input) throws IllegalArgumentException
+    public static boolean emailValidator(String input) throws IllegalArgumentException
     {
         String emailFormat = "^[A-Za-z0-9_.-]+@[A-Za-z0-9_.-]+$";
         
         if(input.matches(emailFormat))
         {
-            return input;
+            return true;
         }else{
             throw new IllegalArgumentException("Invalid Email, please enter a valid Email.");
         }
