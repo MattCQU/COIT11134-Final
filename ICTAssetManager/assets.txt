@@ -13,4 +13,4 @@
 13, Philippines, Nunc Associates, Zhytomyr oblast, 282EF153-A36B-E9E9-038D-97CAA1E4AD8A, 2023-08-15, 2023-09-27, 2022-07-03, 779.9, false
 14, Sweden, Magna Phasellus LLP, Catalunya, 9B386F37-EF63-74F3-D8B1-C690CFDA4CDA, 2022-12-09, 2023-09-13, 2022-10-28, 424.63, false
 15, Brazil, Tempor Lorem PC, North Kalimantan, 833DAB4C-3513-9A92-385B-599EBEA28DBD, 2023-06-09, 2023-05-10, 2022-10-22, 797.38, false
-16, Monitor, Alienware, AW3418DW, 320897, null, 2027-06-05, 2023-06-01, 15000.24, false
+16, Monitor, Alienware, AW3418DW, 320897, 2042-08-12, 2027-06-05, 2023-06-01, 15000.24, false
