@@ -135,12 +135,10 @@ public class PageAssetItemsController implements Initializable{
             //Create an ObservableList to store the asset information
             ObservableList<String> elements = FXCollections.observableArrayList();
             
-            //Iterate over each asset and add its ID and item type to the list
             for(Asset asset : asset)
             {
                 elements.add(asset.getAssetID() +",  " + asset.getItemType());
             }
-            // Set the items of the ListView to the populated list of asset information
             listViewAssets.setItems(elements);
        }catch(Exception e)
        {
