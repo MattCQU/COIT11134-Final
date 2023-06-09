@@ -42,7 +42,7 @@ public class PageStaffInformationController implements Initializable{
     
     private DataManager dataManager;
     
-    
+    //Event handler for the exit button
     @FXML
     void handleButtonExitAction(ActionEvent event) {
         try {
@@ -52,6 +52,7 @@ public class PageStaffInformationController implements Initializable{
         }
     }
 
+    //Event handler for the update button
     @FXML
     void handleButtonEditAction(ActionEvent event) {
         StaffRecords selectedStaffRecord = getSelectedStaffRecord();
@@ -71,7 +72,7 @@ public class PageStaffInformationController implements Initializable{
     }
         
     
-    
+    //Event handler for the create button
     @FXML
     void handleButtonCreateAction(ActionEvent event) {
         try {
@@ -100,9 +101,11 @@ public class PageStaffInformationController implements Initializable{
         return staffRecords[index];
     }
     
+    //Method that displays the list of staffRecords in a ListView
     private void displayStaffRecords()
     {
        try{ 
+           //Retrieve all staffRecords from the data manager
            staffRecords = dataManager.getAllStaffRecords();
        
             ObservableList<String> elements = FXCollections.observableArrayList();
@@ -113,7 +116,7 @@ public class PageStaffInformationController implements Initializable{
             listViewStaffRecords.setItems(elements);
        }catch(Exception e)
        {
-           App.customAlert(e.getMessage());
+           App.customAlert(e.getMessage()); //Error Message
        }
     }
 
