@@ -20,7 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 
-public class CreateAssetItemController
+public class CreateAssetItemController implements Initializable
 {
     @FXML
     private TextField txtAssetID;
@@ -240,12 +240,12 @@ public class CreateAssetItemController
                 newAsset.setAssetID(Integer.parseInt(assetID));
                 newAsset.setMake(this.txtMake.getText().trim());
                 newAsset.setSerialNumber(this.txtSerialNumber.getText().trim());
-                newAsset.setDueTestDate(dueTestDate);
-                newAsset.setPurchaseDate(purchaseDate);
+                newAsset.setDueTestDate(this.datePickerDueTestDate.getValue());
+                newAsset.setPurchaseDate(this.datePickerPurchaseDate.getValue());
                 newAsset.setItemType(this.txtItemType.getText().trim());
                 newAsset.setModel(this.txtModel.getText().trim());
-                newAsset.setWarrantyEndDate(warrantyEndDate);
-                newAsset.setPurchasePrice(Double.parseDouble(this.txtPurchasePrice.getText()));
+                newAsset.setWarrantyEndDate(this.datePickerWarrantyEndDate.getValue());
+                newAsset.setPurchasePrice(purchasePrice);
                 newAsset.setArchived(isArchived);      
                 
                 dataManager.addAsset(newAsset);
