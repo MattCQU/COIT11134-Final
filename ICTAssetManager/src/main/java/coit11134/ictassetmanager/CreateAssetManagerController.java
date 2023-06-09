@@ -171,6 +171,22 @@ public class CreateAssetManagerController implements Initializable{
                 isArchived = true;
             }
             
+            if(editAssetManager != null)
+            {
+                editAssetManager.setArchived(isArchived);
+                
+                dataManager.saveStaffToFile();
+                handleButtonExitAction(null);   
+            }
+            else
+            {
+                assetManager.setStaffID(Integer.parseInt(staffID));
+                assetManager.setStaffName(this.txtName.getText().trim());
+                assetManager.setArchived(isArchived);
+            
+                dataManager.addStaffRecord(assetManager);
+                dataManager.saveStaffToFile();
+            }
             
             if(editAssetManager != null)
             {
