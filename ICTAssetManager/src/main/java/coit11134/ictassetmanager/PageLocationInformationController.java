@@ -6,7 +6,7 @@
 
 package coit11134.ictassetmanager;
 
-import java.io.IOException;
+import javafx.scene.input.KeyEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 
 public class PageLocationInformationController implements Initializable{
 
@@ -104,6 +105,15 @@ public class PageLocationInformationController implements Initializable{
             elements.add(location.getLocationName());
         }
         listViewLocations.setItems(elements);
+    }
+    
+    
+    public void handleSearch(KeyEvent event) throws Exception
+    {
+        if(event.getCode().equals(KeyCode.ENTER))
+        {
+            
+        }
     }
 
 }

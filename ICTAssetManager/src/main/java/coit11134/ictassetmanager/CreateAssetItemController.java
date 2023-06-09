@@ -123,11 +123,11 @@ public class CreateAssetItemController
             txtAssetID.setText(String.valueOf(editAsset.getAssetID()));
             txtMake.setText(editAsset.getMake());
             txtSerialNumber.setText(editAsset.getSerialNumber());
-            datePickerDueTestDate.(editAsset.getDueTestDate());
-            datePickerPurchaseDate.(editAsset.getPurchaseDate());         
+            datePickerDueTestDate.setValue(editAsset.getDueTestDate());
+            datePickerPurchaseDate.setValue(editAsset.getPurchaseDate());         
             txtItemType.setText(String.valueOf(editAsset.getItemType()));
             txtModel.setText(editAsset.getModel());
-            datePickerWarrantyEndDate.(editAsset.getWarrantyEndDate());
+            datePickerWarrantyEndDate.setValue(editAsset.getWarrantyEndDate());
             txtPurchasePrice.setText(String.valueOf(editAsset.getPurchasePrice()));    
             MnuStatus.setText(menuButtonOption);
             
@@ -222,8 +222,7 @@ public class CreateAssetItemController
                 editAsset.setModel(model);
                 editAsset.setWarrantyEndDate(warrantyEndDate);
                 editAsset.setPurchasePrice(purchasePrice);
-                editAsset.setArchived(isArchived); 
--     
+                editAsset.setArchived(isArchived);      
                 
                 dataManager.saveAssetToFile();
                 handleButtonExitAction(null);   
