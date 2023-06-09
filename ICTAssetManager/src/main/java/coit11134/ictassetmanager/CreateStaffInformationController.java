@@ -20,7 +20,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 
 
-public class CreateStaffInformationController {
+public class CreateStaffInformationController implements Initializable{
 
 
     
@@ -182,6 +182,8 @@ public class CreateStaffInformationController {
         {
             App.customAlert(e.getMessage());
         }
+        
+        txtStaffID.setText(String.valueOf(dataManager.getNextStaffID()));
     }
     
     @FXML
