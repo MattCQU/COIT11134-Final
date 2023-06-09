@@ -634,6 +634,24 @@ public class DataManager {
         return overDue;
     }
     
+    public AssetManager[] getAllAssetManagers()
+    {
+        ArrayList<AssetManager> managerList = new ArrayList<AssetManager>();
+        
+        for(StaffRecords members : staffList)
+        {
+            if(members instanceof AssetManager)
+            {
+                managerList.add((AssetManager) members);
+            }
+        }
+        
+        AssetManager[] managers = new AssetManager[managerList.size()];
+        managers = managerList.toArray(managers);
+        
+        return managers;
+    }
+    
     public Asset[] getAllAssets()
     {
         Asset[] asset = new Asset[assetList.size()];

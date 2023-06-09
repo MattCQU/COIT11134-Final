@@ -60,6 +60,7 @@ public class CreateLoanRecordsController implements Initializable{
     private void handleButtonExitAction (ActionEvent event) throws Exception  {
         System.out.println("You have pressed the Cancel button!");
         
+        editLoanRecord =null;
         clearAll();
         try {
             App.setRoot("PageLoanRecord");

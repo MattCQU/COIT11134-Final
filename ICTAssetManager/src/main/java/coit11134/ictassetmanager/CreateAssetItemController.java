@@ -77,7 +77,8 @@ public class CreateAssetItemController implements Initializable
     private void handleButtonExitAction (ActionEvent event) throws Exception  {
         System.out.println("You have pressed the Cancel button!");
         
-        
+        clearAllField();
+        editAsset = null;
         try {
             App.setRoot("PageAssetInformation");
         } catch (IOException e){

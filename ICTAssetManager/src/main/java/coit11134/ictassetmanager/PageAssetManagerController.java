@@ -89,7 +89,7 @@ public class PageAssetManagerController implements Initializable{
     public void initialize(URL url, ResourceBundle rb)
     {
       dataManager = App.getDataManager();
-      //displayAssetManager();
+      displayAssetManager();
     }
     
     private AssetManager getSelectedAssetManager()
@@ -104,11 +104,11 @@ public class PageAssetManagerController implements Initializable{
     
     
     //Method to display List of AssetManagers to listview
-    /*
+ 
     private void displayAssetManager()
     {
        try{ 
-           assetManager = dataManager.getAllStaffRecords();
+           assetManager = dataManager.getAllAssetManagers();
        
             ObservableList<String> elements = FXCollections.observableArrayList();
             for(AssetManager assetManager : assetManager)
@@ -121,6 +121,5 @@ public class PageAssetManagerController implements Initializable{
            App.customAlert(e.getMessage());
        }
     }
-*/
 
 }

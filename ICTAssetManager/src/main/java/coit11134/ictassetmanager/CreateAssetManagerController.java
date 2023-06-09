@@ -62,7 +62,8 @@ public class CreateAssetManagerController implements Initializable{
     private void handleButtonExitAction (ActionEvent event) throws Exception  {
         System.out.println("You have pressed the Cancel button!");
         
-        
+        clearAllField();
+        editAssetManager = null;
         try {
             App.setRoot("PageAssetManager");
         } catch (IOException e){
@@ -107,6 +108,7 @@ public class CreateAssetManagerController implements Initializable{
             txtStaffName.setText(editAssetManager.getStaffName());
             txtStaffEmail.setText(editAssetManager.getStaffEmail());
             txtStaffPhoneNumber.setText(editAssetManager.getStaffPhoneNumber());
+            txtPassword.setText(editAssetManager.getPassword());
             MnuStatus.setText(menuButtonOption);
             
             pageTitle.setText("Edit Asset Manager Information");
