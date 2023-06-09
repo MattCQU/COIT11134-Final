@@ -172,6 +172,7 @@ public class Validation {
         
     }
     
+    // validation method to en
     public static boolean emailValidator(String input) throws IllegalArgumentException
     {
         String emailFormat = "^[A-Za-z0-9_.-]+@[A-Za-z0-9_.-]+$";

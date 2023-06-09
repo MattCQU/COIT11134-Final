@@ -72,7 +72,7 @@ public class PageAssetManagerController implements Initializable{
     }
             
     
-    
+    // 
     @FXML
     void handleButtonCreateAction(ActionEvent event) {
         try {
@@ -100,7 +100,9 @@ public class PageAssetManagerController implements Initializable{
         
         return assetManager[index];
     }
- 
+    
+    
+    //Method to display List of AssetManagers to listview
     /*
     private void displayAssetManager()
     {

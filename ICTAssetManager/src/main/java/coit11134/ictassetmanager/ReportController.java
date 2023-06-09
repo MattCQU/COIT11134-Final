@@ -23,6 +23,8 @@ import javafx.scene.control.ListView;
 
 
 public class ReportController implements Initializable {
+    
+    //Controller variables
 
     @FXML
     private Button btnBack;
@@ -37,6 +39,7 @@ public class ReportController implements Initializable {
     private LocalDate reportDate;
     private ArrayList<Asset> overDueAssets;
     
+    //method to handle the 
     @FXML
     private void switchToAssets() throws IOException {
         App.setRoot("PageAssetInformation");
@@ -52,6 +55,7 @@ public class ReportController implements Initializable {
     
     
     /*Method which uses inputed date to search assets that are overdue for testing on that date
+    * method confirms date entered before generating report
     * then returns the resutls to the List view, creates a file on the desktop and saves list to file
     */
     @FXML
