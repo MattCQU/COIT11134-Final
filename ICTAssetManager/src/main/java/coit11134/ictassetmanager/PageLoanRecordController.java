@@ -30,9 +30,12 @@ public class PageLoanRecordController {
 
     @FXML
     private ListView<?> listViewAssets;
+    LoanRecord loanRecord = new LoanRecord();
 
     @FXML
     private TextField txtfieldSearch;
+    
+    private DataManager dataManager;
 
     @FXML
     void handleButtonExitAction(ActionEvent event) {
