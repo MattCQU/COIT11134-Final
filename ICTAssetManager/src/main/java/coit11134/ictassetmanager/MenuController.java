@@ -34,6 +34,7 @@ public class MenuController {
     @FXML
     private Button btnStaffInformation;
     
+    //Event handler for the exit button
     @FXML
     void exit(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Exit? Are you sure?"); 
@@ -44,31 +45,37 @@ public class MenuController {
         }); 
     }
     
+    //Event handler for switching to the asset information page
     @FXML
     private void switchToAssets() throws IOException {
         App.setRoot("PageAssetInformation");
     }
     
+    //Event handler for switching to the loan record page
     @FXML
     private void switchToLoanRecords() throws IOException {
         App.setRoot("PageLoanRecord");
     }
     
+    //Event handler for switching to the location information page
     @FXML
     private void switchToLocationInformationPage() throws IOException {
         App.setRoot("PageLocationInformation");
     }
     
+    //Event handler for switching to the staff information
     @FXML
     private void switchToStaffInformationPage() throws IOException {
         App.setRoot("PageStaffInformation");
     }
     
+    //Event handler for switching to the staff account page
     @FXML
     private void switchToStaffAccountPage() throws IOException {
         App.setRoot("PageAssetManager");
     }
     
+    //Event handler for switching to the loan records page
     @FXML
     private void switchToLoadRecords() throws IOException {
         App.setRoot("PageLoanRecord");
