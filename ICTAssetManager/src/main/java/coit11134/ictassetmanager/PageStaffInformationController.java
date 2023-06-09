@@ -20,7 +20,7 @@ import javafx.scene.control.TextField;
 
 public class PageStaffInformationController implements Initializable{
    
-    
+    //Controller Variables
     @FXML
     private Button btnBack;
 

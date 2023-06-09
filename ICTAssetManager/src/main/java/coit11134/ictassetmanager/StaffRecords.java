@@ -13,7 +13,9 @@ public class StaffRecords {
     private String staffEmail;
     private String staffPhoneNumber;
     private boolean archived;
-
+    
+    
+    //Staff Records Constructor parameterised
     public StaffRecords(int staffID, String staffName, String staffEmail, String staffPhoneNumber, boolean archived) {
         this.staffID = staffID;
         this.staffName = staffName;
@@ -21,7 +23,8 @@ public class StaffRecords {
         this.staffPhoneNumber = staffPhoneNumber;
         this.archived = archived;
     }
-
+    
+    //Staff Records Constructor
     public StaffRecords() {
     }
     

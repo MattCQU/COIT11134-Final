@@ -25,7 +25,6 @@ import javafx.scene.control.ListView;
 public class ReportController implements Initializable {
     
     //Controller variables
-
     @FXML
     private Button btnBack;
 
