@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.DatePicker;
 import java.time.LocalDate;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 
@@ -62,6 +63,10 @@ public class CreateAssetItemController
 
     @FXML
     private Button btnCreate;
+    
+    @FXML
+    private Label pageTitle;
+            
 
     private DataManager dataManager;
     private static Asset editAsset;
@@ -77,7 +82,7 @@ public class CreateAssetItemController
         
         
         try {
-            App.setRoot("PageStaffInformation");
+            App.setRoot("PageAssetInformation");
         } catch (IOException e){
            System.out.println(e); 
         }
@@ -131,10 +136,13 @@ public class CreateAssetItemController
             txtPurchasePrice.setText(String.valueOf(editAsset.getPurchasePrice()));    
             MnuStatus.setText(menuButtonOption);
             
+            pageTitle.setText("Edit Asset Information");
+            
         }
         else
         {
             txtAssetID.setText(String.valueOf(dataManager.getNextAssetID()));
+            pageTitle.setText("Create Asset Informaiton");
         }
     }
     
