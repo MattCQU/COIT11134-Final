@@ -50,6 +50,12 @@ public class PageLoanRecordController {
            App.customAlert(e.getMessage()); 
         }
     }
+    
+    public void initialize(URL url, ResourceBundle rb)
+    {
+      dataManager = App.getDataManager();
+      displayLoanRecords();
+    }
 
     @FXML
     void handleCreateButton(ActionEvent event) {
@@ -91,8 +97,19 @@ public class PageLoanRecordController {
     
     private void displayLoanRecords()
     {
-        loanRecordList = dataManager.getAllLoanRecords();
-        ObservableList<String> elements = FXCollections.observableArrayList();
+        try{ 
+           loanRecordList = dataManager.getAllLoanRecords();
+       
+            ObservableList<String> elements = FXCollections.observableArrayList();
+            for(LoanRecord loan : loanRecordList)
+            {
+                elements.add(loan.getLoanID() +",  " + loan.getAsset() + ", " + loan.getStaffMember());
+            }
+            
+       }catch(Exception e)
+       {
+           App.customAlert(e.getMessage());
+       }
     }
 
 }
